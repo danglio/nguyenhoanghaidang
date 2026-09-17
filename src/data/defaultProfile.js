@@ -1,0 +1,62 @@
+export const DEFAULT_PROFILE = {
+  personal: {
+    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
+    fullName: "Alex Nguyễn",
+    title: "Content Creator & Creative Technologist",
+    birthDate: "2000-08-15",
+    showAge: true,
+    location: "Hà Nội, Việt Nam",
+    status: "🟢 Sẵn sàng cho dự án & hợp tác mới",
+    bio: "Đam mê sáng tạo nội dung số, thiết kế trải nghiệm người dùng tối giản và xây dựng các sản phẩm công nghệ truyền cảm hứng. Luôn tin rằng sự đơn giản là đỉnh cao của sự tinh tế.",
+  },
+  stats: [
+    { id: "stat-1", value: "50K+", label: "Người theo dõi đa kênh", icon: "Users" },
+    { id: "stat-2", value: "3+ Năm", label: "Kinh nghiệm sáng tạo", icon: "Sparkles" },
+    { id: "stat-3", value: "100+", label: "Video & Dự án hoàn thành", icon: "Flame" },
+    { id: "stat-4", value: "100%", label: "Tận tâm & Nhiệt huyết", icon: "Heart" },
+  ],
+  links: [
+    {
+      id: "link-1",
+      platform: "youtube",
+      title: "Kênh YouTube Chính Thức",
+      url: "https://youtube.com",
+      description: "Video chia sẻ kiến thức công nghệ, tips hữu ích và đời sống",
+    },
+    {
+      id: "link-2",
+      platform: "tiktok",
+      title: "TikTok Channel",
+      url: "https://tiktok.com",
+      description: "Short videos chia sẻ mẹo vặt, review công nghệ hàng ngày",
+    },
+    {
+      id: "link-3",
+      platform: "facebook",
+      title: "Facebook Cá Nhân",
+      url: "https://facebook.com",
+      description: "Kết nối bạn bè, đối tác và cộng đồng",
+    },
+    {
+      id: "link-4",
+      platform: "github",
+      title: "GitHub Repositories",
+      url: "https://github.com",
+      description: "Kho lưu trữ mã nguồn mở và các dự án cá nhân",
+    },
+    {
+      id: "link-5",
+      platform: "x",
+      title: "X (Twitter)",
+      url: "https://x.com",
+      description: "Cập nhật tin tức nhanh, suy nghĩ và thảo luận tech",
+    },
+    {
+      id: "link-6",
+      platform: "website",
+      title: "Blog Cá Nhân / Portfolio",
+      url: "https://example.com",
+      description: "Những bài viết chuyên sâu về thiết kế và công nghệ",
+    },
+  ],
+};

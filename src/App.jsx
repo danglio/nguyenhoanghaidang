@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import AmbientBackground from './components/AmbientBackground';
 import Navbar from './components/Navbar';
-import HeroProfile from './components/HeroProfile';
+import LargeProfileCard from './components/LargeProfileCard';
+import ProfileOverview from './components/ProfileOverview';
 import AchievementsStats from './components/AchievementsStats';
 import SocialLinks from './components/SocialLinks';
 import EditModal from './components/EditModal';
 import Toast from './components/Toast';
 import { useProfileData } from './hooks/useProfileData';
-import { Heart, Share2 } from 'lucide-react';
+import { Heart, Share2, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function App() {
@@ -52,9 +53,9 @@ export default function App() {
   // Trigger celebration confetti
   const triggerConfetti = () => {
     confetti({
-      particleCount: 70,
-      spread: 60,
-      origin: { y: 0.7 },
+      particleCount: 75,
+      spread: 70,
+      origin: { y: 0.65 },
       colors: ['#6366f1', '#ec4899', '#3b82f6', '#10b981', '#f59e0b'],
     });
   };
@@ -118,38 +119,73 @@ export default function App() {
         fullName={profile.personal.fullName}
       />
 
-      {/* Main Content Area */}
-      <main className="relative z-10 flex-1 max-w-2xl mx-auto w-full pb-10">
-        {/* Hero Profile Section */}
-        <HeroProfile personal={profile.personal} />
+      {/* Main Content Area: Wide Grid Layout */}
+      <main className="relative z-10 flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          {/* LEFT COLUMN: Large Prominent Photo & Quick Meta (5 columns on desktop) */}
+          <div className="lg:col-span-5 lg:sticky lg:top-24">
+            <LargeProfileCard
+              personal={profile.personal}
+              onOpenEdit={() => setIsEditOpen(true)}
+              onShare={handleShare}
+            />
+          </div>
 
-        {/* Bento Highlights / Achievements */}
-        <AchievementsStats stats={profile.stats} />
+          {/* RIGHT COLUMN: Headline, Bio, Highlights/Stats & Social Links (7 columns on desktop) */}
+          <div className="lg:col-span-7 space-y-8">
+            {/* Overview / Bio Intro */}
+            <ProfileOverview personal={profile.personal} />
 
-        {/* Social Channels & Links */}
-        <SocialLinks links={profile.links} />
+            {/* Bento Highlights / Achievements */}
+            <AchievementsStats stats={profile.stats} />
 
-        {/* Action Callout / Footer Share */}
-        <div className="flex justify-center mt-6 px-4">
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={handleShare}
-            className="flex items-center space-x-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold glass-card border border-neutral-200/80 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 shadow-sm transition-all"
-          >
-            <Share2 className="w-4 h-4 text-indigo-500" />
-            <span>Chia sẻ trang này</span>
-          </motion.button>
+            {/* Social Channels & Links Grid */}
+            <SocialLinks links={profile.links} />
+
+            {/* Callout Action Banner */}
+            <div className="glass-card rounded-2xl p-5 sm:p-6 border border-neutral-200/80 dark:border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 glow-hover">
+              <div className="flex items-center space-x-3 text-center sm:text-left">
+                <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-neutral-900 dark:text-white">
+                    Muốn kết nối hoặc hợp tác cùng tôi?
+                  </h4>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                    Hãy bấm vào các kênh phía trên hoặc chia sẻ trang cá nhân này nhé!
+                  </p>
+                </div>
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={handleShare}
+                className="shrink-0 flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-md glow-btn transition-all"
+              >
+                <Share2 className="w-4 h-4 text-indigo-500" />
+                <span>Chia sẻ trang</span>
+              </motion.button>
+            </div>
+          </div>
         </div>
       </main>
 
       {/* Minimalist Footer */}
       <footer className="relative z-10 py-6 text-center text-xs text-neutral-400 dark:text-neutral-500 border-t border-neutral-200/40 dark:border-neutral-800/40">
-        <p className="flex items-center justify-center space-x-1">
-          <span>© {new Date().getFullYear()} {profile.personal.fullName || 'Alex'}. Thiết kế với</span>
-          <Heart className="w-3.5 h-3.5 text-rose-500 inline fill-rose-500" />
-          <span>phong cách Notion & Apple.</span>
-        </p>
+        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="flex items-center space-x-1">
+            <span>© {new Date().getFullYear()} {profile.personal.fullName || 'Alex'}.</span>
+            <span className="hidden sm:inline">• Thiết kế với</span>
+            <Heart className="w-3.5 h-3.5 text-rose-500 inline fill-rose-500" />
+            <span className="hidden sm:inline">phong cách Notion & Apple.</span>
+          </p>
+
+          <p className="text-[11px] text-neutral-400 dark:text-neutral-500">
+            Dữ liệu cá nhân được bảo mật trực tiếp trên trình duyệt
+          </p>
+        </div>
       </footer>
 
       {/* Edit Profile Modal */}

@@ -9,10 +9,11 @@ import {
   UploadCloud,
   RotateCcw,
   Check,
-  Image as ImageIcon,
   User,
   BarChart3,
   Link as LinkIcon,
+  Layers,
+  Music,
 } from 'lucide-react';
 
 const AVAILABLE_PLATFORMS = [
@@ -26,19 +27,6 @@ const AVAILABLE_PLATFORMS = [
   { value: 'telegram', label: 'Telegram' },
   { value: 'email', label: 'Email' },
   { value: 'website', label: 'Website / Blog' },
-];
-
-const AVAILABLE_ICONS = [
-  'Users',
-  'Sparkles',
-  'Flame',
-  'Heart',
-  'Trophy',
-  'Rocket',
-  'Star',
-  'Code',
-  'Award',
-  'Zap',
 ];
 
 export default function EditModal({
@@ -114,6 +102,26 @@ export default function EditModal({
     });
   };
 
+  // Music updater
+  const handleMusicChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      vibeMusic: {
+        ...prev.vibeMusic,
+        [field]: value,
+      },
+    }));
+  };
+
+  // Skills updater
+  const handleSkillsChange = (text) => {
+    const skillsArr = text.split(',').map((s) => s.trim()).filter(Boolean);
+    setFormData((prev) => ({
+      ...prev,
+      skills: skillsArr,
+    }));
+  };
+
   // Links updater
   const handleLinkChange = (index, field, value) => {
     setFormData((prev) => {
@@ -147,7 +155,6 @@ export default function EditModal({
 
   // Save handler
   const handleSave = () => {
-    // Clean URLs in links
     const sanitizedLinks = formData.links.map((item) => {
       let url = (item.url || '').trim();
       if (url && !/^https?:\/\//i.test(url) && !url.startsWith('mailto:')) {
@@ -197,16 +204,16 @@ export default function EditModal({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 10 }}
           transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-          className="relative w-full max-w-xl max-h-[90vh] flex flex-col rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-2xl overflow-hidden z-10"
+          className="relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-2xl overflow-hidden z-10"
         >
           {/* Header */}
           <div className="px-5 py-4 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between shrink-0">
             <div>
               <h2 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white">
-                Chỉnh Sửa Trang Cá Nhân
+                Chỉnh Sửa Hồ Sơ Cá Nhân
               </h2>
               <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                Tự động lưu vào trình duyệt của bạn
+                Tự động lưu vào bộ nhớ trình duyệt (LocalStorage)
               </p>
             </div>
             <button
@@ -218,10 +225,10 @@ export default function EditModal({
           </div>
 
           {/* Navigation Tabs */}
-          <div className="flex border-b border-neutral-100 dark:border-neutral-800 px-5 pt-2 gap-2 shrink-0 bg-neutral-50/60 dark:bg-neutral-900/60">
+          <div className="flex border-b border-neutral-100 dark:border-neutral-800 px-5 pt-2 gap-2 shrink-0 bg-neutral-50/60 dark:bg-neutral-900/60 overflow-x-auto">
             <button
               onClick={() => setActiveTab('personal')}
-              className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs sm:text-sm font-semibold border-b-2 transition-all ${
+              className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs sm:text-sm font-semibold border-b-2 whitespace-nowrap transition-all ${
                 activeTab === 'personal'
                   ? 'border-neutral-900 text-neutral-900 dark:border-white dark:text-white'
                   : 'border-transparent text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
@@ -233,7 +240,7 @@ export default function EditModal({
 
             <button
               onClick={() => setActiveTab('stats')}
-              className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs sm:text-sm font-semibold border-b-2 transition-all ${
+              className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs sm:text-sm font-semibold border-b-2 whitespace-nowrap transition-all ${
                 activeTab === 'stats'
                   ? 'border-neutral-900 text-neutral-900 dark:border-white dark:text-white'
                   : 'border-transparent text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
@@ -244,8 +251,20 @@ export default function EditModal({
             </button>
 
             <button
+              onClick={() => setActiveTab('skills')}
+              className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs sm:text-sm font-semibold border-b-2 whitespace-nowrap transition-all ${
+                activeTab === 'skills'
+                  ? 'border-neutral-900 text-neutral-900 dark:border-white dark:text-white'
+                  : 'border-transparent text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>Kỹ năng & Vibe</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('links')}
-              className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs sm:text-sm font-semibold border-b-2 transition-all ${
+              className={`flex items-center space-x-1.5 pb-2.5 px-3 text-xs sm:text-sm font-semibold border-b-2 whitespace-nowrap transition-all ${
                 activeTab === 'links'
                   ? 'border-neutral-900 text-neutral-900 dark:border-white dark:text-white'
                   : 'border-transparent text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
@@ -264,13 +283,13 @@ export default function EditModal({
                 {/* Avatar Preview & Upload */}
                 <div>
                   <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
-                    Ảnh đại diện (Avatar)
+                    Ảnh đại diện (Khung ảnh chân dung lớn)
                   </label>
                   <div className="flex items-center space-x-4">
                     <img
                       src={formData.personal.avatarUrl}
                       alt="Preview"
-                      className="w-16 h-16 rounded-full object-cover border border-neutral-200 dark:border-neutral-700 shadow-sm shrink-0"
+                      className="w-16 h-20 rounded-xl object-cover border border-neutral-200 dark:border-neutral-700 shadow-sm shrink-0"
                     />
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center space-x-2">
@@ -318,7 +337,7 @@ export default function EditModal({
 
                   <div>
                     <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">
-                      Chức danh / Nghề nghiệp
+                      Chức danh / Nghề nghiệp chính
                     </label>
                     <input
                       type="text"
@@ -330,7 +349,36 @@ export default function EditModal({
                   </div>
                 </div>
 
-                {/* BirthDate & ShowAge Toggle */}
+                {/* Email & Status */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">
+                      Địa chỉ Email liên hệ
+                    </label>
+                    <input
+                      type="email"
+                      value={formData.personal.email || ''}
+                      onChange={(e) => handlePersonalChange('email', e.target.value)}
+                      placeholder="contact.alex@example.com"
+                      className="w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-neutral-200 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-neutral-400"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">
+                      Trạng thái hoạt động 🟢
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.personal.status}
+                      onChange={(e) => handlePersonalChange('status', e.target.value)}
+                      placeholder="Ví dụ: 🟢 Sẵn sàng hợp tác"
+                      className="w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-neutral-200 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-neutral-400"
+                    />
+                  </div>
+                </div>
+
+                {/* BirthDate & Location */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-end">
                   <div>
                     <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">
@@ -358,35 +406,6 @@ export default function EditModal({
                   </div>
                 </div>
 
-                {/* Location & Status */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">
-                      Địa điểm sinh sống
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.personal.location}
-                      onChange={(e) => handlePersonalChange('location', e.target.value)}
-                      placeholder="Ví dụ: Hà Nội, Việt Nam"
-                      className="w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-neutral-200 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-neutral-400"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">
-                      Trạng thái hiện tại
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.personal.status}
-                      onChange={(e) => handlePersonalChange('status', e.target.value)}
-                      placeholder="Ví dụ: 🟢 Sẵn sàng hợp tác"
-                      className="w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-neutral-200 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-neutral-400"
-                    />
-                  </div>
-                </div>
-
                 {/* Bio */}
                 <div>
                   <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">
@@ -403,7 +422,7 @@ export default function EditModal({
               </div>
             )}
 
-            {/* TAB 2: THÀNH TÍCH & CHỈ SỐ */}
+            {/* TAB 2: THÀNH TÍCH */}
             {activeTab === 'stats' && (
               <div className="space-y-3">
                 <p className="text-xs text-neutral-500 dark:text-neutral-400">
@@ -446,7 +465,64 @@ export default function EditModal({
               </div>
             )}
 
-            {/* TAB 3: LIÊN KẾT & MẠNG XÃ HỘI */}
+            {/* TAB 3: KỸ NĂNG & VIBE */}
+            {activeTab === 'skills' && (
+              <div className="space-y-4">
+                {/* Skills */}
+                <div>
+                  <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">
+                    Danh sách Kỹ năng & Công cụ (cách nhau bởi dấu phẩy)
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={(formData.skills || []).join(', ')}
+                    onChange={(e) => handleSkillsChange(e.target.value)}
+                    placeholder="React, UI/UX, Video Editing, Content Strategy..."
+                    className="w-full px-3 py-2 text-xs sm:text-sm rounded-xl border border-neutral-200 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-neutral-400"
+                  />
+                </div>
+
+                {/* Music Vibe */}
+                <div className="p-3.5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-800/40 space-y-2.5">
+                  <div className="flex items-center space-x-2">
+                    <Music className="w-4 h-4 text-emerald-500" />
+                    <span className="text-xs font-bold text-neutral-800 dark:text-neutral-200">
+                      Giai Điệu Vibe (Widget Nhạc Sống Động)
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div>
+                      <label className="block text-[11px] text-neutral-500 dark:text-neutral-400 mb-0.5">
+                        Tên bài hát / Giai điệu
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.vibeMusic?.title || ''}
+                        onChange={(e) => handleMusicChange('title', e.target.value)}
+                        placeholder="Midnight Chill & Focus..."
+                        className="w-full px-2.5 py-1.5 text-xs rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] text-neutral-500 dark:text-neutral-400 mb-0.5">
+                        Nghệ sĩ / Playlist
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.vibeMusic?.artist || ''}
+                        onChange={(e) => handleMusicChange('artist', e.target.value)}
+                        placeholder="Lofi Space Station..."
+                        className="w-full px-2.5 py-1.5 text-xs rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB 4: LIÊN KẾT MẠNG XÃ HỘI */}
             {activeTab === 'links' && (
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -584,7 +660,7 @@ export default function EditModal({
               <button
                 type="button"
                 onClick={handleSave}
-                className="flex items-center space-x-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 shadow-sm transition-all"
+                className="flex items-center space-x-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 shadow-sm transition-all glow-btn"
               >
                 <Check className="w-3.5 h-3.5" />
                 <span>Lưu thay đổi</span>

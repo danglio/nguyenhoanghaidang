@@ -5,11 +5,12 @@ import Navbar from './components/Navbar';
 import LargeProfileCard from './components/LargeProfileCard';
 import ProfileOverview from './components/ProfileOverview';
 import AchievementsStats from './components/AchievementsStats';
+import SkillsSection from './components/SkillsSection';
 import SocialLinks from './components/SocialLinks';
 import EditModal from './components/EditModal';
 import Toast from './components/Toast';
 import { useProfileData } from './hooks/useProfileData';
-import { Heart, Share2, Sparkles } from 'lucide-react';
+import { Heart, Share2, Sparkles, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function App() {
@@ -71,7 +72,7 @@ export default function App() {
         message: 'Đã sao chép liên kết trang vào clipboard!',
         type: 'success',
       });
-    } catch (err) {
+    } catch {
       setToast({
         message: 'Không thể sao chép liên kết, vui lòng copy từ thanh địa chỉ!',
         type: 'error',
@@ -122,38 +123,43 @@ export default function App() {
       {/* Main Content Area: Wide Grid Layout */}
       <main className="relative z-10 flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          {/* LEFT COLUMN: Large Prominent Photo & Quick Meta (5 columns on desktop) */}
+          {/* LEFT COLUMN: Large Prominent Photo & Live Widgets (5 columns on desktop) */}
           <div className="lg:col-span-5 lg:sticky lg:top-24">
             <LargeProfileCard
               personal={profile.personal}
+              vibeMusic={profile.vibeMusic}
               onOpenEdit={() => setIsEditOpen(true)}
               onShare={handleShare}
+              showToast={setToast}
             />
           </div>
 
-          {/* RIGHT COLUMN: Headline, Bio, Highlights/Stats & Social Links (7 columns on desktop) */}
+          {/* RIGHT COLUMN: Headline, Dynamic Roles, Bio, Stats, Skills & Social Links (7 columns on desktop) */}
           <div className="lg:col-span-7 space-y-8">
-            {/* Overview / Bio Intro */}
+            {/* Overview / Animated Roles & Bio Intro */}
             <ProfileOverview personal={profile.personal} />
 
             {/* Bento Highlights / Achievements */}
             <AchievementsStats stats={profile.stats} />
 
-            {/* Social Channels & Links Grid */}
+            {/* Arsenal & Core Skills Section */}
+            <SkillsSection skills={profile.skills} />
+
+            {/* Social Channels & Links 2-Column Grid */}
             <SocialLinks links={profile.links} />
 
             {/* Callout Action Banner */}
             <div className="glass-card rounded-2xl p-5 sm:p-6 border border-neutral-200/80 dark:border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 glow-hover">
-              <div className="flex items-center space-x-3 text-center sm:text-left">
-                <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+              <div className="flex items-center space-x-3.5 text-center sm:text-left">
+                <div className="p-3 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shrink-0">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-neutral-900 dark:text-white">
                     Muốn kết nối hoặc hợp tác cùng tôi?
                   </h4>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                    Hãy bấm vào các kênh phía trên hoặc chia sẻ trang cá nhân này nhé!
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                    Khám phá các kênh phía trên hoặc sao chép nhanh liên kết trang để chia sẻ nhé!
                   </p>
                 </div>
               </div>
@@ -183,7 +189,7 @@ export default function App() {
           </p>
 
           <p className="text-[11px] text-neutral-400 dark:text-neutral-500">
-            Dữ liệu cá nhân được bảo mật trực tiếp trên trình duyệt
+            Dữ liệu cá nhân được lưu trữ bảo mật trực tiếp trên trình duyệt
           </p>
         </div>
       </footer>

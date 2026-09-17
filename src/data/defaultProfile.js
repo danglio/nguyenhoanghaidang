@@ -1,14 +1,38 @@
 export const DEFAULT_PROFILE = {
   personal: {
-    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
+    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80",
     fullName: "Alex Nguyễn",
-    title: "Content Creator & Creative Technologist",
+    title: "Creative Technologist & Content Creator",
+    roles: [
+      "Creative Technologist",
+      "Digital Content Creator",
+      "UI/UX Design Enthusiast",
+      "Tech Community Builder",
+    ],
     birthDate: "2000-08-15",
     showAge: true,
     location: "Hà Nội, Việt Nam",
+    timezone: "Asia/Ho_Chi_Minh",
     status: "🟢 Sẵn sàng cho dự án & hợp tác mới",
-    bio: "Đam mê sáng tạo nội dung số, thiết kế trải nghiệm người dùng tối giản và xây dựng các sản phẩm công nghệ truyền cảm hứng. Luôn tin rằng sự đơn giản là đỉnh cao của sự tinh tế.",
+    email: "contact.alexnguyen@example.com",
+    bio: "Đam mê sáng tạo nội dung số, thiết kế trải nghiệm người dùng tối giản và xây dựng các sản phẩm công nghệ truyền cảm hứng. Luôn tin rằng sự đơn giản và chân thành là đỉnh cao của sự tinh tế.",
   },
+  accentColor: "indigo", // 'indigo' | 'violet' | 'emerald' | 'cyan' | 'rose'
+  vibeMusic: {
+    title: "Midnight Chill & Deep Focus",
+    artist: "Lofi Space Station",
+    isPlaying: true,
+  },
+  skills: [
+    "Content Strategy",
+    "Video Production",
+    "UI/UX Design",
+    "React & Vite",
+    "Tailwind CSS",
+    "Notion Architecture",
+    "Generative AI Tools",
+    "Creative Direction",
+  ],
   stats: [
     { id: "stat-1", value: "50K+", label: "Người theo dõi đa kênh", icon: "Users" },
     { id: "stat-2", value: "3+ Năm", label: "Kinh nghiệm sáng tạo", icon: "Sparkles" },
@@ -26,7 +50,7 @@ export const DEFAULT_PROFILE = {
     {
       id: "link-2",
       platform: "tiktok",
-      title: "TikTok Channel",
+      title: "TikTok @alex.tech",
       url: "https://tiktok.com",
       description: "Short videos chia sẻ mẹo vặt, review công nghệ hàng ngày",
     },

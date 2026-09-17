@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { DEFAULT_PROFILE } from '../data/defaultProfile';
 
-const STORAGE_KEY = 'personal_bio_profile_v1';
+const STORAGE_KEY = 'personal_bio_profile_v2';
 
 export function calculateAge(birthDateString) {
   if (!birthDateString) return null;
@@ -35,9 +35,11 @@ export function useProfileData() {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Ensure required fields exist in case of partial structure
         return {
           personal: { ...DEFAULT_PROFILE.personal, ...(parsed.personal || {}) },
+          accentColor: parsed.accentColor || DEFAULT_PROFILE.accentColor,
+          vibeMusic: { ...DEFAULT_PROFILE.vibeMusic, ...(parsed.vibeMusic || {}) },
+          skills: Array.isArray(parsed.skills) ? parsed.skills : DEFAULT_PROFILE.skills,
           stats: Array.isArray(parsed.stats) ? parsed.stats : DEFAULT_PROFILE.stats,
           links: Array.isArray(parsed.links) ? parsed.links : DEFAULT_PROFILE.links,
         };
@@ -95,6 +97,9 @@ export function useProfileData() {
           }
           const validProfile = {
             personal: { ...DEFAULT_PROFILE.personal, ...(content.personal || {}) },
+            accentColor: content.accentColor || DEFAULT_PROFILE.accentColor,
+            vibeMusic: { ...DEFAULT_PROFILE.vibeMusic, ...(content.vibeMusic || {}) },
+            skills: Array.isArray(content.skills) ? content.skills : DEFAULT_PROFILE.skills,
             stats: Array.isArray(content.stats) ? content.stats : DEFAULT_PROFILE.stats,
             links: Array.isArray(content.links) ? content.links : DEFAULT_PROFILE.links,
           };

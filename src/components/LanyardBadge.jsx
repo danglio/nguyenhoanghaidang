@@ -19,6 +19,7 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [dropKey, setDropKey] = useState(0);
 
   // Profile data with safe fallbacks
   const avatarUrl =
@@ -97,17 +98,36 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
       className={`relative flex flex-col items-center select-none py-2 ${className}`}
       style={{ perspective: 1200 }}
     >
-      {/* 1. TOP ANCHOR PIN (Wall / Collar Mount) */}
-      <div className="relative z-30 flex flex-col items-center">
-        <div className="w-7 h-3 rounded-b-md bg-gradient-to-b from-neutral-300 via-neutral-100 to-neutral-400 shadow-md border-x border-b border-white/60 flex items-center justify-center">
-          <div className="w-2.5 h-1 rounded-full bg-neutral-700 shadow-inner border border-neutral-400/60" />
+      {/* 1. TOP ANCHOR PIN (Wall / Collar Mount & Re-drop Trigger) */}
+      <button
+        type="button"
+        onClick={() => setDropKey((k) => k + 1)}
+        title="Nhấp để thả rơi lại thẻ 🎯"
+        className="group/pin relative z-30 flex flex-col items-center cursor-pointer transition-transform hover:scale-110 active:scale-95 focus:outline-none"
+      >
+        <div className="w-7 h-3 rounded-b-md bg-gradient-to-b from-neutral-300 via-neutral-100 to-neutral-400 shadow-md border-x border-b border-white/60 flex items-center justify-center group-hover/pin:from-cyan-200 group-hover/pin:to-neutral-300 transition-colors">
+          <div className="w-2.5 h-1 rounded-full bg-neutral-700 shadow-inner border border-neutral-400/60 group-hover/pin:bg-cyan-600 transition-colors" />
         </div>
-      </div>
+      </button>
 
-      {/* 2. PENDULUM SWAY WRAPPER (Idle oscillation & strap) */}
+      {/* 2. DROP-DOWN SPRING PHYSICS WRAPPER */}
       <motion.div
+        key={dropKey}
+        initial={{ y: -520, rotateZ: 7, opacity: 0.2 }}
+        animate={{ y: 0, rotateZ: 0, opacity: 1 }}
+        transition={{
+          type: 'spring',
+          stiffness: 130,
+          damping: 11,
+          mass: 1.2,
+        }}
         className="relative flex flex-col items-center origin-top"
         style={{ transformOrigin: 'top center', transformStyle: 'preserve-3d' }}
+      >
+        {/* 3. PENDULUM SWAY WRAPPER (Idle oscillation & strap) */}
+        <motion.div
+          className="relative flex flex-col items-center origin-top"
+          style={{ transformOrigin: 'top center', transformStyle: 'preserve-3d' }}
         animate={
           isDragging
             ? { rotateZ: 0, rotateY: 0 }
@@ -639,6 +659,7 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
           </motion.div>
         </motion.div>
       </motion.div>
-    </div>
-  );
+    </motion.div>
+  </div>
+);
 }

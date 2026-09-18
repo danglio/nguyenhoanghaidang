@@ -273,62 +273,88 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                   </div>
                 </div>
 
-                {/* PROFILE PORTRAIT WITH HOLOGRAPHIC FRAME & SIGNATURE */}
-                <div className="relative mx-auto mt-2.5 w-32 h-32 sm:w-36 sm:h-36 rounded-2xl p-[1.5px] bg-gradient-to-tr from-cyan-400/50 via-indigo-500/50 to-purple-500/50 shadow-[0_8px_24px_rgba(0,0,0,0.6)] group">
-                  <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-neutral-800">
+                {/* PROFILE PORTRAIT WITH 3D POP-OUT & NEON BORDER BEAM */}
+                <div className="relative mx-auto mt-3.5 mb-1.5 w-36 h-36 sm:w-40 sm:h-40 group">
+                  {/* 1. PORTAL & NEON BORDER BEAM BASE */}
+                  <div className="absolute inset-0 rounded-2xl p-[2px] overflow-hidden shadow-[0_12px_30px_rgba(0,0,0,0.7)]">
+                    {/* Rotating Conic-Gradient Border Beam (Cyan, Indigo, Pink, Amber, Cyan) */}
+                    <div
+                      className="absolute -inset-[150%] animate-border-beam pointer-events-none"
+                      style={{
+                        background:
+                          'conic-gradient(from 0deg at 50% 50%, #06b6d4 0%, #6366f1 25%, #ec4899 50%, #f59e0b 75%, #06b6d4 100%)',
+                      }}
+                    />
+                    {/* Deep Portal Background */}
+                    <div className="relative w-full h-full rounded-[14px] bg-gradient-to-b from-neutral-900 via-neutral-950 to-neutral-900 border border-white/10 overflow-hidden">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(99,102,241,0.2),transparent_70%)]" />
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_85%,rgba(6,182,212,0.15),transparent_60%)]" />
+                    </div>
+                  </div>
+
+                  {/* 2. 3D POP-OUT AVATAR LAYER */}
+                  <div className="relative w-full h-full rounded-2xl overflow-visible pointer-events-none z-10">
                     <img
                       src={avatarUrl}
                       alt={displayName}
-                      className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top scale-[1.08] -translate-y-2.5 rounded-2xl drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] filter transition-transform duration-500 group-hover:scale-[1.12] group-hover:-translate-y-3.5"
                     />
-                    {/* Soft lighting sheen overlay on photo */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-white/15 pointer-events-none" />
+                    {/* Soft lighting sheen & bottom vignette for depth */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-neutral-950/70 via-transparent to-white/15 pointer-events-none" />
                   </div>
 
-                  {/* VIP Pass Badge in Corner of Photo */}
-                  <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-md border border-white/20 text-[8px] font-mono font-bold text-cyan-300 tracking-wider">
-                    VIP
+                  {/* 3. MAGAZINE EDITORIAL HEADER BADGE */}
+                  <div className="absolute top-2 inset-x-2 z-20 flex items-center justify-center py-0.5 px-2 rounded-full bg-black/75 backdrop-blur-md border border-amber-400/30 shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+                    <span className="text-[7.5px] sm:text-[8px] font-mono font-extrabold tracking-wider bg-gradient-to-r from-amber-300 via-yellow-100 to-amber-400 bg-clip-text text-transparent uppercase truncate">
+                      ★ ISSUE 2026 // LIO EXCLUSIVE
+                    </span>
                   </div>
 
-                  {/* ARTISTIC HANDWRITTEN "Lio" SIGNATURE */}
-                  <div className="absolute -bottom-2 -right-3 pointer-events-none z-20">
+                  {/* 4. SPECULAR GLASS SHEEN SWEEP ON HOVER */}
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-20">
+                    <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-white/20 to-transparent -rotate-45 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
+                  </div>
+
+                  {/* 5. ARTISTIC HANDWRITTEN "Lio" GOLD SIGNATURE */}
+                  <div className="absolute -bottom-2.5 -right-2 pointer-events-none z-30">
                     <svg
                       viewBox="0 0 130 55"
-                      className="w-28 h-12 drop-shadow-[0_2px_8px_rgba(6,182,212,0.85)] filter"
+                      className="w-28 h-12 drop-shadow-[0_2px_10px_rgba(245,158,11,0.85)] filter transform group-hover:scale-105 transition-transform duration-300"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <defs>
-                        <linearGradient id="lioSignatureGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#38bdf8" />
-                          <stop offset="50%" stopColor="#ffffff" />
-                          <stop offset="100%" stopColor="#c084fc" />
+                        <linearGradient id="lioGoldSignatureGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#fbbf24" />
+                          <stop offset="35%" stopColor="#fef08a" />
+                          <stop offset="70%" stopColor="#fbbf24" />
+                          <stop offset="100%" stopColor="#d97706" />
                         </linearGradient>
                       </defs>
                       <path
                         d="M 16 12 C 12 25, 14 42, 22 42 C 28 42, 34 32, 38 28 C 42 24, 46 25, 42 34 C 38 42, 28 44, 20 44 C 15 44, 18 36, 26 36 C 36 36, 48 38, 56 36"
-                        stroke="url(#lioSignatureGrad)"
+                        stroke="url(#lioGoldSignatureGrad)"
                         strokeWidth="2.4"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
                       <path
                         d="M 58 28 C 59 33, 60 38, 64 36"
-                        stroke="url(#lioSignatureGrad)"
+                        stroke="url(#lioGoldSignatureGrad)"
                         strokeWidth="2.2"
                         strokeLinecap="round"
                       />
-                      <circle cx="61" cy="22" r="1.8" fill="#38bdf8" />
+                      <circle cx="61" cy="22" r="1.8" fill="#fef08a" />
                       <path
                         d="M 72 30 C 67 28, 65 37, 71 37 C 76 37, 78 30, 73 28 C 76 27, 85 24, 94 28 C 104 33, 114 36, 124 35"
-                        stroke="url(#lioSignatureGrad)"
+                        stroke="url(#lioGoldSignatureGrad)"
                         strokeWidth="2.2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
                       <path
                         d="M 28 48 C 55 52, 90 50, 120 42"
-                        stroke="url(#lioSignatureGrad)"
+                        stroke="url(#lioGoldSignatureGrad)"
                         strokeWidth="1.8"
                         strokeLinecap="round"
                       />

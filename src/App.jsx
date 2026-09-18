@@ -3,13 +3,16 @@ import confetti from 'canvas-confetti';
 import AmbientBackground from './components/AmbientBackground';
 import Navbar from './components/Navbar';
 import HeroLanyard from './components/HeroLanyard';
+import ProjectsShowcase from './components/ProjectsShowcase';
 import AchievementsStats from './components/AchievementsStats';
 import SkillsSection from './components/SkillsSection';
 import SocialLinks from './components/SocialLinks';
 import EditModal from './components/EditModal';
+import ContactModal from './components/ContactModal';
+import SoundtrackPlayer from './components/SoundtrackPlayer';
 import Toast from './components/Toast';
 import { useProfileData } from './hooks/useProfileData';
-import { Heart, Sparkles, Share2, Music } from 'lucide-react';
+import { Heart, Sparkles, Share2, Music, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function App() {
@@ -31,7 +34,8 @@ export default function App() {
     return 'dark';
   });
 
-  // Edit Modal & Toast state
+  // Contact & Edit Modal & Toast state
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [toast, setToast] = useState(null);
 
@@ -115,6 +119,7 @@ export default function App() {
         theme={theme}
         onToggleTheme={toggleTheme}
         onOpenEdit={() => setIsEditOpen(true)}
+        onOpenContact={() => setIsContactOpen(true)}
         onShare={handleShare}
         fullName={profile.personal.fullName}
       />
@@ -128,11 +133,15 @@ export default function App() {
             links={profile.links}
             profile={profile}
             onOpenEdit={() => setIsEditOpen(true)}
+            onOpenContact={() => setIsContactOpen(true)}
             showToast={setToast}
           />
         </section>
 
-        {/* SECTION 2: SOCIAL CHANNELS & CREATIVE HUBS (#socials) */}
+        {/* SECTION 2: FEATURED PROJECTS & APPS (#projects) */}
+        <ProjectsShowcase showToast={setToast} />
+
+        {/* SECTION 3: SOCIAL CHANNELS & CREATIVE HUBS (#socials) */}
         <section id="socials" className="space-y-6 scroll-mt-20">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-4">
             <div>
@@ -153,7 +162,7 @@ export default function App() {
           <SocialLinks links={profile.links} />
         </section>
 
-        {/* SECTION 3: SKILLS & MILESTONES (#skills) */}
+        {/* SECTION 4: SKILLS & MILESTONES (#skills) */}
         <section id="skills" className="space-y-8 scroll-mt-20">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-4">
             <div>
@@ -218,20 +227,32 @@ export default function App() {
                   Muốn kết nối hoặc hợp tác cùng Lio?
                 </h3>
                 <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-                  Theo dõi các kênh sáng tạo phía trên hoặc sao chép nhanh liên kết hồ sơ để chia sẻ nhé!
+                  Khởi tạo ý tưởng mới hoặc gửi lời mời hợp tác dự án, chiến dịch ngay hôm nay!
                 </p>
               </div>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={handleShare}
-              className="shrink-0 flex items-center space-x-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-md glow-btn transition-all"
-            >
-              <Share2 className="w-4 h-4 text-indigo-500" />
-              <span>Chia sẻ trang</span>
-            </motion.button>
+            <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setIsContactOpen(true)}
+                className="flex items-center space-x-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-md shadow-indigo-500/20 glow-btn transition-all"
+              >
+                <Send className="w-4 h-4 text-white" />
+                <span>Gửi lời mời hợp tác</span>
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={handleShare}
+                className="flex items-center space-x-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white/80 dark:bg-neutral-800/80 hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 border border-neutral-200/80 dark:border-white/10 shadow-sm transition-all"
+              >
+                <Share2 className="w-4 h-4 text-indigo-500" />
+                <span>Chia sẻ trang</span>
+              </motion.button>
+            </div>
           </div>
         </section>
       </main>
@@ -252,6 +273,13 @@ export default function App() {
         </div>
       </footer>
 
+      {/* Contact & Collaboration Modal */}
+      <ContactModal
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+        showToast={setToast}
+      />
+
       {/* Edit Profile Modal */}
       <EditModal
         isOpen={isEditOpen}
@@ -263,6 +291,9 @@ export default function App() {
         onImport={importProfileJSON}
         showToast={setToast}
       />
+
+      {/* Interactive Web Audio Lo-Fi Soundtrack Player */}
+      <SoundtrackPlayer />
 
       {/* Global Toast Notification */}
       <Toast toast={toast} onClose={() => setToast(null)} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Moon, Edit3, Share2 } from 'lucide-react';
+import { Sun, Moon, Edit3, Share2, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Navbar({
@@ -7,6 +7,7 @@ export default function Navbar({
   onToggleTheme,
   onOpenEdit,
   onShare,
+  onOpenContact,
   fullName = '',
 }) {
   return (
@@ -43,6 +44,12 @@ export default function Navbar({
             Trang chủ
           </a>
           <a
+            href="#projects"
+            className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
+          >
+            Dự án
+          </a>
+          <a
             href="#socials"
             className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
           >
@@ -57,7 +64,21 @@ export default function Navbar({
         </nav>
 
         {/* Action Buttons */}
-        <div className="flex items-center space-x-2 sm:space-x-2.5">
+        <div className="flex items-center space-x-1.5 sm:space-x-2">
+          {/* Hợp tác Button */}
+          {onOpenContact && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onOpenContact}
+              title="Gửi lời mời hợp tác & booking"
+              className="flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-md shadow-indigo-500/20 glow-btn transition-all"
+            >
+              <Send className="w-3.5 h-3.5" />
+              <span>Hợp tác</span>
+            </motion.button>
+          )}
+
           {/* Share Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}

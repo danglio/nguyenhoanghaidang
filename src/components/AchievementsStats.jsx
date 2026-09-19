@@ -36,6 +36,7 @@ const iconMap = {
   Code,
   Award,
   Zap,
+  Eye,
 };
 
 /**
@@ -77,13 +78,13 @@ function AnimatedCounter({ targetValue, rawNumber, suffix = '+' }) {
     requestAnimationFrame(step);
   }, [isInView, rawNumber, targetValue]);
 
-  // If the target has 'K', format e.g. 4.5K
+  // If the target has 'K', format e.g. 4.5K or 50K
   const isK = String(targetValue).includes('K');
   const isPercent = String(targetValue).includes('%');
 
   let formatted = displayCount.toLocaleString('vi-VN');
   if (isK) {
-    formatted = (displayCount / 1000).toFixed(1) + 'K';
+    formatted = (displayCount / 1000).toFixed(displayCount >= 10000 ? 0 : 1) + 'K';
   }
 
   return (
@@ -120,11 +121,11 @@ const CHANNEL_INSIGHTS = [
     themeColor: 'cyan',
     badgeColor: 'bg-neutral-900/10 dark:bg-white/10 text-neutral-900 dark:text-white border-neutral-300 dark:border-neutral-700',
     glowColor: 'group-hover:border-cyan-500/50 group-hover:shadow-[0_0_25px_rgba(6,182,212,0.25)]',
-    mainMetric: '215',
-    metricLabel: 'Followers • 4.2K Tim',
-    subMetric: '4,214 Lượt thích • 88 Đang theo dõi',
+    mainMetric: '45K+',
+    metricLabel: 'Lượt xem (Views) • 4.2K Tim',
+    subMetric: '215 Followers • 4,214 Lượt thích',
     tag: 'Creative Lifestyle',
-    highlight: 'Video bắt trend sáng tạo, khoảnh khắc hàng ngày & tương tác tích cực',
+    highlight: 'Video bắt trend sáng tạo, khoảnh khắc hàng ngày & tương tác tích cực đa nền tảng',
   },
   {
     id: 'instagram',
@@ -150,9 +151,9 @@ const CHANNEL_INSIGHTS = [
     themeColor: 'purple',
     badgeColor: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/25',
     glowColor: 'group-hover:border-purple-500/50 group-hover:shadow-[0_0_25px_rgba(168,85,247,0.25)]',
-    mainMetric: '27',
-    metricLabel: 'Followers • 323 Tim',
-    subMetric: '323 Lượt thích • 21 Đang theo dõi',
+    mainMetric: '5K+',
+    metricLabel: 'Lượt xem (Views) • 323 Tim',
+    subMetric: '27 Followers • 323 Lượt thích',
     tag: 'Podcast & Storytelling',
     highlight: 'Series giải quyết các khúc mắc cuộc sống, bài học ý nghĩa & mẹo vặt thực tế',
   },
@@ -165,9 +166,9 @@ const CHANNEL_INSIGHTS = [
     themeColor: 'red',
     badgeColor: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/25',
     glowColor: 'group-hover:border-red-500/50 group-hover:shadow-[0_0_25px_rgba(239,68,68,0.25)]',
-    mainMetric: '15',
-    metricLabel: 'Video dài tập 4K • 4 Sub',
-    subMetric: '4 Người đăng ký • Phân tích chuyên sâu',
+    mainMetric: '738',
+    metricLabel: 'Lượt xem (Views) • 15 Video 4K',
+    subMetric: '738 Lượt xem tích lũy • 4 Người đăng ký',
     tag: 'Cinematic & Analysis',
     highlight: 'Phân tích tư duy kinh tế, đời sống xã hội Gen Z, công nghệ AI và góc nhìn mới',
   },

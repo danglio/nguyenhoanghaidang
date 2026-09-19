@@ -40,10 +40,10 @@ export const DEFAULT_PROFILE = {
     "AI Creative Tools",
   ],
   stats: [
-    { id: "stat-1", value: "793+", rawNumber: 793, label: "Tổng người theo dõi (5 kênh)", icon: "Users", trend: "Đang tăng trưởng", desc: "FB 416 • TikTok 242 • IG 131 • YT 4" },
-    { id: "stat-2", value: "4.5K+", rawNumber: 4537, label: "Lượt thích TikTok", icon: "Flame", trend: "Tương tác thực", desc: "4,214 tim cá nhân + 323 tim kể chuyện" },
-    { id: "stat-3", value: "50+", rawNumber: 50, label: "Video & Nội dung số", icon: "Sparkles", trend: "Đa nền tảng", desc: "15 video YouTube 4K + 35+ TikTok" },
-    { id: "stat-4", value: "100%", rawNumber: 100, label: "Nhiệt huyết & Sáng tạo", icon: "Heart", trend: "Hoạt động mỗi ngày", desc: "Liên tục đổi mới phong cách nội dung" },
+    { id: "stat-views", value: "50K+", rawNumber: 50000, label: "Tổng lượt xem (Views)", icon: "Eye", trend: "Đa nền tảng", desc: "TikTok (48K+) • YouTube (738+) • Video CS2" },
+    { id: "stat-followers", value: "793+", rawNumber: 793, label: "Tổng người theo dõi (5 kênh)", icon: "Users", trend: "Đang tăng trưởng", desc: "FB 416 • TikTok 242 • IG 131 • YT 4" },
+    { id: "stat-likes", value: "4.5K+", rawNumber: 4537, label: "Lượt thích TikTok", icon: "Flame", trend: "Tương tác thực", desc: "4,214 tim cá nhân + 323 tim kể chuyện" },
+    { id: "stat-videos", value: "50+", rawNumber: 50, label: "Video & Nội dung số", icon: "Sparkles", trend: "Sản xuất đều đặn", desc: "15 video dài 4K + 35+ video ngắn" },
   ],
   links: [
     {
@@ -51,7 +51,7 @@ export const DEFAULT_PROFILE = {
       platform: "tiktok",
       title: "TikTok Lio Tập Kể Chuyện",
       url: "https://www.tiktok.com/@liotapkechuyen",
-      stats: "27 Followers • 323 Lượt thích",
+      stats: "5K+ Lượt xem • 27 Followers • 323 Lượt thích",
       description: "Kênh Podcast & Storytelling chia sẻ góc nhìn sâu lắng, bài học & mẹo giải quyết vấn đề cuộc sống",
     },
     {
@@ -59,7 +59,7 @@ export const DEFAULT_PROFILE = {
       platform: "tiktok",
       title: "TikTok @nguyndang0802",
       url: "https://www.tiktok.com/@nguyndang0802",
-      stats: "215 Followers • 4,214 Lượt thích",
+      stats: "45K+ Lượt xem • 215 Followers • 4,214 Lượt thích",
       description: "Kênh cá nhân chia sẻ khoảnh khắc đời thường, video sáng tạo, phong cách sống & hậu trường",
     },
     {
@@ -67,7 +67,7 @@ export const DEFAULT_PROFILE = {
       platform: "youtube",
       title: "Kênh YouTube LIO (@lio_tsv)",
       url: "https://youtube.com/@lio_tsv?si=FBUf3BvbKV8h10jZ",
-      stats: "4 Subscribers • 15 Video dài tập 4K",
+      stats: "738 Lượt xem • 15 Video dài tập 4K • 4 Subs",
       description: "Kênh YouTube chính thức: Phân tích tư duy, kinh tế, công nghệ AI và góc nhìn xã hội hiện đại",
     },
     {

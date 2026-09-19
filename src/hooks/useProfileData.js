@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { DEFAULT_PROFILE } from '../data/defaultProfile';
 
-const STORAGE_KEY = 'personal_bio_profile_v7';
+const STORAGE_KEY = 'personal_bio_profile_v8';
 
 export function calculateAge(birthDateString) {
   if (!birthDateString) return null;

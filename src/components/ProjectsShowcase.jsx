@@ -201,11 +201,12 @@ export default function ProjectsShowcase({ showToast }) {
             {/* Right Mockup Showcase: CS2 Case + FIFA Ultimate Card Hybrid Visual */}
             <div className="lg:col-span-5 flex items-center justify-center pt-4 lg:pt-0">
               <div className="relative w-full max-w-sm">
-                {/* FIFA Ultimate Card Mockup (Angled Back Layer) */}
+                {/* FIFA Ultimate Card Mockup (Angled Back Layer) with Ambient Levitation */}
                 <motion.div
-                  whileHover={{ y: -6, rotate: 2, scale: 1.02 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  className="absolute -top-4 -right-2 sm:-right-4 w-48 sm:w-52 h-64 sm:h-72 rounded-2xl bg-gradient-to-b from-amber-400 via-amber-600 to-yellow-950 p-[2px] shadow-2xl z-10 select-none cursor-pointer transform -rotate-3"
+                  animate={{ y: [0, -6, 0], rotate: [-3, -1.5, -3] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  whileHover={{ y: -10, rotate: 2, scale: 1.03 }}
+                  className="absolute -top-4 -right-2 sm:-right-4 w-48 sm:w-52 h-64 sm:h-72 rounded-2xl bg-gradient-to-b from-amber-400 via-amber-600 to-yellow-950 p-[2px] shadow-2xl z-10 select-none cursor-pointer transform"
                 >
                   <div className="w-full h-full rounded-[14px] bg-neutral-950/90 backdrop-blur-md p-3 flex flex-col justify-between border border-amber-400/40 relative overflow-hidden text-amber-100">
                     {/* Holographic Sheen */}
@@ -257,10 +258,11 @@ export default function ProjectsShowcase({ showToast }) {
                   </div>
                 </motion.div>
 
-                {/* CS2 Crate Mockup (Front Layer) */}
+                {/* CS2 Crate Mockup (Front Layer) with Counter Ambient Floating */}
                 <motion.div
-                  whileHover={{ y: -4, rotate: -1, scale: 1.02 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  animate={{ y: [0, 6, 0], rotate: [0, 1.5, 0] }}
+                  transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                  whileHover={{ y: -6, rotate: -1, scale: 1.03 }}
                   className="relative z-20 w-52 sm:w-56 rounded-2xl bg-neutral-900/95 border-2 border-cyan-500/50 p-4 shadow-[0_0_30px_rgba(6,182,212,0.3)] backdrop-blur-xl space-y-3 cursor-pointer select-none"
                 >
                   {/* Top Bar */}

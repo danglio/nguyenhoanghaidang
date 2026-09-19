@@ -13,6 +13,7 @@ import {
   YouTubeIcon,
   FacebookIcon,
   InstagramIcon,
+  GmailIcon,
 } from './SocialIcons';
 import LanyardBadge from './LanyardBadge';
 import { DEFAULT_PROFILE } from '../data/defaultProfile';
@@ -93,14 +94,15 @@ export default function HeroLanyard({
     'https://www.facebook.com/share/19JS9Xy3rN/?mibextid=wwXIfr';
 
   // Handle Contact / Copy Email
-  const handleCopyEmail = async () => {
-    const email = personalData.email || 'contact@danglio.com';
+  const [copiedKey, setCopiedKey] = useState(null);
+
+  const handleCopySpecificEmail = async (email, key) => {
     try {
       if (navigator.clipboard) {
         await navigator.clipboard.writeText(email);
       }
-      setCopiedEmail(true);
-      setTimeout(() => setCopiedEmail(false), 2500);
+      setCopiedKey(key);
+      setTimeout(() => setCopiedKey(null), 2500);
       if (showToast) {
         showToast({
           message: `Đã sao chép email ${email} vào bộ nhớ tạm!`,
@@ -148,7 +150,7 @@ export default function HeroLanyard({
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             className="flex flex-col sm:flex-row items-center gap-2.5 text-sm sm:text-base font-medium text-neutral-600 dark:text-neutral-300"
           >
             <span className="font-semibold text-neutral-900 dark:text-neutral-200">
@@ -159,10 +161,10 @@ export default function HeroLanyard({
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentRoleIndex}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.3 }}
+                  initial={{ opacity: 0, y: 12, scale: 0.94 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -12, scale: 0.94 }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 22 }}
                   className="text-xs sm:text-sm font-bold font-mono px-3 py-0.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/10 border border-cyan-500/30 text-cyan-700 dark:text-cyan-300 flex items-center gap-1.5 shadow-sm"
                 >
                   <span className="relative flex h-2 w-2">
@@ -180,7 +182,7 @@ export default function HeroLanyard({
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
               className="relative p-4 sm:p-5 rounded-2xl bg-white/75 dark:bg-neutral-900/60 backdrop-blur-xl border border-neutral-200/80 dark:border-white/10 shadow-sm max-w-xl text-sm sm:text-base leading-relaxed text-neutral-700 dark:text-neutral-300 font-normal text-left"
             >
               <div className="absolute top-0 left-6 w-14 h-[2px] bg-gradient-to-r from-cyan-400 via-indigo-500 to-pink-500 rounded-full" />
@@ -192,7 +194,7 @@ export default function HeroLanyard({
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-2"
           >
             {/* 1. TikTok Kể Chuyện (Primary Gradient Pill) */}
@@ -201,7 +203,8 @@ export default function HeroLanyard({
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
               className="group relative inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white font-bold text-xs sm:text-sm shadow-[0_4px_20px_rgba(147,51,234,0.35)] hover:shadow-[0_6px_25px_rgba(236,72,153,0.5)] transition-all overflow-hidden"
             >
               <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
@@ -216,7 +219,8 @@ export default function HeroLanyard({
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
               className="group inline-flex items-center gap-2 px-4 py-3 rounded-full bg-white/80 dark:bg-white/5 hover:bg-red-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-red-500/30 text-neutral-800 dark:text-neutral-200 hover:text-red-600 dark:hover:text-red-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm hover:shadow-[0_0_20px_rgba(239,68,68,0.2)]"
             >
               <YouTubeIcon className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 shrink-0" />
@@ -230,7 +234,8 @@ export default function HeroLanyard({
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
               className="group inline-flex items-center gap-2 px-4 py-3 rounded-full bg-white/80 dark:bg-white/5 hover:bg-amber-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-amber-500/30 text-neutral-800 dark:text-neutral-200 hover:text-amber-600 dark:hover:text-amber-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]"
             >
               <Gamepad2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 dark:text-amber-400 shrink-0" />
@@ -246,7 +251,8 @@ export default function HeroLanyard({
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
               className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-cyan-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-cyan-500/30 text-neutral-800 dark:text-neutral-200 hover:text-cyan-600 dark:hover:text-cyan-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm"
             >
               <TikTokIcon className="w-4 h-4 text-cyan-500 dark:text-cyan-400 shrink-0" />
@@ -259,7 +265,8 @@ export default function HeroLanyard({
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
               className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-pink-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-pink-500/30 text-neutral-800 dark:text-neutral-200 hover:text-pink-600 dark:hover:text-pink-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm"
             >
               <InstagramIcon className="w-4 h-4 text-pink-500 shrink-0" />
@@ -272,28 +279,48 @@ export default function HeroLanyard({
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
               className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-blue-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-blue-500/30 text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm"
             >
               <FacebookIcon className="w-4 h-4 text-blue-500 shrink-0" />
               <span>Facebook</span>
             </motion.a>
 
-            {/* 7. Nút Liên Hệ / Sao Chép Email */}
+            {/* 7. Nút Gmail Cá Nhân */}
             <motion.button
               type="button"
-              onClick={handleCopyEmail}
+              onClick={() => handleCopySpecificEmail('nguyenhoanghaidang.lio@gmail.com', 'gmail')}
               whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-emerald-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-emerald-500/30 text-neutral-800 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm"
-              title="Sao chép email liên hệ"
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
+              className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-rose-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-rose-500/30 text-neutral-800 dark:text-neutral-200 hover:text-rose-600 dark:hover:text-rose-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm"
+              title="Sao chép Gmail nguyenhoanghaidang.lio@gmail.com"
             >
-              {copiedEmail ? (
+              {copiedKey === 'gmail' ? (
+                <Check className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0" />
+              ) : (
+                <GmailIcon className="w-4 h-4 shrink-0" />
+              )}
+              <span>{copiedKey === 'gmail' ? 'Đã sao chép Gmail!' : 'nguyenhoanghaidang.lio@gmail.com'}</span>
+            </motion.button>
+
+            {/* 8. Nút Hòm Thư Công Việc / Booking */}
+            <motion.button
+              type="button"
+              onClick={() => handleCopySpecificEmail('contact@danglio.com', 'work')}
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
+              className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-emerald-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-emerald-500/30 text-neutral-800 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm"
+              title="Sao chép email booking contact@danglio.com"
+            >
+              {copiedKey === 'work' ? (
                 <Check className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0" />
               ) : (
                 <Mail className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0" />
               )}
-              <span>{copiedEmail ? 'Đã sao chép email!' : 'contact@danglio.com'}</span>
+              <span>{copiedKey === 'work' ? 'Đã sao chép email!' : 'contact@danglio.com'}</span>
             </motion.button>
 
             {/* 8. Nút Chỉnh Sửa Hồ Sơ */}
@@ -302,7 +329,8 @@ export default function HeroLanyard({
                 type="button"
                 onClick={onOpenEdit}
                 whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.97 }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: 'spring', stiffness: 450, damping: 20 }}
                 className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-indigo-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-indigo-500/30 text-neutral-800 dark:text-neutral-200 hover:text-indigo-600 dark:hover:text-indigo-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm"
                 title="Chỉnh sửa thông tin hồ sơ"
               >

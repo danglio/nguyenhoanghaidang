@@ -9,6 +9,8 @@ import {
   XTwitterIcon,
   LinkedInIcon,
   TelegramIcon,
+  GmailIcon,
+  WebGlobeIcon,
   Globe,
   Mail,
   ArrowUpRight,
@@ -76,17 +78,18 @@ const getPlatformConfig = (platform) => {
       };
     case 'email':
     case 'mail':
+    case 'gmail':
       return {
-        icon: Mail,
-        badgeColor: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/25',
-        glowColor: 'group-hover:border-amber-500/50 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.25)]',
-        name: 'Email',
+        icon: GmailIcon,
+        badgeColor: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/25',
+        glowColor: 'group-hover:border-rose-500/50 group-hover:shadow-[0_0_20px_rgba(234,67,53,0.25)]',
+        name: 'Gmail',
       };
     case 'website':
     case 'blog':
     default:
       return {
-        icon: Globe,
+        icon: WebGlobeIcon,
         badgeColor: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/25',
         glowColor: 'group-hover:border-emerald-500/50 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.25)]',
         name: 'Website',
@@ -102,18 +105,18 @@ export default function SocialLinks({ links = [] }) {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.06,
-        delayChildren: 0.15,
+        staggerChildren: 0.04,
+        delayChildren: 0.08,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
+    hidden: { opacity: 0, y: 16 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { type: 'spring', stiffness: 350, damping: 24 },
+      transition: { type: 'spring', stiffness: 320, damping: 24 },
     },
   };
 
@@ -133,7 +136,8 @@ export default function SocialLinks({ links = [] }) {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate="show"
+        whileInView="show"
+        viewport={{ once: true, margin: '-40px' }}
         className="grid grid-cols-1 sm:grid-cols-2 gap-3"
       >
         {links.map((link) => {
@@ -144,17 +148,18 @@ export default function SocialLinks({ links = [] }) {
             <motion.a
               key={link.id}
               variants={itemVariants}
-              whileHover={{ y: -3, scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
+              whileHover={{ y: -4, scale: 1.015 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 22 }}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
               className={`group glass-card p-3.5 sm:p-4 rounded-2xl border border-neutral-200/80 dark:border-neutral-800/80 shadow-sm transition-all flex items-center justify-between glow-card ${config.glowColor}`}
             >
               <div className="flex items-center space-x-3.5 min-w-0">
-                {/* Platform Icon Box */}
+                {/* Platform Icon Box with 3D Pop */}
                 <div
-                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center border shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-sm ${config.badgeColor}`}
+                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center border shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-sm ${config.badgeColor}`}
                 >
                   <Icon className="w-5 h-5" />
                 </div>
@@ -164,6 +169,12 @@ export default function SocialLinks({ links = [] }) {
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-black dark:group-hover:text-white truncate">
                     {link.title}
                   </h3>
+                  {link.stats && (
+                    <div className="inline-flex items-center gap-1.5 my-0.5 text-[10px] font-mono font-bold text-cyan-700 dark:text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded-md border border-cyan-500/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                      <span>{link.stats}</span>
+                    </div>
+                  )}
                   {link.description && (
                     <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate mt-0.5 font-normal">
                       {link.description}

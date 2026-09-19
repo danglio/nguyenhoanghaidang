@@ -2,6 +2,8 @@ import React from 'react';
 import { Sun, Moon, Edit3, Share2, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import { DangLioFullLogo } from './DangLioLogo';
+
 export default function Navbar({
   theme,
   onToggleTheme,
@@ -13,25 +15,14 @@ export default function Navbar({
   return (
     <header className="sticky top-0 z-40 w-full glass-nav border-b border-neutral-200/60 dark:border-neutral-800/60 transition-colors duration-300 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand / Logo Lio. with Cyan Glowing Dot */}
+        {/* Brand / Logo Đăng LIO with Neon Dot */}
         <div className="flex items-center space-x-3">
           <a
             href="#home"
-            className="flex items-center space-x-2 group focus:outline-none"
-            title={fullName || 'Lio Portfolio'}
+            className="focus:outline-none"
+            title={fullName || 'Đăng LIO Portfolio'}
           >
-            <div className="w-9 h-9 rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-black text-sm flex items-center justify-center shadow-md tracking-wider glow-hover border border-white/10 dark:border-neutral-900/10">
-              L
-            </div>
-            <div className="flex items-center">
-              <span className="font-black text-lg tracking-tight text-neutral-900 dark:text-white flex items-center">
-                <span>Lio</span>
-                <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee] ml-0.5 animate-pulse" />
-              </span>
-              <span className="hidden sm:inline-flex items-center ml-2 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                Portfolio
-              </span>
-            </div>
+            <DangLioFullLogo />
           </a>
         </div>
 

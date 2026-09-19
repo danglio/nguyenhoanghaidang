@@ -24,7 +24,7 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
   // Profile data with safe fallbacks
   const avatarUrl =
     personal?.avatarUrl ||
-    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80';
+    `${import.meta.env.BASE_URL}avatar.jpg`;
   const rawFullName = personal?.fullName || 'Nguyễn Hoàng Hải Đăng (Lio)';
   const displayName = rawFullName.replace(/\s*\([^)]*\)/, '').trim().toUpperCase() || 'NGUYỄN HOÀNG HẢI ĐĂNG';
   const displayTitle = personal?.title || 'Content Creator & Storyteller';

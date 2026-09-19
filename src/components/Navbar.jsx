@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Moon, Edit3, Share2, Send } from 'lucide-react';
+import { Sun, Moon, Share2, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import { DangLioFullLogo } from './DangLioLogo';
@@ -7,7 +7,6 @@ import { DangLioFullLogo } from './DangLioLogo';
 export default function Navbar({
   theme,
   onToggleTheme,
-  onOpenEdit,
   onShare,
   onOpenContact,
   fullName = '',
@@ -94,18 +93,6 @@ export default function Navbar({
             ) : (
               <Moon className="w-4 h-4 text-neutral-700" />
             )}
-          </motion.button>
-
-          {/* Edit Profile Button */}
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={onOpenEdit}
-            className="flex items-center space-x-1.5 px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-md glow-btn transition-all"
-          >
-            <Edit3 className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Chỉnh sửa hồ sơ</span>
-            <span className="sm:hidden">Sửa</span>
           </motion.button>
         </div>
       </div>

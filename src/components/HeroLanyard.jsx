@@ -5,7 +5,6 @@ import {
   Gamepad2,
   Mail,
   Check,
-  Edit3,
   ArrowUpRight,
 } from 'lucide-react';
 import {
@@ -43,7 +42,6 @@ export default function HeroLanyard({
   personal,
   links,
   profile,
-  onOpenEdit,
   showToast,
 }) {
   // Graceful data resolution from props or default profile
@@ -322,22 +320,6 @@ export default function HeroLanyard({
               )}
               <span>{copiedKey === 'work' ? 'Đã sao chép email!' : 'contact@danglio.com'}</span>
             </motion.button>
-
-            {/* 8. Nút Chỉnh Sửa Hồ Sơ */}
-            {onOpenEdit && (
-              <motion.button
-                type="button"
-                onClick={onOpenEdit}
-                whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ type: 'spring', stiffness: 450, damping: 20 }}
-                className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-indigo-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-indigo-500/30 text-neutral-800 dark:text-neutral-200 hover:text-indigo-600 dark:hover:text-indigo-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm"
-                title="Chỉnh sửa thông tin hồ sơ"
-              >
-                <Edit3 className="w-4 h-4 text-indigo-500 dark:text-indigo-400 shrink-0" />
-                <span>Chỉnh sửa hồ sơ</span>
-              </motion.button>
-            )}
           </motion.div>
         </div>
 

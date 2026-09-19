@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Calendar,
   MapPin,
-  Edit3,
   Share2,
   Clock,
   Music,
@@ -18,7 +17,6 @@ import { calculateAge, formatBirthDate } from '../hooks/useProfileData';
 export default function LargeProfileCard({
   personal,
   vibeMusic,
-  onOpenEdit,
   onShare,
   showToast,
 }) {
@@ -244,26 +242,16 @@ export default function LargeProfileCard({
               </button>
             )}
 
-            {/* Action Buttons with Luminous Glow */}
-            <div className="grid grid-cols-2 gap-2 pt-1">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={onOpenEdit}
-                className="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-md glow-btn transition-all"
-              >
-                <Edit3 className="w-3.5 h-3.5" />
-                <span>Chỉnh sửa hồ sơ</span>
-              </motion.button>
-
+            {/* Action Button with Luminous Glow */}
+            <div className="pt-1">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={onShare}
-                className="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 border border-neutral-200/70 dark:border-neutral-700/70 hover:bg-neutral-200 dark:hover:bg-neutral-700 glow-btn transition-all"
+                className="w-full flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-md glow-btn transition-all"
               >
-                <Share2 className="w-3.5 h-3.5 text-indigo-500" />
-                <span>Chia sẻ trang</span>
+                <Share2 className="w-3.5 h-3.5 text-indigo-400 dark:text-indigo-600" />
+                <span>Chia sẻ trang cá nhân</span>
               </motion.button>
             </div>
           </div>

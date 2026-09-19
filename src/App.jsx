@@ -7,7 +7,6 @@ import ProjectsShowcase from './components/ProjectsShowcase';
 import AchievementsStats from './components/AchievementsStats';
 import SkillsSection from './components/SkillsSection';
 import SocialLinks from './components/SocialLinks';
-import EditModal from './components/EditModal';
 import ContactModal from './components/ContactModal';
 import SoundtrackPlayer from './components/SoundtrackPlayer';
 import Toast from './components/Toast';
@@ -17,27 +16,19 @@ import { YouTubeIcon } from './components/SocialIcons';
 import { motion } from 'framer-motion';
 
 export default function App() {
-  const {
-    profile,
-    updateProfile,
-    resetProfile,
-    exportProfileJSON,
-    importProfileJSON,
-  } = useProfileData();
+  const { profile } = useProfileData();
 
-  // Dark / Light Theme state
+  // Dark Mode is active by default automatically
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('personal_theme');
+      const savedTheme = localStorage.getItem('personal_theme_v2');
       if (savedTheme) return savedTheme;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     return 'dark';
   });
 
-  // Contact & Edit Modal & Toast state
+  // Contact Modal & Toast state
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isEditOpen, setIsEditOpen] = useState(false);
   const [toast, setToast] = useState(null);
 
   // Apply theme to document
@@ -48,7 +39,7 @@ export default function App() {
     } else {
       root.classList.remove('dark');
     }
-    localStorage.setItem('personal_theme', theme);
+    localStorage.setItem('personal_theme_v2', theme);
   }, [theme]);
 
   const toggleTheme = () => {
@@ -84,32 +75,6 @@ export default function App() {
     }
   };
 
-  // Handle Save Profile
-  const handleSaveProfile = (newProfile) => {
-    const success = updateProfile(newProfile);
-    if (success) {
-      triggerConfetti();
-      setToast({
-        message: 'Đã cập nhật hồ sơ cá nhân thành công!',
-        type: 'success',
-      });
-    } else {
-      setToast({
-        message: 'Có lỗi xảy ra khi lưu vào bộ nhớ!',
-        type: 'error',
-      });
-    }
-  };
-
-  // Handle Reset Profile
-  const handleResetProfile = () => {
-    resetProfile();
-    setToast({
-      message: 'Đã khôi phục dữ liệu mẫu ban đầu!',
-      type: 'info',
-    });
-  };
-
   return (
     <div className="min-h-screen relative flex flex-col justify-between selection:bg-cyan-500 selection:text-white dark:selection:bg-cyan-400 dark:selection:text-neutral-950">
       {/* Dynamic Ambient Mesh Glow Background */}
@@ -119,7 +84,6 @@ export default function App() {
       <Navbar
         theme={theme}
         onToggleTheme={toggleTheme}
-        onOpenEdit={() => setIsEditOpen(true)}
         onOpenContact={() => setIsContactOpen(true)}
         onShare={handleShare}
         fullName={profile.personal.fullName}
@@ -133,7 +97,6 @@ export default function App() {
             personal={profile.personal}
             links={profile.links}
             profile={profile}
-            onOpenEdit={() => setIsEditOpen(true)}
             onOpenContact={() => setIsContactOpen(true)}
             showToast={setToast}
           />
@@ -294,18 +257,6 @@ export default function App() {
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
-        showToast={setToast}
-      />
-
-      {/* Edit Profile Modal */}
-      <EditModal
-        isOpen={isEditOpen}
-        onClose={() => setIsEditOpen(false)}
-        profile={profile}
-        onSave={handleSaveProfile}
-        onReset={handleResetProfile}
-        onExport={exportProfileJSON}
-        onImport={importProfileJSON}
         showToast={setToast}
       />
 

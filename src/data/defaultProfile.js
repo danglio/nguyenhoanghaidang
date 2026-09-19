@@ -40,7 +40,7 @@ export const DEFAULT_PROFILE = {
     "AI Creative Tools",
   ],
   stats: [
-    { id: "stat-views", value: "50K+", rawNumber: 50000, label: "Tổng lượt xem (Views)", icon: "Eye", trend: "Đa nền tảng", desc: "TikTok (48K+) • YouTube (738+) • Video CS2" },
+    { id: "stat-views", value: "50K+", rawNumber: 50000, label: "Tổng lượt xem (Views)", icon: "Eye", trend: "Đa nền tảng", desc: "TikTok (48K+) • IG Reels (1K+) • YouTube (738+) • Mini App" },
     { id: "stat-followers", value: "793+", rawNumber: 793, label: "Tổng người theo dõi (5 kênh)", icon: "Users", trend: "Đang tăng trưởng", desc: "FB 416 • TikTok 242 • IG 131 • YT 4" },
     { id: "stat-likes", value: "4.5K+", rawNumber: 4537, label: "Lượt thích TikTok", icon: "Flame", trend: "Tương tác thực", desc: "4,214 tim cá nhân + 323 tim kể chuyện" },
     { id: "stat-videos", value: "50+", rawNumber: 50, label: "Video & Nội dung số", icon: "Sparkles", trend: "Sản xuất đều đặn", desc: "15 video dài 4K + 35+ video ngắn" },
@@ -75,8 +75,8 @@ export const DEFAULT_PROFILE = {
       platform: "instagram",
       title: "Instagram @nguyenhoanghaidanglio",
       url: "https://www.instagram.com/nguyenhoanghaidanglio?stkn=OTQ2b2Nmb3F2Zm95&utm_source=qr",
-      stats: "131 Followers • 89 Đang theo dõi",
-      description: "Tập chụp ảnh Canon, hình ảnh phong cách sống, hậu trường sáng tạo và visual nghệ thuật",
+      stats: "1K+ Lượt xem Reels • 131 Followers • 44 Bài viết",
+      description: "Kho ảnh nghệ thuật Canon, Reels visual cuốn hút, phong cách sống & hậu trường sáng tạo",
     },
     {
       id: "link-5",

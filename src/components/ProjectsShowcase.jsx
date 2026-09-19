@@ -17,7 +17,7 @@ import {
   Play,
   Share2,
 } from 'lucide-react';
-import { YouTubeIcon, TikTokIcon } from './SocialIcons';
+import { YouTubeIcon, TikTokIcon, FacebookIcon } from './SocialIcons';
 
 export default function ProjectsShowcase({ showToast }) {
   const [copiedKey, setCopiedKey] = useState(null);
@@ -195,6 +195,19 @@ export default function ProjectsShowcase({ showToast }) {
                     </>
                   )}
                 </motion.button>
+
+                <motion.a
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  href="https://www.facebook.com/share/1AfnEdbkeu/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-semibold glass-card border border-blue-500/30 text-blue-600 dark:text-blue-400 hover:bg-blue-500/10 transition-all"
+                  title="Ghé thăm Fanpage Facebook Uống Gì Hôm Nay"
+                >
+                  <FacebookIcon className="w-4 h-4 text-blue-500" />
+                  <span>Fanpage Facebook</span>
+                </motion.a>
               </div>
             </div>
 

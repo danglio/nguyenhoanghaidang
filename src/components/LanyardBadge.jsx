@@ -391,8 +391,8 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                     {displayTitle}
                   </p>
                   <div className="flex items-center justify-center gap-1.5 mt-1">
-                    <span className="px-2 py-0.5 rounded text-[9px] font-mono font-medium tracking-widest text-neutral-300 bg-white/5 border border-white/10 uppercase">
-                      STORYTELLER &bull; CREATOR
+                    <span className="px-2 py-0.5 rounded text-[9px] font-mono font-medium tracking-widest text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 uppercase">
+                      HUIT &bull; 08/02/2008 &bull; TP.HCM
                     </span>
                   </div>
                 </div>
@@ -635,12 +635,12 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                     {displayName}
                   </div>
                   <div className="text-[10px] text-indigo-300 font-medium tracking-wide truncate">
-                    {displayTitle}
+                    ĐH Công Thương TP.HCM (HUIT)
                   </div>
                   <div className="flex items-center justify-center gap-1.5 text-[8px] sm:text-[9px] font-mono text-neutral-400 mt-0.5">
-                    <span>{email}</span>
+                    <span className="text-cyan-300 font-semibold">DOB: 08/02/2008</span>
                     <span>&bull;</span>
-                    <span className="text-cyan-400 font-bold">{passportId}</span>
+                    <span>TP. Hồ Chí Minh</span>
                   </div>
                 </div>
 

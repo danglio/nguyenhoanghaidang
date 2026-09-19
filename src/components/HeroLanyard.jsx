@@ -6,6 +6,9 @@ import {
   Mail,
   Check,
   ArrowUpRight,
+  Calendar,
+  MapPin,
+  GraduationCap,
 } from 'lucide-react';
 import {
   TikTokIcon,
@@ -172,6 +175,35 @@ export default function HeroLanyard({
                   <span>{roleList[currentRoleIndex]}</span>
                 </motion.div>
               </AnimatePresence>
+            </div>
+          </motion.div>
+
+          {/* Quick Info Badges: Birthday, Location, University */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.13 }}
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs font-mono"
+          >
+            {/* 1. Sinh nhật 08/02/2008 */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 shadow-sm backdrop-blur-md">
+              <Calendar className="w-3.5 h-3.5 text-pink-500 shrink-0" />
+              <span className="font-semibold">08/02/2008</span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-pink-500/10 text-pink-600 dark:text-pink-400 font-bold font-sans">
+                18 tuổi
+              </span>
+            </div>
+
+            {/* 2. Nơi học tập & làm việc: TP. Hồ Chí Minh */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 shadow-sm backdrop-blur-md">
+              <MapPin className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
+              <span>TP. Hồ Chí Minh</span>
+            </div>
+
+            {/* 3. Trường Đại học Công Thương TP.HCM (HUIT) */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 font-medium shadow-sm backdrop-blur-md">
+              <GraduationCap className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 shrink-0" />
+              <span>ĐH Công Thương TP.HCM (HUIT)</span>
             </div>
           </motion.div>
 

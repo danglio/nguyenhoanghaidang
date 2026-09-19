@@ -36,8 +36,10 @@ export default function App() {
     const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');
+      document.body.classList.add('dark');
     } else {
       root.classList.remove('dark');
+      document.body.classList.remove('dark');
     }
     localStorage.setItem('personal_theme_v2', theme);
   }, [theme]);
@@ -76,7 +78,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col justify-between selection:bg-cyan-500 selection:text-white dark:selection:bg-cyan-400 dark:selection:text-neutral-950">
+    <div className="min-h-screen relative flex flex-col justify-between bg-[#f8fafc] dark:bg-[#0c0c0e] text-neutral-900 dark:text-neutral-100 selection:bg-cyan-500 selection:text-white dark:selection:bg-cyan-400 dark:selection:text-neutral-950 transition-colors duration-300">
       {/* Dynamic Ambient Mesh Glow Background */}
       <AmbientBackground />
 

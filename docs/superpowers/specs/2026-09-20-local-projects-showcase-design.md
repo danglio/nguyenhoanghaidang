@@ -10,11 +10,11 @@
 
 ### 1.1. Bối cảnh
 Người dùng có 2 dự án lớn đang được phát triển nội bộ trên máy cục bộ (Local environment):
-1. `/Users/admin/Documents/1.LIO_ECOM_FULL/3.LIO_CHECKIN`: **Cenkin** - Mạng xã hội check-in thời gian thực, kết hợp phong cách Locket camera widget, Bump kết bạn vật lý và radar bản đồ Zenly.
-2. `/Users/admin/Documents/0.1.COMPANY `: **Autonomous AI Company OS** - Hệ điều hành công ty AI tự động hóa phân cấp từ Founder ➜ CEO Agent ➜ PM Agent ➜ Department Studios (Video AI Studio, Web AI Studio) trên chip Apple Silicon M2 Pro.
+1. **Cenkin**: Mạng xã hội check-in thời gian thực, kết hợp phong cách Locket camera widget, Bump kết bạn vật lý và radar bản đồ Zenly.
+2. **Autonomous AI Company OS**: Hệ điều hành công ty AI tự động hóa phân cấp từ Founder ➜ CEO Agent ➜ PM Agent ➜ Department Studios (Video AI Studio, Web AI Studio) trên chip Apple Silicon M2 Pro.
 
 ### 1.2. Yêu cầu của người dùng
-- Đưa 2 dự án này vào trang cá nhân/landing page hiện tại (`/Users/admin/Documents/13.landingpage`).
+- Đưa 2 dự án này vào trang cá nhân/landing page hiện tại.
 - Trình bày theo dạng **"coi thôi / view-only"**:
   - Có thông báo rõ ràng cho người xem: *"Đây là phiên bản đang chạy trên môi trường máy chủ nội bộ (Local), chưa mở cấp phép cho cộng đồng test tính năng, chỉ dành cho khách ghé thăm xem trước giao diện & kiến trúc"*.
   - Không để các liên kết điều hướng ngoài gây nhầm lẫn hoặc lỗi 404.

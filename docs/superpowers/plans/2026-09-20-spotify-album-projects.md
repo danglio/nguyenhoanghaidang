@@ -28,7 +28,7 @@
 - Create: `public/music/covers/worth_anew.jpg`
 
 **Interfaces:**
-- Consumes: `/Users/admin/Downloads/Nhạc dự án/` MP3 files
+- Consumes: Local MP3 files in project assets
 - Produces: Web-accessible assets in `public/music/` and `public/music/covers/`
 
 - [ ] **Step 1: Copy MP3 files to `public/music/` and verify integrity**

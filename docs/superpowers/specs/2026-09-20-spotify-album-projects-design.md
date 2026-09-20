@@ -13,7 +13,7 @@
 ---
 
 ## 1. Goal & Requirements
-- **Audio Assets:** Incorporate the 3 MP3 music files from `/Users/admin/Downloads/Nhạc dự án/`:
+- **Audio Assets:** Incorporate the 3 MP3 music files from project media:
   1. `the_dashboard_vow.mp3` (173.3s ~ 02:53)
   2. `the_hour_before_waking.mp3` (152.2s ~ 02:32)
   3. `worth_anew.mp3` (178.9s ~ 02:58)

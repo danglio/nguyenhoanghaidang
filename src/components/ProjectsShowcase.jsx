@@ -18,6 +18,7 @@ import {
   Share2,
 } from 'lucide-react';
 import { YouTubeIcon, TikTokIcon, FacebookIcon } from './SocialIcons';
+import SpotifyAlbumShowcase from './SpotifyAlbumShowcase';
 
 export default function ProjectsShowcase({ showToast }) {
   const [copiedKey, setCopiedKey] = useState(null);
@@ -531,6 +532,11 @@ export default function ProjectsShowcase({ showToast }) {
             </motion.button>
           </div>
         </motion.div>
+
+        {/* DỰ ÁN 4: BENTO CARD - SPOTIFY MINI EP ALBUM (THE DAWN CHRONICLES) */}
+        <div className="lg:col-span-12">
+          <SpotifyAlbumShowcase showToast={showToast} />
+        </div>
       </div>
     </section>
   );

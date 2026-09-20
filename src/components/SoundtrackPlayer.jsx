@@ -151,6 +151,20 @@ export default function SoundtrackPlayer() {
     };
   }, [handleAudioEnded]);
 
+  // Coordinate with Spotify Album: Pause background soundtrack when Spotify track plays
+  useEffect(() => {
+    const handleSpotifyPlay = () => {
+      if (audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      }
+    };
+    window.addEventListener('spotify-album-play', handleSpotifyPlay);
+    return () => {
+      window.removeEventListener('spotify-album-play', handleSpotifyPlay);
+    };
+  }, []);
+
   // Toggle Play / Pause
   const handleTogglePlay = () => {
     const audio = audioRef.current;
@@ -160,6 +174,8 @@ export default function SoundtrackPlayer() {
       audio.pause();
       setIsPlaying(false);
     } else {
+      // Pause Spotify album if it's currently playing
+      window.dispatchEvent(new CustomEvent('soundtrack-play'));
       audio.muted = false;
       setIsMuted(false);
       audio

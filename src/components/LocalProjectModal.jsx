@@ -442,7 +442,7 @@ export default function LocalProjectModal({ project, isOpen, onClose, onCopyInfo
                               {itemList.map((item, idx) => (
                                 <span
                                   key={idx}
-                                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/80 dark:border-neutral-700/80 shadow-xs"
+                                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/80 dark:border-neutral-700/80 shadow-sm"
                                 >
                                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
                                   <span>{typeof item === 'string' ? item : item.name}</span>
@@ -462,7 +462,7 @@ export default function LocalProjectModal({ project, isOpen, onClose, onCopyInfo
                           return (
                             <span
                               key={idx}
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200 border border-neutral-200/70 dark:border-neutral-700/70 shadow-xs"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200 border border-neutral-200/70 dark:border-neutral-700/70 shadow-sm"
                             >
                               <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
                               <span>{name}</span>

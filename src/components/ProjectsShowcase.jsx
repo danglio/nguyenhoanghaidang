@@ -180,14 +180,14 @@ function TerminalLogViewer() {
   return (
     <div className="rounded-xl bg-neutral-900/95 border border-neutral-800 p-3 space-y-2 font-mono text-[11px]">
       <div className="flex items-center justify-between border-b border-neutral-800 pb-1.5">
-        <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-rose-500/80" />
-          <span className="w-2 h-2 rounded-full bg-amber-500/80" />
-          <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
-          <span className="text-[10px] text-neutral-400 ml-1.5">terminal@ai-company-os: ~</span>
+        <div className="flex items-center gap-1.5 min-w-0">
+          <span className="w-2 h-2 rounded-full bg-rose-500/80 shrink-0" />
+          <span className="w-2 h-2 rounded-full bg-amber-500/80 shrink-0" />
+          <span className="w-2 h-2 rounded-full bg-emerald-500/80 shrink-0" />
+          <span className="text-[10px] text-neutral-400 ml-1.5 truncate">terminal@ai-company-os: ~</span>
         </div>
-        <span className="text-[9px] text-emerald-400 flex items-center gap-1 font-bold">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        <span className="text-[9px] text-emerald-400 flex items-center gap-1 font-bold shrink-0 ml-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
           ONLINE (M2 PRO)
         </span>
       </div>
@@ -603,10 +603,8 @@ export default function ProjectsShowcase({ showToast }) {
                   <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-emerald-500/20" />
 
                   {/* 360 Rotating Radar Beam */}
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ repeat: Infinity, ease: 'linear', duration: 3.5 }}
-                    className="absolute inset-0 rounded-full pointer-events-none"
+                  <div
+                    className="absolute inset-0 rounded-full pointer-events-none animate-radar-sweep"
                     style={{
                       background: 'conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(16, 185, 129, 0.45) 360deg)',
                     }}

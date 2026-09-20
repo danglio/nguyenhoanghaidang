@@ -1,24 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
   ShieldAlert,
-  AlertTriangle,
   Cpu,
   Layers,
-  GitBranch,
-  Terminal,
   Workflow,
   Sparkles,
   Check,
   Copy,
   Lock,
   Server,
-  Zap,
   CheckCircle2,
-  ArrowRight,
-  HardDrive,
-  Activity,
 } from 'lucide-react';
 
 /**
@@ -109,6 +102,16 @@ function buildProjectSummary(project) {
  */
 export default function LocalProjectModal({ project, isOpen, onClose, onCopyInfo }) {
   const [isCopied, setIsCopied] = useState(false);
+  const copyTimeoutRef = useRef(null);
+
+  // Clean up copy timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (copyTimeoutRef.current) {
+        clearTimeout(copyTimeoutRef.current);
+      }
+    };
+  }, []);
 
   // Close modal on Escape key
   useEffect(() => {
@@ -153,8 +156,11 @@ export default function LocalProjectModal({ project, isOpen, onClose, onCopyInfo
         document.body.removeChild(textArea);
       }
 
+      if (copyTimeoutRef.current) {
+        clearTimeout(copyTimeoutRef.current);
+      }
       setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2200);
+      copyTimeoutRef.current = setTimeout(() => setIsCopied(false), 2200);
 
       // Invoke parent callback if provided
       onCopyInfo?.(summary);
@@ -164,19 +170,15 @@ export default function LocalProjectModal({ project, isOpen, onClose, onCopyInfo
     }
   }, [project, onCopyInfo]);
 
-  if (!isOpen || !project) {
-    return null;
-  }
-
   // Normalize tech stack
   const isTechStackCategorized =
-    project.techStack &&
+    project?.techStack &&
     !Array.isArray(project.techStack) &&
     typeof project.techStack === 'object';
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      {isOpen && project && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 lg:p-6 overflow-y-auto"
           role="dialog"

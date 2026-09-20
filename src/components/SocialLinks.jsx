@@ -10,6 +10,7 @@ import {
   LinkedInIcon,
   TelegramIcon,
   GmailIcon,
+  ZaloIcon,
   WebGlobeIcon,
   Globe,
   Mail,
@@ -84,6 +85,13 @@ const getPlatformConfig = (platform) => {
         badgeColor: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/25',
         glowColor: 'group-hover:border-rose-500/50 group-hover:shadow-[0_0_20px_rgba(234,67,53,0.25)]',
         name: 'Gmail',
+      };
+    case 'zalo':
+      return {
+        icon: ZaloIcon,
+        badgeColor: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/25',
+        glowColor: 'group-hover:border-blue-400 dark:group-hover:border-blue-400/40 group-hover:shadow-[0_0_20px_rgba(0,136,255,0.25)]',
+        name: 'Zalo',
       };
     case 'website':
     case 'blog':

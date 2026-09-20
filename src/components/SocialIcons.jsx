@@ -297,4 +297,49 @@ export function WebGlobeIcon({ className = 'w-5 h-5', style = {} }) {
   );
 }
 
+export function ZaloIcon({ className = 'w-5 h-5', style = {} }) {
+  return (
+    <svg
+      className={`inline-block shrink-0 ${className}`}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={style}
+    >
+      <defs>
+        <linearGradient id="zalo-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#0088FF" />
+          <stop offset="100%" stopColor="#0055EE" />
+        </linearGradient>
+        <filter id="zalo-shadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#0066FF" floodOpacity="0.3" />
+        </filter>
+      </defs>
+      {/* Blue Rounded Squircle Background */}
+      <rect width="24" height="24" rx="6" fill="url(#zalo-gradient)" filter="url(#zalo-shadow)" />
+      {/* Soft Specular Top Sheen */}
+      <rect x="2.5" y="2.5" width="19" height="5.5" rx="3" fill="white" fillOpacity="0.16" />
+      {/* Subtle Speech Bubble accent */}
+      <path
+        d="M17.5 12c0 3.3-2.7 6-6 6-1 0-1.9-.2-2.7-.7l-2.8.9.8-2.5C6.3 14.8 6 13.5 6 12c0-3.3 2.7-6 6-6s5.5 2.7 5.5 6z"
+        fill="white"
+        fillOpacity="0.12"
+      />
+      {/* Authentic Zalo Typography */}
+      <text
+        x="12"
+        y="14.6"
+        fill="#FFFFFF"
+        fontFamily="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif"
+        fontWeight="900"
+        fontSize="7.5"
+        textAnchor="middle"
+        letterSpacing="-0.3"
+      >
+        Zalo
+      </text>
+    </svg>
+  );
+}
+
 export { Globe, Mail, Send, ArrowUpRight, ExternalLink };

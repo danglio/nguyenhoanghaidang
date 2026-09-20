@@ -16,6 +16,7 @@ import {
   FacebookIcon,
   InstagramIcon,
   GmailIcon,
+  ZaloIcon,
 } from './SocialIcons';
 import LanyardBadge from './LanyardBadge';
 import { DEFAULT_PROFILE } from '../data/defaultProfile';
@@ -352,6 +353,22 @@ export default function HeroLanyard({
               )}
               <span>{copiedKey === 'work' ? 'Đã sao chép email!' : 'contact@danglio.com'}</span>
             </motion.button>
+
+            {/* 9. Nút Zalo Trực Tiếp (0862231322) */}
+            <motion.a
+              href="https://zalo.me/0862231322"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
+              className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-blue-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-blue-500/30 text-neutral-800 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm hover:shadow-[0_0_20px_rgba(0,136,255,0.2)]"
+              title="Nhắn tin Zalo trực tiếp 0862231322"
+            >
+              <ZaloIcon className="w-4 h-4 shrink-0" />
+              <span>Zalo: 0862231322</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-transform" />
+            </motion.a>
           </motion.div>
         </div>
 

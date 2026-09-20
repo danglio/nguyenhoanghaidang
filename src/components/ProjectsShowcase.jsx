@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   Sparkles,
@@ -16,12 +16,198 @@ import {
   Award,
   Play,
   Share2,
+  Lock,
+  Eye,
+  ShieldAlert,
+  Cpu,
+  Workflow,
+  Camera,
+  Server,
 } from 'lucide-react';
 import { YouTubeIcon, TikTokIcon, FacebookIcon } from './SocialIcons';
 import SpotifyAlbumShowcase from './SpotifyAlbumShowcase';
+import LocalProjectModal, { buildProjectSummary } from './LocalProjectModal';
+
+export const LOCAL_PROJECTS = {
+  cenkin: {
+    id: 'cenkin',
+    title: 'Cenkin (Locket & Zenly Radar Check-in)',
+    subtitle: 'Nền tảng định vị bạn bè thời gian thực kết hợp widget ảnh Locket màn hình khóa và cơ chế Bump vật lý kết nối tức thì.',
+    badge: '🔒 BẢN LOCAL // NỘI BỘ',
+    status: 'Private Dev Environment',
+    disclaimer: 'Dự án hiện đang vận hành trên máy chủ phát triển nội bộ (Localhost). Phiên bản dùng thử trực tiếp (Live Demo) công khai hiện chưa được mở trên Internet để bảo mật tài nguyên máy chủ và dữ liệu định vị người dùng.',
+    highlights: [
+      'Radar quét vệ tinh bạn bè 360 độ (phong cách Zenly)',
+      'Widget ảnh Locket gửi tức thì lên màn hình khóa',
+      'Công nghệ va chạm Bump vật lý (Accelerometer) kết nối bạn bè',
+      'Đồng bộ hóa vị trí thời gian thực <50ms qua Socket.io',
+    ],
+    architecture: [
+      {
+        title: 'Native Geolocation & Bump Sensor',
+        desc: 'Truy xuất GPS định kỳ và cảm biến gia tốc nhận diện tương tác đập máy vật lý.',
+        tag: 'Client Hardware',
+      },
+      {
+        title: 'Realtime Socket.io & Redux Store',
+        desc: 'Truyền nhận tọa độ p2p/room với độ trễ dưới 50ms, chuẩn hóa state vị trí bạn bè trên Redux Toolkit.',
+        tag: 'Transport & State',
+      },
+      {
+        title: 'Zenly Radar Canvas Engine',
+        desc: 'Tính toán góc phương vị, cự ly và render sóng radar quét 60fps với hiệu ứng âm thanh.',
+        tag: 'Rendering Core',
+      },
+      {
+        title: 'Locket Moments Pipeline',
+        desc: 'Xử lý nén ảnh camera tối ưu và cập nhật live widget trên thiết bị đối tác.',
+        tag: 'Media Service',
+      },
+    ],
+    features: [
+      {
+        title: 'Zenly Radar Quét 360° Real-time',
+        desc: 'Quét và hiển thị tọa độ bạn bè xung quanh với hiệu ứng sóng âm và cự ly thời gian thực.',
+      },
+      {
+        title: 'Locket Camera & Chuỗi Streak',
+        desc: 'Chụp và chia sẻ ảnh nhanh với chuỗi hoạt động (Streak) giữ nhiệt kết nối bạn bè.',
+      },
+      {
+        title: 'Cơ Chế Bump Vật Lý',
+        desc: 'Chạm nhẹ 2 thiết bị vào nhau để kết bạn và chia sẻ tọa độ tức thì nhờ cảm biến gia tốc kế.',
+      },
+      {
+        title: 'Tiết Kiệm Pin & Chế Độ Ẩn Danh',
+        desc: 'Thuật toán Geofencing thông minh tối ưu pin và chế độ Ghost Mode bảo vệ vị trí tùy chọn.',
+      },
+    ],
+    techStack: {
+      Frontend: ['React Native Web', 'Redux Toolkit', 'TailwindCSS', 'Framer Motion'],
+      Realtime_Sensors: ['Socket.io', 'Zenly Radar GPS', 'Bump Physical Engine', 'Web Geolocation API'],
+      Backend: ['Node.js', 'Express', 'Redis Geohash', 'PostGIS'],
+    },
+  },
+  aiCompany: {
+    id: 'ai-company-os',
+    title: 'Autonomous AI Company OS',
+    subtitle: 'Hệ điều hành doanh nghiệp AI tự động hóa hoàn toàn với kiến trúc Multi-Agent phân tầng và xử lý cục bộ.',
+    badge: '🔒 BẢN LOCAL // NỘI BỘ',
+    status: 'Apple Silicon M2 Pro & Private GPU',
+    disclaimer: 'Hệ thống vận hành trên phần cứng nội bộ Apple Silicon M2 Pro và cụm GPU riêng biệt. Hệ thống điều phối toàn diện từ chiến lược đến sản xuất sản phẩm tự động, chưa mở truy cập công khai để bảo vệ dữ liệu bí mật kinh doanh.',
+    highlights: [
+      'Mô hình điều phối phân tầng: Founder ➜ CEO ➜ PM ➜ Studios',
+      'Tối ưu hóa phần cứng Apple Silicon VideoToolbox render 60fps',
+      'Tự động hóa từ ý tưởng đến video TVC & landing page hoàn chỉnh',
+      'Bảo mật cục bộ 100%, không rò rỉ dữ liệu qua bên thứ ba',
+    ],
+    architecture: [
+      {
+        title: 'Founder Directive & Strategic Input',
+        desc: 'Tiếp nhận định hướng kinh doanh, KPI và ngân sách từ Founder.',
+        tag: 'Directive Layer',
+      },
+      {
+        title: 'CEO Orchestration Agent',
+        desc: 'Phân tích mục tiêu, lập kế hoạch tổng thể, cấp vốn và phân bổ task cho các PM chuyên trách.',
+        tag: 'Agent Core',
+      },
+      {
+        title: 'PM Task Decomposition & Routing',
+        desc: 'Bóc tách backlog, phân chia tài nguyên, giao việc cho Video Studio & Web Studio song song.',
+        tag: 'Dispatching',
+      },
+      {
+        title: 'Studio Execution & Local Hardware Acceleration',
+        desc: 'Video Studio dựng TVC bằng Apple Silicon VideoToolbox; Web Studio sinh mã & deploy tự động.',
+        tag: 'Hardware Acceleration',
+      },
+    ],
+    features: [
+      {
+        title: 'Hệ Thống Đa Agent Phân Tầng',
+        desc: 'CEO Agent giám sát, PM Agent điều phối và các Studio Agent chuyên trách thực thi độc lập.',
+      },
+      {
+        title: 'Tăng Tốc Phần Cứng Apple Silicon',
+        desc: 'Tối ưu hóa pipeline xử lý đa phương tiện qua GPU và VideoToolbox trên chip M2 Pro.',
+      },
+      {
+        title: 'Studio Tự Động Hóa Sản Phẩm',
+        desc: 'Tự động tạo kịch bản, biên tập video TVC, viết copy và phát triển landing page tự động.',
+      },
+      {
+        title: 'Terminal Giám Sát Realtime',
+        desc: 'Log trạng thái chi tiết theo thời gian thực của từng agent với cơ chế tự phục hồi lỗi.',
+      },
+    ],
+    techStack: {
+      Frontend: ['Next.js 14', 'shadcn/ui', 'TailwindCSS', 'Framer Motion'],
+      AI_Agents: ['Python FastAPI', 'Multi-Agent System', 'LangGraph', 'Local LLM'],
+      Hardware_Pipeline: ['Apple Silicon VideoToolbox', 'Metal Performance Shaders', 'FFmpeg GPU Acceleration'],
+    },
+  },
+};
+
+/**
+ * Animated Terminal Log Viewer simulating multi-agent rolling activities
+ */
+function TerminalLogViewer() {
+  const [logIndex, setLogIndex] = useState(0);
+
+  const logs = [
+    { time: '14:20:01', tag: 'FOUNDER', color: 'text-amber-400', msg: 'Directive set: Triển khai chiến dịch Q3' },
+    { time: '14:20:02', tag: 'CEO', color: 'text-purple-400', msg: 'Directive received. Lập kế hoạch 4 milestones' },
+    { time: '14:20:03', tag: 'PM', color: 'text-cyan-400', msg: 'Dispatched to VideoStudio & WebStudio' },
+    { time: '14:20:04', tag: 'VideoStudio', color: 'text-emerald-400', msg: 'Apple Silicon VideoToolbox: 60fps [OK]' },
+    { time: '14:20:05', tag: 'WebStudio', color: 'text-blue-400', msg: 'shadcn/ui responsive UI synthesized [READY]' },
+    { time: '14:20:06', tag: 'SYSTEM', color: 'text-neutral-400', msg: 'GPU M2 Pro: 32% Load • Latency: 38ms • Status: HEALTHY' },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setLogIndex((prev) => (prev + 1) % logs.length);
+    }, 2400);
+    return () => clearInterval(timer);
+  }, [logs.length]);
+
+  const visibleLogs = [
+    logs[(logIndex + logs.length - 2) % logs.length],
+    logs[(logIndex + logs.length - 1) % logs.length],
+    logs[logIndex],
+  ];
+
+  return (
+    <div className="rounded-xl bg-neutral-900/95 border border-neutral-800 p-3 space-y-2 font-mono text-[11px]">
+      <div className="flex items-center justify-between border-b border-neutral-800 pb-1.5">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-rose-500/80" />
+          <span className="w-2 h-2 rounded-full bg-amber-500/80" />
+          <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
+          <span className="text-[10px] text-neutral-400 ml-1.5">terminal@ai-company-os: ~</span>
+        </div>
+        <span className="text-[9px] text-emerald-400 flex items-center gap-1 font-bold">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          ONLINE (M2 PRO)
+        </span>
+      </div>
+
+      <div className="space-y-1 overflow-hidden min-h-[60px]">
+        {visibleLogs.map((item, idx) => (
+          <div key={idx} className="flex items-start gap-1.5 leading-tight truncate">
+            <span className="text-neutral-500 text-[10px]">[{item.time}]</span>
+            <span className={`font-bold shrink-0 ${item.color}`}>[{item.tag}]</span>
+            <span className="text-neutral-300 truncate">{item.msg}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function ProjectsShowcase({ showToast }) {
   const [copiedKey, setCopiedKey] = useState(null);
+  const [activeLocalProject, setActiveLocalProject] = useState(null);
 
   const handleCopyLink = async (url, title, key) => {
     try {
@@ -53,6 +239,43 @@ export default function ProjectsShowcase({ showToast }) {
       if (showToast) {
         showToast({
           message: 'Không thể sao chép liên kết, vui lòng thử lại!',
+          type: 'error',
+        });
+      }
+    }
+  };
+
+  const handleCopyProjectInfo = async (project, key) => {
+    try {
+      const summary = buildProjectSummary(project);
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(summary);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = summary;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+
+      setCopiedKey(key);
+      setTimeout(() => {
+        setCopiedKey(null);
+      }, 2000);
+
+      if (showToast) {
+        showToast({
+          message: `Đã sao chép thông tin dự án "${project.title}"!`,
+          type: 'success',
+        });
+      }
+    } catch {
+      if (showToast) {
+        showToast({
+          message: 'Không thể sao chép thông tin dự án, vui lòng thử lại!',
           type: 'error',
         });
       }
@@ -320,7 +543,391 @@ export default function ProjectsShowcase({ showToast }) {
           </div>
         </motion.div>
 
-        {/* DỰ ÁN 2: BENTO CARD - SERIES PODCAST LIO TẬP KỂ CHUYỆN */}
+        {/* DỰ ÁN 2: BENTO CARD - CENKIN (LOCKET & ZENLY RADAR CHECK-IN) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.05, ease: 'easeOut' }}
+          className="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-7 border border-neutral-200/80 dark:border-neutral-800/80 shadow-md glow-card flex flex-col justify-between relative overflow-hidden group"
+        >
+          {/* Ambient Emerald & Cyan Glow */}
+          <div className="absolute -top-16 -right-16 w-64 h-64 bg-gradient-to-br from-emerald-500/15 via-cyan-500/15 to-transparent rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+          <div className="absolute -bottom-16 -left-16 w-52 h-52 bg-gradient-to-tr from-amber-500/10 via-emerald-500/10 to-transparent rounded-full blur-2xl pointer-events-none" />
+
+          <div className="space-y-4 relative z-10">
+            {/* Badges Header */}
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">
+                  <Lock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+                  <span>🔒 BẢN LOCAL // NỘI BỘ</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
+                  <Eye className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                  <span>👀 CHỈ XEM PREVIEW</span>
+                </span>
+              </div>
+              <span className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
+                v1.2.0 • GPS
+              </span>
+            </div>
+
+            {/* Local Notice Warning Callout */}
+            <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-amber-500/10 dark:bg-amber-950/30 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-medium">
+              <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+              <span>Bản local chưa cho phép test • Chỉ xem giao diện</span>
+            </div>
+
+            {/* Title & Description */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-black tracking-tight text-neutral-900 dark:text-white">
+                Cenkin (Locket & Zenly Radar Check-in)
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                Nền tảng định vị radar thời gian thực kết hợp widget ảnh Locket màn hình khóa và cơ chế Bump vật lý kết nối tức thì khi va chạm nhẹ điện thoại.
+              </p>
+            </div>
+
+            {/* Rich Interactive UI Mockup: Zenly Radar 360° + Locket Viewfinder with Streak */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3.5 rounded-2xl bg-neutral-950/90 border border-neutral-800 shadow-inner">
+              {/* 1. Zenly Radar Scan Circle */}
+              <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-neutral-900/80 border border-emerald-500/20 relative overflow-hidden min-h-[170px]">
+                <div className="relative w-32 h-32 flex items-center justify-center">
+                  {/* Concentric rings */}
+                  <div className="absolute inset-0 rounded-full border border-emerald-500/30" />
+                  <div className="absolute inset-3 rounded-full border border-dashed border-emerald-500/25" />
+                  <div className="absolute inset-7 rounded-full border border-emerald-500/20" />
+                  {/* Crosshairs */}
+                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-emerald-500/20" />
+                  <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-emerald-500/20" />
+
+                  {/* 360 Rotating Radar Beam */}
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ repeat: Infinity, ease: 'linear', duration: 3.5 }}
+                    className="absolute inset-0 rounded-full pointer-events-none"
+                    style={{
+                      background: 'conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(16, 185, 129, 0.45) 360deg)',
+                    }}
+                  />
+
+                  {/* Center user blip */}
+                  <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399] ring-4 ring-emerald-500/30 flex items-center justify-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+                  </div>
+
+                  {/* Blip 1: Friend Ha My */}
+                  <div className="absolute top-2.5 right-4 z-10 flex items-center gap-1 group">
+                    <div className="relative">
+                      <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 block shadow-[0_0_8px_#22d3ee]" />
+                      <span className="absolute inset-0 rounded-full bg-cyan-400 animate-ping opacity-75" />
+                    </div>
+                    <span className="text-[9px] font-mono font-bold text-cyan-300 bg-neutral-950/90 px-1.5 py-0.5 rounded border border-cyan-500/40">
+                      Ha My (120m)
+                    </span>
+                  </div>
+
+                  {/* Blip 2: Friend Minh */}
+                  <div className="absolute bottom-3 left-2.5 z-10 flex items-center gap-1 group">
+                    <div className="relative">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 block shadow-[0_0_8px_#f59e0b]" />
+                      <span className="absolute inset-0 rounded-full bg-amber-400 animate-ping opacity-75" />
+                    </div>
+                    <span className="text-[9px] font-mono font-bold text-amber-300 bg-neutral-950/90 px-1.5 py-0.5 rounded border border-amber-500/40">
+                      Minh (450m)
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-1.5 text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+                  <Radio className="w-3 h-3 animate-pulse text-emerald-400" />
+                  <span>Zenly Radar 60fps Scan</span>
+                </div>
+              </div>
+
+              {/* 2. Locket Camera Viewfinder Frame */}
+              <div className="rounded-xl bg-neutral-900/90 border border-neutral-800 p-3 flex flex-col justify-between min-h-[170px] relative overflow-hidden">
+                {/* Viewfinder Corner Brackets */}
+                <div className="absolute top-2 left-2 w-2.5 h-2.5 border-t-2 border-l-2 border-white/70" />
+                <div className="absolute top-2 right-2 w-2.5 h-2.5 border-t-2 border-r-2 border-white/70" />
+                <div className="absolute bottom-2 left-2 w-2.5 h-2.5 border-b-2 border-l-2 border-white/70" />
+                <div className="absolute bottom-2 right-2 w-2.5 h-2.5 border-b-2 border-r-2 border-white/70" />
+
+                {/* Top Bar with Streak */}
+                <div className="flex items-center justify-between z-10">
+                  <span className="text-[9px] font-mono text-neutral-400 flex items-center gap-1">
+                    <Camera className="w-3 h-3 text-white" />
+                    <span>LOCKET LIVE</span>
+                  </span>
+
+                  {/* Animated 14 Days Streak Badge */}
+                  <motion.div
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 text-white font-black text-[10px] shadow-[0_0_10px_rgba(244,63,94,0.4)]"
+                  >
+                    <Flame className="w-3 h-3 fill-white" />
+                    <span>🔥 14 Days Streak</span>
+                  </motion.div>
+                </div>
+
+                {/* Center Viewfinder Reticle */}
+                <div className="my-auto flex flex-col items-center justify-center text-center z-10 py-1">
+                  <div className="w-11 h-11 rounded-2xl bg-neutral-800/90 border border-white/20 flex items-center justify-center shadow-inner">
+                    <div className="w-7 h-7 rounded-full border border-dashed border-cyan-400/70 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                    </div>
+                  </div>
+                  <span className="text-[9px] font-mono text-neutral-300 mt-1">
+                    Chạm đập máy để Bump
+                  </span>
+                </div>
+
+                {/* Bottom Bar: Shutter Button and Bump status */}
+                <div className="flex items-center justify-between z-10 border-t border-neutral-800/80 pt-1.5">
+                  <span className="text-[9px] font-mono text-emerald-400">
+                    Bump: Ready
+                  </span>
+                  <div className="w-5 h-5 rounded-full border-2 border-white bg-white/30 flex items-center justify-center shadow-sm">
+                    <div className="w-2 h-2 rounded-full bg-white" />
+                  </div>
+                  <span className="text-[9px] font-mono text-neutral-400">
+                    Widget Sync
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Tech Tags */}
+            <div className="flex flex-wrap gap-2 pt-1">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/60 dark:border-neutral-700/60">
+                React Native Web
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/60 dark:border-neutral-700/60">
+                Redux Toolkit
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/60 dark:border-neutral-700/60">
+                Socket.io
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                Zenly Radar GPS
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                Bump Physical Engine
+              </span>
+            </div>
+          </div>
+
+          {/* Action Row */}
+          <div className="flex items-center gap-3 pt-6 relative z-10">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setActiveLocalProject(LOCAL_PROJECTS.cenkin)}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-sm glow-btn group/link cursor-pointer"
+            >
+              <Eye className="w-4 h-4 text-emerald-400 dark:text-emerald-600" />
+              <span>Xem Chi Tiết & Giao Diện</span>
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => handleCopyProjectInfo(LOCAL_PROJECTS.cenkin, 'cenkin-card')}
+              className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl glass-card border border-neutral-300/80 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+              title="Sao chép thông tin dự án Cenkin"
+            >
+              {copiedKey === 'cenkin-card' ? (
+                <>
+                  <Check className="w-4 h-4 text-emerald-500" />
+                  <span className="text-emerald-500 font-bold text-xs">Đã chép!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
+                  <span className="text-xs">Sao chép thông tin</span>
+                </>
+              )}
+            </motion.button>
+          </div>
+        </motion.div>
+
+        {/* DỰ ÁN 3: BENTO CARD - AUTONOMOUS AI COMPANY OS */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
+          className="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-7 border border-neutral-200/80 dark:border-neutral-800/80 shadow-md glow-card flex flex-col justify-between relative overflow-hidden group"
+        >
+          {/* Ambient Purple & Rose Glow */}
+          <div className="absolute -top-16 -right-16 w-64 h-64 bg-gradient-to-br from-purple-500/15 via-rose-500/15 to-transparent rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+          <div className="absolute -bottom-16 -left-16 w-52 h-52 bg-gradient-to-tr from-amber-500/10 via-purple-500/10 to-transparent rounded-full blur-2xl pointer-events-none" />
+
+          <div className="space-y-4 relative z-10">
+            {/* Badges Header */}
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">
+                  <Lock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+                  <span>🔒 BẢN LOCAL // NỘI BỘ</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/25">
+                  <Eye className="w-3 h-3 text-purple-600 dark:text-purple-400" />
+                  <span>👀 CHỈ XEM PREVIEW</span>
+                </span>
+              </div>
+              <span className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
+                M2 Pro • Multi-Agent
+              </span>
+            </div>
+
+            {/* Local Notice Warning Callout */}
+            <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-amber-500/10 dark:bg-amber-950/30 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-medium">
+              <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+              <span>Hệ thống chạy trên Apple Silicon M2 Pro & GPU nội bộ, bảo mật máy chủ</span>
+            </div>
+
+            {/* Title & Description */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-black tracking-tight text-neutral-900 dark:text-white">
+                Autonomous AI Company OS
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                Hệ điều hành doanh nghiệp AI tự động hóa hoàn toàn với cấu trúc đa Agent phân tầng từ Founder ➜ CEO ➜ PM ➜ Studios, tối ưu hóa phần cứng Apple Silicon M2 Pro.
+              </p>
+            </div>
+
+            {/* Rich Interactive UI Mockup: Hierarchical Org Tree + Simulated Terminal */}
+            <div className="p-3.5 rounded-2xl bg-neutral-950/90 border border-neutral-800 shadow-inner space-y-3">
+              {/* Hierarchical Org Tree */}
+              <div className="space-y-1.5 text-xs font-mono">
+                {/* Founder Node */}
+                <div className="flex items-center justify-center">
+                  <div className="px-3 py-1 rounded-lg bg-amber-500/10 border border-amber-500/40 text-amber-300 flex items-center gap-1.5 shadow-[0_0_12px_rgba(245,158,11,0.15)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+                    <span className="font-bold text-[11px]">Founder (Human Directive)</span>
+                  </div>
+                </div>
+
+                {/* Vertical Line with Pulse */}
+                <div className="w-px h-3 mx-auto bg-gradient-to-b from-amber-500 to-purple-500 relative">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-400 absolute top-1/2 -left-[2px] -translate-y-1/2 animate-pulse" />
+                </div>
+
+                {/* CEO Node */}
+                <div className="flex items-center justify-center">
+                  <div className="px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/40 text-purple-300 flex items-center gap-1.5 shadow-[0_0_12px_rgba(168,85,247,0.15)]">
+                    <Cpu className="w-3 h-3 text-purple-400" />
+                    <span className="font-bold text-[11px]">CEO Agent (Orchestration & Budget)</span>
+                  </div>
+                </div>
+
+                {/* Vertical Line with Pulse */}
+                <div className="w-px h-3 mx-auto bg-gradient-to-b from-purple-500 to-cyan-500 relative">
+                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 absolute top-1/2 -left-[2px] -translate-y-1/2 animate-pulse" />
+                </div>
+
+                {/* PM Node */}
+                <div className="flex items-center justify-center">
+                  <div className="px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/40 text-cyan-300 flex items-center gap-1.5 shadow-[0_0_12px_rgba(6,182,212,0.15)]">
+                    <Workflow className="w-3 h-3 text-cyan-400" />
+                    <span className="font-bold text-[11px]">PM Agent (Task Decomposition)</span>
+                  </div>
+                </div>
+
+                {/* Fork Lines to Studios */}
+                <div className="relative h-3 max-w-[220px] mx-auto">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-1.5 bg-cyan-500/40" />
+                  <div className="absolute top-1.5 left-5 right-5 h-px bg-cyan-500/40" />
+                  <div className="absolute top-1.5 left-5 w-px h-1.5 bg-cyan-500/40" />
+                  <div className="absolute top-1.5 right-5 w-px h-1.5 bg-cyan-500/40" />
+                </div>
+
+                {/* Studios Grid */}
+                <div className="grid grid-cols-2 gap-2 pt-0.5">
+                  <div className="p-2 rounded-xl bg-neutral-900/90 border border-neutral-800 flex flex-col items-center text-center">
+                    <div className="text-[11px] font-bold text-white flex items-center gap-1">
+                      <Tv className="w-3 h-3 text-emerald-400" />
+                      <span>Video Studio</span>
+                    </div>
+                    <div className="text-[9px] text-neutral-400 mt-0.5 font-mono">
+                      Apple Silicon M2 Pro • 60fps
+                    </div>
+                  </div>
+
+                  <div className="p-2 rounded-xl bg-neutral-900/90 border border-neutral-800 flex flex-col items-center text-center">
+                    <div className="text-[11px] font-bold text-white flex items-center gap-1">
+                      <Layers className="w-3 h-3 text-blue-400" />
+                      <span>Web Studio</span>
+                    </div>
+                    <div className="text-[9px] text-neutral-400 mt-0.5 font-mono">
+                      Next.js 14 • shadcn/ui
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Simulated Live Terminal */}
+              <TerminalLogViewer />
+            </div>
+
+            {/* Tech Tags */}
+            <div className="flex flex-wrap gap-2 pt-1">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/60 dark:border-neutral-700/60">
+                Next.js 14
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/60 dark:border-neutral-700/60">
+                Python FastAPI
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/60 dark:border-neutral-700/60">
+                shadcn/ui
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+                Apple Silicon VideoToolbox
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+                Multi-Agent System
+              </span>
+            </div>
+          </div>
+
+          {/* Action Row */}
+          <div className="flex items-center gap-3 pt-6 relative z-10">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setActiveLocalProject(LOCAL_PROJECTS.aiCompany)}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-sm glow-btn group/link cursor-pointer"
+            >
+              <Eye className="w-4 h-4 text-purple-400 dark:text-purple-600" />
+              <span>Xem Chi Tiết & Giao Diện</span>
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => handleCopyProjectInfo(LOCAL_PROJECTS.aiCompany, 'ai-company-card')}
+              className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl glass-card border border-neutral-300/80 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+              title="Sao chép thông tin dự án Autonomous AI Company OS"
+            >
+              {copiedKey === 'ai-company-card' ? (
+                <>
+                  <Check className="w-4 h-4 text-emerald-500" />
+                  <span className="text-emerald-500 font-bold text-xs">Đã chép!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
+                  <span className="text-xs">Sao chép thông tin</span>
+                </>
+              )}
+            </motion.button>
+          </div>
+        </motion.div>
+
+        {/* DỰ ÁN 4: BENTO CARD - SERIES PODCAST LIO TẬP KỂ CHUYỆN */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -428,7 +1035,7 @@ export default function ProjectsShowcase({ showToast }) {
           </div>
         </motion.div>
 
-        {/* DỰ ÁN 3: BENTO CARD - KÊNH YOUTUBE @LIO_TSV */}
+        {/* DỰ ÁN 5: BENTO CARD - KÊNH YOUTUBE @LIO_TSV */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -533,11 +1140,26 @@ export default function ProjectsShowcase({ showToast }) {
           </div>
         </motion.div>
 
-        {/* DỰ ÁN 4: BENTO CARD - SPOTIFY MINI EP ALBUM (THE DAWN CHRONICLES) */}
+        {/* DỰ ÁN 6: BENTO CARD - SPOTIFY MINI EP ALBUM (THE DAWN CHRONICLES) */}
         <div className="lg:col-span-12">
           <SpotifyAlbumShowcase showToast={showToast} />
         </div>
       </div>
+
+      {/* Reusable Modal for Local/Internal Projects */}
+      <LocalProjectModal
+        project={activeLocalProject}
+        isOpen={Boolean(activeLocalProject)}
+        onClose={() => setActiveLocalProject(null)}
+        onCopyInfo={() => {
+          if (showToast) {
+            showToast({
+              message: 'Đã sao chép thông tin dự án!',
+              type: 'success',
+            });
+          }
+        }}
+      />
     </section>
   );
 }

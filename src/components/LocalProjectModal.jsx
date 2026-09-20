@@ -17,7 +17,7 @@ import {
 /**
  * Generate a clean, readable text summary of the project to copy to the clipboard.
  */
-function buildProjectSummary(project) {
+export function buildProjectSummary(project) {
   if (!project) return '';
 
   const lines = [

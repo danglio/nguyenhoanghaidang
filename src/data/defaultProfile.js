@@ -19,7 +19,6 @@ export const DEFAULT_PROFILE = {
     status: "🟢 Đang học tập tại HUIT & làm việc tại TP.HCM",
     email: "nguyenhoanghaidang.lio@gmail.com",
     secondaryEmail: "contact@danglio.com",
-    phone: "0862231322",
     zalo: "https://zalo.me/0862231322",
     bio: "Sinh ngày 08/02/2008, hiện đang học tập tại Trường Đại học Công Thương TP.HCM (HUIT) và sinh sống, làm việc tại TP. Hồ Chí Minh. Đam mê sáng tạo nội dung số, chia sẻ những câu chuyện truyền cảm hứng và phát triển các dự án tương tác thú vị!",
   },
@@ -115,10 +114,10 @@ export const DEFAULT_PROFILE = {
     {
       id: "link-zalo",
       platform: "zalo",
-      title: "Zalo Cá Nhân (0862231322)",
+      title: "Zalo Cá Nhân (Lio)",
       url: "https://zalo.me/0862231322",
-      stats: "0862231322 • Nhắn tin & Kết bạn trực tiếp",
-      description: "Kênh Zalo chính thức liên hệ công việc, trao đổi dự án, hợp tác nội dung & kết nối nhanh cùng Đăng Lio",
+      stats: "Nhắn Tin & Kết Bạn Trực Tiếp • Chat Nhanh",
+      description: "Kênh Zalo chính thức trao đổi công việc, hợp tác dự án sáng tạo và kết nối nhanh chóng cùng Lio",
     },
   ],
 };

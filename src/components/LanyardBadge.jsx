@@ -323,13 +323,6 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-neutral-950/70 via-transparent to-white/15 pointer-events-none" />
                   </div>
 
-                  {/* 3. MAGAZINE EDITORIAL HEADER BADGE */}
-                  <div className="absolute top-2 inset-x-2 z-20 flex items-center justify-center py-0.5 px-2 rounded-full bg-black/75 backdrop-blur-md border border-amber-400/30 shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-                    <span className="text-[7.5px] sm:text-[8px] font-mono font-extrabold tracking-wider bg-gradient-to-r from-amber-300 via-yellow-100 to-amber-400 bg-clip-text text-transparent uppercase truncate">
-                      ★ ISSUE 2026 // LIO EXCLUSIVE
-                    </span>
-                  </div>
-
                   {/* 4. SPECULAR GLASS SHEEN SWEEP ON HOVER */}
                   <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-20">
                     <div className="absolute -inset-[150%] bg-gradient-to-r from-transparent via-white/20 to-transparent -rotate-45 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
@@ -398,73 +391,14 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                 </div>
               </div>
 
-              {/* BOTTOM CARD SECTION: HOLOGRAPHIC STRIP & BARCODE */}
-              <div>
-                {/* HOLOGRAPHIC RAINBOW FOIL RIBBON */}
-                <div className="relative h-2.5 w-full overflow-hidden rounded-sm bg-gradient-to-r from-rose-500 via-amber-400 via-emerald-400 via-cyan-400 via-indigo-500 to-fuchsia-500 shadow-[0_0_12px_rgba(6,182,212,0.35)]">
-                  <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_5px,rgba(255,255,255,0.4)_5px,rgba(255,255,255,0.4)_10px)] mix-blend-overlay animate-pulse" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/25 via-transparent to-black/30 pointer-events-none" />
-                </div>
-
-                {/* BARCODE SVG & AUTHENTIC ID */}
-                <div className="mt-2 px-2.5 py-1.5 bg-black/40 rounded-lg border border-white/10">
-                  <div className="flex items-center justify-between">
-                    <svg
-                      className="h-6 w-full text-neutral-200"
-                      viewBox="0 0 160 26"
-                      preserveAspectRatio="none"
-                      fill="currentColor"
-                    >
-                      <rect x="0" y="0" width="2" height="26" />
-                      <rect x="4" y="0" width="1" height="26" />
-                      <rect x="7" y="0" width="3" height="26" />
-                      <rect x="12" y="0" width="1" height="26" />
-                      <rect x="15" y="0" width="4" height="26" />
-                      <rect x="21" y="0" width="2" height="26" />
-                      <rect x="25" y="0" width="1" height="26" />
-                      <rect x="28" y="0" width="3" height="26" />
-                      <rect x="33" y="0" width="2" height="26" />
-                      <rect x="37" y="0" width="4" height="26" />
-                      <rect x="43" y="0" width="1" height="26" />
-                      <rect x="46" y="0" width="3" height="26" />
-                      <rect x="51" y="0" width="2" height="26" />
-                      <rect x="55" y="0" width="1" height="26" />
-                      <rect x="58" y="0" width="4" height="26" />
-                      <rect x="64" y="0" width="2" height="26" />
-                      <rect x="68" y="0" width="1" height="26" />
-                      <rect x="71" y="0" width="3" height="26" />
-                      <rect x="76" y="0" width="2" height="26" />
-                      <rect x="80" y="0" width="4" height="26" />
-                      <rect x="86" y="0" width="1" height="26" />
-                      <rect x="89" y="0" width="3" height="26" />
-                      <rect x="94" y="0" width="2" height="26" />
-                      <rect x="98" y="0" width="1" height="26" />
-                      <rect x="101" y="0" width="4" height="26" />
-                      <rect x="107" y="0" width="2" height="26" />
-                      <rect x="111" y="0" width="1" height="26" />
-                      <rect x="114" y="0" width="3" height="26" />
-                      <rect x="119" y="0" width="2" height="26" />
-                      <rect x="123" y="0" width="4" height="26" />
-                      <rect x="129" y="0" width="1" height="26" />
-                      <rect x="132" y="0" width="3" height="26" />
-                      <rect x="137" y="0" width="2" height="26" />
-                      <rect x="141" y="0" width="1" height="26" />
-                      <rect x="144" y="0" width="4" height="26" />
-                      <rect x="150" y="0" width="2" height="26" />
-                      <rect x="154" y="0" width="1" height="26" />
-                      <rect x="157" y="0" width="3" height="26" />
-                    </svg>
-                  </div>
-
-                  {/* ID & Verified Labels */}
-                  <div className="flex items-center justify-between text-[9px] font-mono text-neutral-400 mt-1">
-                    <span className="font-bold tracking-wider text-neutral-300">#LIO-2026-0802</span>
-                    <span className="tracking-widest uppercase text-[8px] text-cyan-400/90 flex items-center gap-1">
-                      <span>VERIFIED ACCESS</span>
-                      <span className="text-neutral-500">&bull;</span>
-                      <span className="text-neutral-300">DBL CLICK ↺</span>
-                    </span>
-                  </div>
+              {/* BOTTOM CARD SECTION: CLEAN CREATOR VERIFIED SEAL */}
+              <div className="mt-2.5">
+                <div className="px-3 py-2 rounded-xl bg-black/40 border border-white/10 flex items-center justify-between text-[9px] font-mono">
+                  <span className="text-neutral-400 font-medium tracking-wider">CREATOR ID: #LIO</span>
+                  <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold tracking-wider uppercase">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    VERIFIED
+                  </span>
                 </div>
               </div>
             </div>
@@ -507,7 +441,7 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                 </div>
 
                 {/* Header: Digital Passport & Flip Back Button */}
-                <div className="flex items-center justify-between px-1 relative z-20">
+                <div className="flex items-center justify-between px-1 mb-2 relative z-20">
                   <div className="flex items-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
                     <span className="text-[10px] font-black tracking-[0.2em] text-neutral-200 uppercase">
@@ -519,72 +453,11 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                     onClick={handleToggleFlip}
                     onPointerDown={(e) => e.stopPropagation()}
                     title="Lật lại mặt trước"
-                    className="group flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/10 hover:bg-cyan-500/20 border border-white/20 hover:border-cyan-400/50 text-neutral-200 hover:text-cyan-300 transition-all shadow-sm cursor-pointer active:scale-95"
+                    className="group flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/10 hover:bg-cyan-500/20 border border-white/20 hover:border-cyan-400/50 text-neutral-200 hover:text-cyan-300 transition-all shadow-sm cursor-pointer active:scale-95"
                   >
                     <RotateCw className="w-3 h-3 group-hover:-rotate-180 transition-transform duration-500 text-cyan-400" />
                     <span className="text-[9px] font-bold tracking-wider uppercase">Mặt trước</span>
                   </button>
-                </div>
-
-                {/* Magnetic Stripe Bar */}
-                <div className="relative mt-1.5 w-full h-6 bg-gradient-to-r from-neutral-950 via-neutral-800 to-neutral-950 rounded border-y border-neutral-700/60 shadow-inner flex items-center justify-between px-2.5 overflow-hidden">
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)`,
-                    }}
-                  />
-                  <span className="text-[7px] font-mono tracking-[0.14em] text-neutral-400 uppercase truncate">
-                    DIGITAL IDENTITY &bull; ENCRYPTED KEY &bull; VIP ACCESS
-                  </span>
-                  <span className="text-[8px] font-mono font-bold tracking-wider text-cyan-400 shrink-0 ml-1">
-                    {passportId}
-                  </span>
-                </div>
-
-                {/* Gold Smart Chip & NFC Simulation */}
-                <div className="mt-1.5 flex items-center justify-between px-2.5 py-1.5 bg-neutral-950/60 rounded-xl border border-white/10 shadow-sm">
-                  <div className="flex items-center gap-2.5">
-                    {/* EMV Gold Smart Chip */}
-                    <div className="relative w-9 h-7 rounded-md bg-gradient-to-br from-amber-200 via-amber-400 to-yellow-600 p-[2px] shadow-[0_2px_8px_rgba(245,158,11,0.35)] border border-amber-300/90 shrink-0">
-                      <div className="w-full h-full rounded-[3px] border border-amber-800/40 relative overflow-hidden bg-amber-400/90 flex flex-col justify-between">
-                        <div className="absolute top-1/2 left-0 right-0 h-[0.5px] bg-amber-900/60 -translate-y-1/2" />
-                        <div className="absolute top-0 bottom-0 left-[35%] w-[0.5px] bg-amber-900/60" />
-                        <div className="absolute top-0 bottom-0 right-[35%] w-[0.5px] bg-amber-900/60" />
-                        <div className="w-2 h-1.5 mx-auto my-auto rounded-[1.5px] border border-amber-900/60 bg-amber-300/80" />
-                      </div>
-                    </div>
-
-                    {/* Chip Label */}
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-1 text-amber-300 text-[10px] font-mono font-bold tracking-wider">
-                        <Cpu className="w-3 h-3 text-amber-400" />
-                        <span>NFC SMART CHIP</span>
-                      </div>
-                      <span className="text-[8px] font-mono text-neutral-400 tracking-wider">
-                        RFID EMV // AUTHENTIC PASS
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Contactless Waves SVG */}
-                  <div className="flex items-center gap-1 text-cyan-400/90">
-                    <svg
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    >
-                      <path d="M8.5 16.5a5 5 0 0 1 0-9" />
-                      <path d="M12 19a8.5 8.5 0 0 0 0-14" />
-                      <path d="M15.5 21.5a12 12 0 0 0 0-19" />
-                    </svg>
-                    <span className="text-[8px] font-mono font-bold text-neutral-400 tracking-widest hidden sm:inline">
-                      WIRELESS
-                    </span>
-                  </div>
                 </div>
               </div>
 
@@ -629,16 +502,16 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
               </div>
 
               {/* BOTTOM BACK SECTION: IDENTITY & FLIP BACK BUTTON */}
-              <div className="mt-1">
-                <div className="text-center mb-1.5 px-1">
-                  <div className="text-xs sm:text-sm font-black text-white tracking-wider uppercase truncate">
+              <div className="mt-2">
+                <div className="text-center mb-2 px-1">
+                  <div className="text-sm font-black text-white tracking-wider uppercase truncate">
                     {displayName}
                   </div>
-                  <div className="text-[10px] text-indigo-300 font-medium tracking-wide truncate">
+                  <div className="text-xs text-indigo-300 font-medium tracking-wide truncate mt-0.5">
                     ĐH Công Thương TP.HCM (HUIT)
                   </div>
-                  <div className="flex items-center justify-center gap-1.5 text-[8px] sm:text-[9px] font-mono text-neutral-400 mt-0.5">
-                    <span className="text-cyan-300 font-semibold">DOB: 08/02/2008</span>
+                  <div className="flex items-center justify-center gap-2 text-[9px] font-mono text-neutral-400 mt-1">
+                    <span className="text-cyan-300 font-semibold">08/02/2008</span>
                     <span>&bull;</span>
                     <span>TP. Hồ Chí Minh</span>
                   </div>
@@ -649,10 +522,10 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                   type="button"
                   onClick={handleToggleFlip}
                   onPointerDown={(e) => e.stopPropagation()}
-                  className="w-full py-1.5 rounded-xl bg-white/10 hover:bg-cyan-500/20 border border-white/20 hover:border-cyan-400/50 text-neutral-200 hover:text-cyan-200 text-[10px] font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer active:scale-98"
+                  className="w-full py-2 rounded-xl bg-white/10 hover:bg-cyan-500/20 border border-white/20 hover:border-cyan-400/50 text-neutral-200 hover:text-cyan-200 text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer active:scale-98"
                 >
-                  <RotateCw className="w-3 h-3 text-cyan-400" />
-                  <span>Lật lại mặt trước (Double Click)</span>
+                  <RotateCw className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>Lật lại mặt trước</span>
                 </button>
               </div>
             </div>

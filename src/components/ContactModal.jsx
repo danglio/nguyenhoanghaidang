@@ -381,12 +381,12 @@ ${trimmedMessage}
                   </button>
                 </div>
 
-                {/* Liên Hệ 3: Zalo 0862231322 */}
+                {/* Liên Hệ 3: Zalo Trực Tiếp */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-1 border-t border-neutral-200/50 dark:border-neutral-700/40">
                   <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-300">
                     <ZaloIcon className="w-4 h-4 shrink-0" />
                     <span>
-                      Zalo trực tiếp: <strong className="font-mono text-neutral-900 dark:text-white">0862231322</strong>
+                      Zalo trực tiếp: <strong className="font-semibold text-neutral-900 dark:text-white">Nguyễn Hoàng Hải Đăng (Lio)</strong>
                     </span>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
@@ -394,27 +394,11 @@ ${trimmedMessage}
                       href="https://zalo.me/0862231322"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/30 transition-colors font-semibold text-[11px]"
+                      className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/30 transition-colors font-semibold text-[11px]"
+                      title="Nhắn tin Zalo trực tiếp cùng Lio"
                     >
-                      <span>Mở Zalo</span>
+                      <span>Nhắn tin Zalo</span>
                     </a>
-                    <button
-                      type="button"
-                      onClick={() => handleCopyEmail('0862231322', 'zalo')}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-700/80 hover:bg-neutral-200 dark:hover:bg-neutral-600 text-neutral-700 dark:text-neutral-200 border border-neutral-300/80 dark:border-neutral-600 transition-colors font-medium text-[11px]"
-                    >
-                      {copiedKey === 'zalo' ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 text-emerald-500" />
-                          <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Đã chép!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-3.5 h-3.5" />
-                          <span>Sao chép</span>
-                        </>
-                      )}
-                    </button>
                   </div>
                 </div>
               </div>

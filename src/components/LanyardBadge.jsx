@@ -385,7 +385,7 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                   </p>
                   <div className="flex items-center justify-center gap-1.5 mt-1">
                     <span className="px-2 py-0.5 rounded text-[9px] font-mono font-medium tracking-widest text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 uppercase">
-                      HUIT &bull; 08/02/2008 &bull; TP.HCM
+                      HUIT &bull; Sinh năm 2008 &bull; TP.HCM
                     </span>
                   </div>
                 </div>
@@ -511,7 +511,7 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                     ĐH Công Thương TP.HCM (HUIT)
                   </div>
                   <div className="flex items-center justify-center gap-2 text-[9px] font-mono text-neutral-400 mt-1">
-                    <span className="text-cyan-300 font-semibold">08/02/2008</span>
+                    <span className="text-cyan-300 font-semibold">Sinh năm 2008</span>
                     <span>&bull;</span>
                     <span>TP. Hồ Chí Minh</span>
                   </div>

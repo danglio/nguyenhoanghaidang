@@ -1,32 +1,27 @@
 import { useState, useEffect } from 'react';
 import { DEFAULT_PROFILE } from '../data/defaultProfile';
 
-const STORAGE_KEY = 'personal_bio_profile_v12';
+const STORAGE_KEY = 'personal_bio_profile_v13';
 
 export function calculateAge(birthDateString) {
   if (!birthDateString) return null;
-  const birth = new Date(birthDateString);
-  if (isNaN(birth.getTime())) return null;
-  
+  const str = String(birthDateString).trim();
+  const yearMatch = str.match(/\b(19\d\d|20\d\d)\b/);
+  if (!yearMatch) return null;
+  const birthYear = parseInt(yearMatch[1], 10);
   const now = new Date();
-  let age = now.getFullYear() - birth.getFullYear();
-  const m = now.getMonth() - birth.getMonth();
-  if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) {
-    age--;
-  }
+  let age = now.getFullYear() - birthYear;
   return age >= 0 ? age : null;
 }
 
 export function formatBirthDate(birthDateString) {
   if (!birthDateString) return '';
-  const date = new Date(birthDateString);
-  if (isNaN(date.getTime())) return birthDateString;
-
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = date.getFullYear();
-
-  return `${day}/${month}/${year}`;
+  const str = String(birthDateString).trim();
+  const yearMatch = str.match(/\b(19\d\d|20\d\d)\b/);
+  if (yearMatch) {
+    return `Sinh năm ${yearMatch[1]}`;
+  }
+  return str;
 }
 
 export function useProfileData() {
@@ -35,6 +30,9 @@ export function useProfileData() {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
+        if (parsed.personal?.bio && parsed.personal.bio.includes('08/02/2008')) {
+          parsed.personal.bio = parsed.personal.bio.replace(/Sinh ngày 08\/02\/2008/g, 'Sinh năm 2008').replace(/08\/02\/2008/g, '2008');
+        }
         return {
           personal: { ...DEFAULT_PROFILE.personal, ...(parsed.personal || {}) },
           accentColor: parsed.accentColor || DEFAULT_PROFILE.accentColor,

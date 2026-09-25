@@ -186,10 +186,10 @@ export default function HeroLanyard({
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.13 }}
             className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs font-mono"
           >
-            {/* 1. Sinh nhật 08/02/2008 */}
+            {/* 1. Sinh năm 2008 */}
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 shadow-sm backdrop-blur-md">
               <Calendar className="w-3.5 h-3.5 text-pink-500 shrink-0" />
-              <span className="font-semibold">08/02/2008</span>
+              <span className="font-semibold">Sinh năm 2008</span>
               <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-pink-500/10 text-pink-600 dark:text-pink-400 font-bold font-sans">
                 18 tuổi
               </span>

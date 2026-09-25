@@ -10,7 +10,7 @@ export const DEFAULT_PROFILE = {
       "Video & Podcast Maker",
       "Web Experimenter",
     ],
-    birthDate: "2008-02-08",
+    birthDate: "2008",
     showAge: true,
     location: "TP. Hồ Chí Minh, Việt Nam",
     university: "Trường Đại học Công Thương TP.HCM (HUIT)",
@@ -20,7 +20,7 @@ export const DEFAULT_PROFILE = {
     email: "nguyenhoanghaidang.lio@gmail.com",
     secondaryEmail: "contact@danglio.com",
     zalo: "https://zalo.me/0862231322",
-    bio: "Sinh ngày 08/02/2008, hiện đang học tập tại Trường Đại học Công Thương TP.HCM (HUIT) và sinh sống, làm việc tại TP. Hồ Chí Minh. Đam mê sáng tạo nội dung số, chia sẻ những câu chuyện truyền cảm hứng và phát triển các dự án tương tác thú vị!",
+    bio: "Sinh năm 2008, hiện đang học tập tại Trường Đại học Công Thương TP.HCM (HUIT) và sinh sống, làm việc tại TP. Hồ Chí Minh. Đam mê sáng tạo nội dung số, chia sẻ những câu chuyện truyền cảm hứng và phát triển các dự án tương tác thú vị!",
   },
   accentColor: "indigo",
   vibeMusic: {

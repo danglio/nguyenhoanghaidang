@@ -51,10 +51,33 @@ export default function Navbar({
           >
             Kỹ năng
           </a>
+          <a
+            href="http://localhost:3000"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-1.5 rounded-full text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-white/80 dark:hover:bg-white/10 transition-all flex items-center gap-1 font-bold"
+            title="Mở Apple Pro Project Showcase"
+          >
+            <span></span>
+            <span>Showcase</span>
+          </a>
         </nav>
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-1.5 sm:space-x-2">
+          {/* Showcase Pro Quick Button */}
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="http://localhost:3000"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Khám phá Apple Pro Project Showcase"
+            className="hidden sm:flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-sm hover:opacity-90 transition-all"
+          >
+            <span></span>
+            <span>Showcase</span>
+          </motion.a>
           {/* Hợp tác Button */}
           {onOpenContact && (
             <motion.button

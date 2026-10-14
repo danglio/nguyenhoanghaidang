@@ -11,6 +11,7 @@ import {
   TelegramIcon,
   GmailIcon,
   ZaloIcon,
+  AppleIcon,
   WebGlobeIcon,
   Globe,
   Mail,
@@ -20,6 +21,14 @@ import {
 // Platform icon & theme mapper
 const getPlatformConfig = (platform) => {
   switch (platform?.toLowerCase()) {
+    case 'apple':
+    case 'showcase':
+      return {
+        icon: AppleIcon,
+        badgeColor: 'bg-neutral-900/10 dark:bg-white/10 text-neutral-950 dark:text-white border-neutral-300 dark:border-white/20',
+        glowColor: 'group-hover:border-neutral-500/60 dark:group-hover:border-white/50 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]',
+        name: 'Apple Pro Showcase',
+      };
     case 'youtube':
       return {
         icon: YouTubeIcon,

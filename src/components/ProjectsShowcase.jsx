@@ -285,7 +285,7 @@ export default function ProjectsShowcase({ showToast }) {
   return (
     <section id="projects" className="space-y-8 scroll-mt-20">
       {/* Header Section */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-4">
         <div>
           <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-1">
             <Sparkles className="w-3.5 h-3.5 text-cyan-500 animate-pulse" />
@@ -295,9 +295,22 @@ export default function ProjectsShowcase({ showToast }) {
             Dự Án Nổi Bật & Tác Phẩm Sáng Tạo
           </h2>
         </div>
-        <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 max-w-md">
-          Những sản phẩm web tương tác, series video kể chuyện và nội dung số được Lio dày công phát triển.
-        </p>
+        <div className="flex flex-col sm:items-end gap-2">
+          <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 max-w-md sm:text-right">
+            Những sản phẩm web tương tác, series video kể chuyện và nội dung số được Lio dày công phát triển.
+          </p>
+          <a
+            href="http://localhost:3000"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:scale-105 active:scale-95 transition-all shadow-sm w-fit"
+            title="Mở Apple Pro Project Showcase"
+          >
+            <span></span>
+            <span>Khám Phá Apple Pro Showcase</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
       </div>
 
       {/* Cyber-Bento Grid Layout */}

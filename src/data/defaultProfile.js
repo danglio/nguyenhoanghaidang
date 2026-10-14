@@ -48,6 +48,14 @@ export const DEFAULT_PROFILE = {
   ],
   links: [
     {
+      id: "link-showcase",
+      platform: "apple",
+      title: " Apple Pro Project Showcase",
+      url: "http://localhost:3000",
+      stats: "Bento Grid • Case Studies • Quick Look 3D",
+      description: "Phòng trưng bày dự án số của Lio chuẩn triết lý Apple Keynote, trải nghiệm Quick Look chi tiết và bộ chỉ số uy tín",
+    },
+    {
       id: "link-1",
       platform: "tiktok",
       title: "TikTok Lio Tập Kể Chuyện",

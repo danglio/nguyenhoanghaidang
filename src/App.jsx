@@ -39,7 +39,7 @@ export default function App() {
         return savedLayout;
       }
     }
-    return 'bento'; // Default to modern Bento Grid 2.0
+    return 'split'; // Default to user preferred Split-Screen 2-Column layout
   });
 
   // Contact Modal & Toast state

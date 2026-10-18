@@ -18,6 +18,30 @@ export default function SplitLayout({ profile, onOpenContact, showToast, onShare
     { id: 'split-skills', label: '04 // KỸ NĂNG & LIÊN HỆ' },
   ];
 
+  // Automatic scroll-spy: tracks current section as user scrolls
+  useEffect(() => {
+    const sectionIds = ['split-projects', 'split-stats', 'split-socials', 'split-skills'];
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 240;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const id = sectionIds[i];
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(id.replace('split-', ''));
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollTo = (id) => {
     setActiveSection(id.replace('split-', ''));
     const element = document.getElementById(id);

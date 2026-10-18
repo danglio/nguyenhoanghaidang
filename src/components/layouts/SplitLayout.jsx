@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import HeroLanyard from '../HeroLanyard';
+import ProfilePhotoFrame from '../ProfilePhotoFrame';
 import ProjectsShowcase from '../ProjectsShowcase';
 import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
@@ -56,6 +56,9 @@ export default function SplitLayout({ profile, onOpenContact, showToast, onShare
       <aside className="lg:w-[40%] xl:w-[38%] shrink-0 lg:sticky lg:top-24 lg:h-[calc(100vh-8rem)] lg:flex lg:flex-col lg:justify-between space-y-8 lg:space-y-0 pb-8 lg:pb-0 border-b lg:border-b-0 lg:border-r border-neutral-200/60 dark:border-neutral-800/60 lg:pr-8">
         {/* Top Info */}
         <div className="space-y-4">
+          {/* Stylish Portrait Photo Frame */}
+          <ProfilePhotoFrame personal={profile.personal} className="mb-1" />
+
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
             <span>PORTFOLIO 2-COLUMN // VERCEL STYLE</span>
@@ -184,17 +187,6 @@ export default function SplitLayout({ profile, onOpenContact, showToast, onShare
 
       {/* RIGHT COLUMN: Independently Scrollable Content Stream */}
       <main className="lg:w-[60%] xl:w-[62%] space-y-16 pt-6 lg:pt-0">
-        {/* Section 0: 3D Lanyard Interactive Preview Box */}
-        <section className="glass-card rounded-3xl p-4 sm:p-6 border border-neutral-200/80 dark:border-neutral-800/80 shadow-md">
-          <HeroLanyard
-            personal={profile.personal}
-            links={profile.links}
-            profile={profile}
-            onOpenContact={onOpenContact}
-            showToast={showToast}
-          />
-        </section>
-
         {/* Section 1: Projects Showcase */}
         <section id="split-projects" className="scroll-mt-24 space-y-4">
           <div className="flex items-center gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3">

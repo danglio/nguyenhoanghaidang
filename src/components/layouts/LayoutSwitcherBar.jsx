@@ -66,7 +66,20 @@ export const LAYOUT_OPTIONS = [
 ];
 
 export default function LayoutSwitcherBar({ activeLayout, onSelectLayout }) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('lio_layout_switcher_collapsed');
+      if (saved !== null) return saved === 'true';
+    }
+    return true; // Start in collapsed floating pill mode by default
+  });
+
+  const handleSetCollapsed = (val) => {
+    setIsCollapsed(val);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('lio_layout_switcher_collapsed', String(val));
+    }
+  };
 
   return (
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl px-2">
@@ -78,7 +91,7 @@ export default function LayoutSwitcherBar({ activeLayout, onSelectLayout }) {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            onClick={() => setIsCollapsed(false)}
+            onClick={() => handleSetCollapsed(false)}
             className="mx-auto flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-neutral-900/90 dark:bg-white/95 text-white dark:text-neutral-900 shadow-2xl backdrop-blur-xl border border-white/20 dark:border-neutral-800 text-xs sm:text-sm font-bold glow-hover cursor-pointer"
           >
             <Sparkles className="w-4 h-4 text-cyan-400 dark:text-cyan-600 animate-pulse" />
@@ -110,8 +123,8 @@ export default function LayoutSwitcherBar({ activeLayout, onSelectLayout }) {
               </div>
 
               <button
-                onClick={() => setIsCollapsed(true)}
-                className="flex items-center gap-1 text-[11px] font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white px-2 py-1 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-colors"
+                onClick={() => handleSetCollapsed(true)}
+                className="flex items-center gap-1 text-[11px] font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white px-2 py-1 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-colors cursor-pointer"
                 title="Thu nhỏ thanh chọn"
               >
                 <span>Thu gọn</span>

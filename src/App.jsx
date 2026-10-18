@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
+import { motion, AnimatePresence } from 'framer-motion';
 import AmbientBackground from './components/AmbientBackground';
 import Navbar from './components/Navbar';
-import HeroLanyard from './components/HeroLanyard';
-import ProjectsShowcase from './components/ProjectsShowcase';
-import AchievementsStats from './components/AchievementsStats';
-import SkillsSection from './components/SkillsSection';
-import SocialLinks from './components/SocialLinks';
 import ContactModal from './components/ContactModal';
 import SoundtrackPlayer from './components/SoundtrackPlayer';
 import Toast from './components/Toast';
 import { useProfileData } from './hooks/useProfileData';
-import { Heart, Sparkles, Share2, Music, Send, ExternalLink } from 'lucide-react';
-import { YouTubeIcon } from './components/SocialIcons';
-import { motion } from 'framer-motion';
+import { Heart } from 'lucide-react';
+
+// Layout Switcher and 7 Layout Components
+import LayoutSwitcherBar, { LAYOUT_OPTIONS } from './components/layouts/LayoutSwitcherBar';
+import ClassicLayout from './components/layouts/ClassicLayout';
+import BentoLayout from './components/layouts/BentoLayout';
+import SplitLayout from './components/layouts/SplitLayout';
+import TabsLayout from './components/layouts/TabsLayout';
+import MinimalBioLayout from './components/layouts/MinimalBioLayout';
+import MacOSLayout from './components/layouts/MacOSLayout';
+import EditorialLayout from './components/layouts/EditorialLayout';
 
 export default function App() {
   const { profile } = useProfileData();
@@ -25,6 +29,17 @@ export default function App() {
       if (savedTheme) return savedTheme;
     }
     return 'dark';
+  });
+
+  // Active Layout Demo State (persisted to localStorage)
+  const [activeLayout, setActiveLayout] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedLayout = localStorage.getItem('lio_active_layout_preview');
+      if (savedLayout && LAYOUT_OPTIONS.some((l) => l.id === savedLayout)) {
+        return savedLayout;
+      }
+    }
+    return 'bento'; // Default to modern Bento Grid 2.0
   });
 
   // Contact Modal & Toast state
@@ -46,6 +61,19 @@ export default function App() {
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
+  // Switch Layout Handler
+  const handleSelectLayout = (layoutId) => {
+    setActiveLayout(layoutId);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('lio_active_layout_preview', layoutId);
+    }
+    const layoutObj = LAYOUT_OPTIONS.find((l) => l.id === layoutId);
+    setToast({
+      message: `Đã chuyển sang: ${layoutObj?.name || layoutId}`,
+      type: 'success',
+    });
   };
 
   // Trigger celebration confetti
@@ -78,7 +106,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col justify-between bg-[#f8fafc] dark:bg-[#0c0c0e] text-neutral-900 dark:text-neutral-100 selection:bg-cyan-500 selection:text-white dark:selection:bg-cyan-400 dark:selection:text-neutral-950 transition-colors duration-300">
+    <div className="min-h-screen relative flex flex-col justify-between bg-[#f8fafc] dark:bg-[#0c0c0e] text-neutral-900 dark:text-neutral-100 selection:bg-cyan-500 selection:text-white dark:selection:bg-cyan-400 dark:selection:text-neutral-950 transition-colors duration-300 pb-24">
       {/* Dynamic Ambient Mesh Glow Background */}
       <AmbientBackground />
 
@@ -91,152 +119,80 @@ export default function App() {
         fullName={profile.personal.fullName}
       />
 
-      {/* Main Content Area */}
-      <main className="relative z-10 flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-16 sm:space-y-20">
-        {/* SECTION 1: HOME (#home) - 3D Lanyard Hero & Davin Pill Links */}
-        <section id="home" className="relative scroll-mt-20">
-          <HeroLanyard
-            personal={profile.personal}
-            links={profile.links}
-            profile={profile}
-            onOpenContact={() => setIsContactOpen(true)}
-            showToast={setToast}
-          />
-        </section>
+      {/* Main Content Area: Renders Active Layout Demo */}
+      <main className="relative z-10 flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeLayout}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.22, ease: 'easeInOut' }}
+          >
+            {activeLayout === 'classic' && (
+              <ClassicLayout
+                profile={profile}
+                onOpenContact={() => setIsContactOpen(true)}
+                showToast={setToast}
+                onShare={handleShare}
+              />
+            )}
 
-        {/* SECTION 2: FEATURED PROJECTS & APPS (#projects) */}
-        <ProjectsShowcase showToast={setToast} />
+            {activeLayout === 'bento' && (
+              <BentoLayout
+                profile={profile}
+                onOpenContact={() => setIsContactOpen(true)}
+                showToast={setToast}
+                onShare={handleShare}
+              />
+            )}
 
-        {/* SECTION 3: SOCIAL CHANNELS & CREATIVE HUBS (#socials) */}
-        <section id="socials" className="space-y-6 scroll-mt-20">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-4">
-            <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-1">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
-                <span>Connect & Follow</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-neutral-900 dark:text-white">
-                Kênh Sáng Tạo & Mạng Xã Hội
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
-              Khám phá các video storytelling, dự án web & kênh chia sẻ chính thức của Lio
-            </p>
-          </div>
+            {activeLayout === 'split' && (
+              <SplitLayout
+                profile={profile}
+                onOpenContact={() => setIsContactOpen(true)}
+                showToast={setToast}
+                onShare={handleShare}
+              />
+            )}
 
-          {/* Social Links Cards Grid */}
-          <SocialLinks links={profile.links} />
-        </section>
+            {activeLayout === 'tabs' && (
+              <TabsLayout
+                profile={profile}
+                onOpenContact={() => setIsContactOpen(true)}
+                showToast={setToast}
+                onShare={handleShare}
+              />
+            )}
 
-        {/* SECTION 4: SKILLS & MILESTONES (#skills) */}
-        <section id="skills" className="space-y-8 scroll-mt-20">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-4">
-            <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-1">
-                <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
-                <span>Expertise & Milestones</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-neutral-900 dark:text-white">
-                Thành Tích & Kỹ Năng Sáng Tạo
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
-              Hành trình xây dựng nội dung số, các chỉ số phát triển và bộ công cụ thực chiến
-            </p>
-          </div>
+            {activeLayout === 'minimal' && (
+              <MinimalBioLayout
+                profile={profile}
+                onOpenContact={() => setIsContactOpen(true)}
+                showToast={setToast}
+                onShare={handleShare}
+              />
+            )}
 
-          {/* Bento Stats / Achievements */}
-          <AchievementsStats stats={profile.stats} />
+            {activeLayout === 'macos' && (
+              <MacOSLayout
+                profile={profile}
+                onOpenContact={() => setIsContactOpen(true)}
+                showToast={setToast}
+                onShare={handleShare}
+              />
+            )}
 
-          {/* Skills Tag Pills */}
-          <SkillsSection skills={profile.skills} />
-
-          {/* Vibe Music Player Widget */}
-          {profile.vibeMusic && (
-            <div className="glass-card p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm glow-hover">
-              <div className="flex items-center space-x-3.5 min-w-0">
-                <div className="w-11 h-11 rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center shrink-0 shadow-sm">
-                  <Music className="w-5 h-5 animate-pulse" />
-                </div>
-                <div className="min-w-0">
-                  <div className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 font-mono">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>Giai điệu sáng tạo cảm hứng // On Repeat</span>
-                  </div>
-                  <div className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white truncate">
-                    {profile.vibeMusic.title}
-                  </div>
-                  <div className="text-xs text-neutral-500 dark:text-neutral-400 truncate">
-                    {profile.vibeMusic.artist}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
-                {/* Animated Equalizer Soundwave Bars */}
-                <div className="flex items-end space-x-1 h-5 shrink-0 px-2" title="Giai điệu phát cảm hứng">
-                  <span className="w-1 rounded-full bg-emerald-500 animate-wave-1" />
-                  <span className="w-1 rounded-full bg-emerald-400 animate-wave-2" />
-                  <span className="w-1 rounded-full bg-emerald-500 animate-wave-3" />
-                  <span className="w-1 rounded-full bg-emerald-400 animate-wave-4" />
-                </div>
-
-                {/* Direct Listen Link Button */}
-                <motion.a
-                  whileHover={{ scale: 1.04, y: -1 }}
-                  whileTap={{ scale: 0.96 }}
-                  href={profile.vibeMusic.youtubeUrl || "https://www.youtube.com/watch?v=heb1jkNWCyM"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 border border-red-500/30 transition-all shadow-sm group/yt"
-                >
-                  <YouTubeIcon className="w-4 h-4 text-red-500" />
-                  <span>Nghe bài này</span>
-                  <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover/yt:opacity-100 transition-opacity" />
-                </motion.a>
-              </div>
-            </div>
-          )}
-
-          {/* Callout Action Banner */}
-          <div className="glass-card rounded-2xl p-6 sm:p-8 border border-neutral-200/80 dark:border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-6 glow-hover text-center sm:text-left">
-            <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
-              <div className="p-3.5 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shrink-0 border border-indigo-500/20">
-                <Sparkles className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white">
-                  Muốn kết nối hoặc hợp tác cùng Lio?
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-                  Khởi tạo ý tưởng mới hoặc gửi lời mời hợp tác dự án, chiến dịch ngay hôm nay!
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => setIsContactOpen(true)}
-                className="flex items-center space-x-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-md shadow-indigo-500/20 glow-btn transition-all"
-              >
-                <Send className="w-4 h-4 text-white" />
-                <span>Gửi lời mời hợp tác</span>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={handleShare}
-                className="flex items-center space-x-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white/80 dark:bg-neutral-800/80 hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 border border-neutral-200/80 dark:border-white/10 shadow-sm transition-all"
-              >
-                <Share2 className="w-4 h-4 text-indigo-500" />
-                <span>Chia sẻ trang</span>
-              </motion.button>
-            </div>
-          </div>
-        </section>
+            {activeLayout === 'editorial' && (
+              <EditorialLayout
+                profile={profile}
+                onOpenContact={() => setIsContactOpen(true)}
+                showToast={setToast}
+                onShare={handleShare}
+              />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Minimalist Footer */}
@@ -254,6 +210,12 @@ export default function App() {
           </p>
         </div>
       </footer>
+
+      {/* Floating Interactive Layout Switcher Dock */}
+      <LayoutSwitcherBar
+        activeLayout={activeLayout}
+        onSelectLayout={handleSelectLayout}
+      />
 
       {/* Contact & Collaboration Modal */}
       <ContactModal

@@ -32,10 +32,10 @@ export const LOCAL_PROJECTS = {
   cenkin: {
     id: 'cenkin',
     title: 'Cenkin (Locket & Zenly Radar Check-in)',
-    subtitle: 'Nền tảng định vị bạn bè thời gian thực kết hợp widget ảnh Locket màn hình khóa và cơ chế Bump vật lý kết nối tức thì.',
-    badge: '🔒 BẢN LOCAL // NỘI BỘ',
-    status: 'Private Dev Environment',
-    disclaimer: 'Dự án hiện đang vận hành trên máy chủ phát triển nội bộ (Localhost). Phiên bản dùng thử trực tiếp (Live Demo) công khai hiện chưa được mở trên Internet để bảo mật tài nguyên máy chủ và dữ liệu định vị người dùng.',
+    subtitle: 'Nguyên mẫu tương tác UI/UX định vị bạn bè thời gian thực kết hợp widget ảnh Locket màn hình khóa và cơ chế Bump vật lý.',
+    badge: '🧪 HIGH-FIDELITY PROTOTYPE',
+    status: 'Interactive UI/UX Prototype (Figma/React)',
+    disclaimer: 'Nguyên mẫu tương tác trải nghiệm người dùng (High-Fidelity Interactive Prototype) được xây dựng trực tiếp bằng React & Framer Motion nhằm thử nghiệm và tối ưu hóa luồng tương tác thực tế của Zenly Radar 360°, Locket Moments và cảm biến va chạm Bump vật lý.',
     highlights: [
       'Radar quét vệ tinh bạn bè 360 độ (phong cách Zenly)',
       'Widget ảnh Locket gửi tức thì lên màn hình khóa',
@@ -89,79 +89,79 @@ export const LOCAL_PROJECTS = {
     },
   },
   aiCompany: {
-    id: 'ai-company-os',
-    title: 'Autonomous AI Company OS',
-    subtitle: 'Hệ điều hành doanh nghiệp AI tự động hóa hoàn toàn với kiến trúc Multi-Agent phân tầng và xử lý cục bộ.',
-    badge: '🔒 BẢN LOCAL // NỘI BỘ',
-    status: 'Apple Silicon M2 Pro & Private GPU',
-    disclaimer: 'Hệ thống vận hành trên phần cứng nội bộ Apple Silicon M2 Pro và cụm GPU riêng biệt. Hệ thống điều phối toàn diện từ chiến lược đến sản xuất sản phẩm tự động, chưa mở truy cập công khai để bảo vệ dữ liệu bí mật kinh doanh.',
+    id: 'lio-studio-ai-pipeline',
+    title: 'Lio Studio AI Pipeline (Tự Động Hóa Kịch Bản & Video AI)',
+    subtitle: 'Quy trình tự động hóa sản xuất nội dung số khép kín: Lắng nghe giọng nói (Whisper STT), AI biên soạn kịch bản, dựng video 4K & xuất bản đa nền tảng tối ưu hóa phần cứng Apple Silicon M2 Pro.',
+    badge: '⚡ PRODUCTION PIPELINE',
+    status: 'Apple Silicon M2 Pro GPU Accelerated',
+    disclaimer: 'Quy trình sản xuất tự động hóa khép kín được vận hành trực tiếp trên máy trạm Apple Silicon M2 Pro, kết hợp mô hình Whisper STT, AI LLM kịch bản và GPU VideoToolbox để sản xuất video TVC & short-form 4K chuyên nghiệp.',
     highlights: [
-      'Mô hình điều phối phân tầng: Founder ➜ CEO ➜ PM ➜ Studios',
-      'Tối ưu hóa phần cứng Apple Silicon VideoToolbox render 60fps',
-      'Tự động hóa từ ý tưởng đến video TVC & landing page hoàn chỉnh',
-      'Bảo mật cục bộ 100%, không rò rỉ dữ liệu qua bên thứ ba',
+      'Whisper STT: Lắng nghe và trích xuất giọng nói chính xác từng mili-giây',
+      'AI Script Engine: Tự động lên dàn ý hook 5s và kịch bản kết nối cảm xúc',
+      'Apple Silicon VideoToolbox: Tăng tốc render video 4K 60fps qua GPU M2 Pro',
+      'Xuất bản đa nền tảng: Đóng gói đồng thời 16:9 YouTube và 9:16 TikTok/Reels',
     ],
     architecture: [
       {
-        title: 'Founder Directive & Strategic Input',
-        desc: 'Tiếp nhận định hướng kinh doanh, KPI và ngân sách từ Founder.',
-        tag: 'Directive Layer',
+        title: 'Audio Input & Whisper STT Speech-to-Text',
+        desc: 'Nạp âm thanh giọng đọc và nhận diện bóc tách transcript chính xác từng mili-giây.',
+        tag: 'Audio Ingestion',
       },
       {
-        title: 'CEO Orchestration Agent',
-        desc: 'Phân tích mục tiêu, lập kế hoạch tổng thể, cấp vốn và phân bổ task cho các PM chuyên trách.',
-        tag: 'Agent Core',
+        title: 'AI Script & Hook Optimization Engine',
+        desc: 'Phân tích điểm nhấn kịch bản, tạo hook 5s giữ chân khán giả và tinh chỉnh nhịp điệu cảm xúc.',
+        tag: 'AI Content Core',
       },
       {
-        title: 'PM Task Decomposition & Routing',
-        desc: 'Bóc tách backlog, phân chia tài nguyên, giao việc cho Video Studio & Web Studio song song.',
-        tag: 'Dispatching',
+        title: 'Apple Silicon VideoToolbox Acceleration',
+        desc: 'Khai thác tối đa GPU và VideoToolbox trên chip M2 Pro render video 4K 60fps tốc độ cao.',
+        tag: 'Hardware Encoding',
       },
       {
-        title: 'Studio Execution & Local Hardware Acceleration',
-        desc: 'Video Studio dựng TVC bằng Apple Silicon VideoToolbox; Web Studio sinh mã & deploy tự động.',
-        tag: 'Hardware Acceleration',
+        title: 'Multi-Platform Asset Packager',
+        desc: 'Tự động xuất 2 chuẩn định dạng (16:9 Long-form & 9:16 Shorts/TikTok) kèm thumbnail đồng bộ.',
+        tag: 'Distribution Pipeline',
       },
     ],
     features: [
       {
-        title: 'Hệ Thống Đa Agent Phân Tầng',
-        desc: 'CEO Agent giám sát, PM Agent điều phối và các Studio Agent chuyên trách thực thi độc lập.',
+        title: 'Lắng Nghe & Trích Xuất Giọng Nói Whisper',
+        desc: 'Chuyển hóa giọng nói thành văn bản chuẩn xác cao, hỗ trợ đồng bộ subtitle và hiệu ứng chữ động.',
       },
       {
-        title: 'Tăng Tốc Phần Cứng Apple Silicon',
-        desc: 'Tối ưu hóa pipeline xử lý đa phương tiện qua GPU và VideoToolbox trên chip M2 Pro.',
+        title: 'Tăng Tốc Phần Cứng Apple Silicon M2 Pro',
+        desc: 'Tối ưu hóa pipeline xử lý đa phương tiện qua GPU và VideoToolbox trên chip M2 Pro không giật lag.',
       },
       {
-        title: 'Studio Tự Động Hóa Sản Phẩm',
-        desc: 'Tự động tạo kịch bản, biên tập video TVC, viết copy và phát triển landing page tự động.',
+        title: 'Tự Động Xuất Bản Đa Nền Tảng',
+        desc: 'Đóng gói đồng thời 2 phiên bản video 16:9 YouTube và 9:16 TikTok/Reels cùng gợi ý caption SEO.',
       },
       {
         title: 'Terminal Giám Sát Realtime',
-        desc: 'Log trạng thái chi tiết theo thời gian thực của từng agent với cơ chế tự phục hồi lỗi.',
+        desc: 'Theo dõi log tiến trình xử lý render, tình trạng tải GPU và tài nguyên hệ thống theo thời gian thực.',
       },
     ],
     techStack: {
-      Frontend: ['Next.js 14', 'shadcn/ui', 'TailwindCSS', 'Framer Motion'],
-      AI_Agents: ['Python FastAPI', 'Multi-Agent System', 'LangGraph', 'Local LLM'],
-      Hardware_Pipeline: ['Apple Silicon VideoToolbox', 'Metal Performance Shaders', 'FFmpeg GPU Acceleration'],
+      Speech_AI: ['OpenAI Whisper STT', 'Omni Voice Synthesis', 'Prompt Engineering'],
+      Video_Engine: ['Apple Silicon VideoToolbox', 'Metal Performance Shaders', 'FFmpeg GPU Acceleration'],
+      Automation: ['Python Pipeline', 'Multi-Platform Exporter', 'React Dashboard'],
     },
   },
 };
 
 /**
- * Animated Terminal Log Viewer simulating multi-agent rolling activities
+ * Animated Terminal Log Viewer simulating Lio Studio AI Pipeline activities
  */
 function TerminalLogViewer() {
   const [logIndex, setLogIndex] = useState(0);
 
   const logs = [
-    { time: '14:20:01', tag: 'FOUNDER', color: 'text-amber-400', msg: 'Directive set: Triển khai chiến dịch Q3' },
-    { time: '14:20:02', tag: 'CEO', color: 'text-purple-400', msg: 'Directive received. Lập kế hoạch 4 milestones' },
-    { time: '14:20:03', tag: 'PM', color: 'text-cyan-400', msg: 'Dispatched to VideoStudio & WebStudio' },
-    { time: '14:20:04', tag: 'VideoStudio', color: 'text-emerald-400', msg: 'Apple Silicon VideoToolbox: 60fps [OK]' },
-    { time: '14:20:05', tag: 'WebStudio', color: 'text-blue-400', msg: 'shadcn/ui responsive UI synthesized [READY]' },
-    { time: '14:20:06', tag: 'SYSTEM', color: 'text-neutral-400', msg: 'GPU M2 Pro: 32% Load • Latency: 38ms • Status: HEALTHY' },
+    { time: '14:20:01', tag: 'WHISPER', color: 'text-amber-400', msg: 'Audio sync transcript: 1,420 words (0.4s) [OK]' },
+    { time: '14:20:02', tag: 'AI_SCRIPT', color: 'text-purple-400', msg: 'Generated 6s motion hook + 4-scene narrative' },
+    { time: '14:20:03', tag: 'PIPELINE', color: 'text-cyan-400', msg: 'Dispatched to Apple Silicon VideoToolbox' },
+    { time: '14:20:04', tag: 'VIDEOTOOLBOX', color: 'text-emerald-400', msg: 'Hardware acceleration: Render 4K 60fps [READY]' },
+    { time: '14:20:05', tag: 'DISTRIBUTE', color: 'text-blue-400', msg: 'Packaged 16:9 YouTube + 9:16 Shorts/TikTok [DONE]' },
+    { time: '14:20:06', tag: 'SYSTEM', color: 'text-neutral-400', msg: 'GPU M2 Pro: 32% Load • Latency: 22ms • Status: HEALTHY' },
   ];
 
   useEffect(() => {
@@ -184,7 +184,7 @@ function TerminalLogViewer() {
           <span className="w-2 h-2 rounded-full bg-rose-500/80 shrink-0" />
           <span className="w-2 h-2 rounded-full bg-amber-500/80 shrink-0" />
           <span className="w-2 h-2 rounded-full bg-emerald-500/80 shrink-0" />
-          <span className="text-[10px] text-neutral-400 ml-1.5 truncate">terminal@ai-company-os: ~</span>
+          <span className="text-[10px] text-neutral-400 ml-1.5 truncate">terminal@lio-studio-pipeline: ~</span>
         </div>
         <span className="text-[9px] text-emerald-400 flex items-center gap-1 font-bold shrink-0 ml-2">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
@@ -573,9 +573,9 @@ export default function ProjectsShowcase({ showToast }) {
             {/* Badges Header */}
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                  <span>🟢 MỞ BẢN TEST TRỰC TIẾP // LIVE LAB</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>🧪 HIGH-FIDELITY PROTOTYPE (FIGMA/REACT)</span>
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/25">
                   <Radio className="w-3 h-3 text-cyan-500" />
@@ -591,14 +591,14 @@ export default function ProjectsShowcase({ showToast }) {
             <div className="flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-xs font-medium">
               <div className="flex items-center gap-2 min-w-0">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                <span className="truncate">Đã mở phòng thử nghiệm tương tác: Quét bạn bè, gửi Locket & Bump!</span>
+                <span className="truncate">Nguyên mẫu tương tác trực quan: Quét radar thời gian thực, Locket widget & Bump vật lý</span>
               </div>
               <button
                 type="button"
                 onClick={() => setIsCenkinTestOpen(true)}
                 className="shrink-0 font-bold text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer text-xs"
               >
-                Mở Test →
+                Trải nghiệm →
               </button>
             </div>
 
@@ -750,7 +750,7 @@ export default function ProjectsShowcase({ showToast }) {
               className="flex-1 min-w-[200px] flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white shadow-lg shadow-emerald-500/25 cursor-pointer transition-all"
             >
               <Radio className="w-4 h-4 animate-pulse" />
-              <span>Mở Trình Test Cenkin Trực Tiếp</span>
+              <span>Trải Nghiệm Prototype Cenkin</span>
             </motion.button>
 
             {/* Secondary Action: Xem Kiến Trúc */}
@@ -787,7 +787,7 @@ export default function ProjectsShowcase({ showToast }) {
           </div>
         </motion.div>
 
-        {/* DỰ ÁN 3: BENTO CARD - AUTONOMOUS AI COMPANY OS */}
+        {/* DỰ ÁN 3: BENTO CARD - LIO STUDIO AI PIPELINE */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -805,43 +805,43 @@ export default function ProjectsShowcase({ showToast }) {
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30">
                   <Sparkles className="w-3 h-3 text-purple-500" />
-                  <span>🧪 AI ARCHITECTURE // MÔ HÌNH THỰC NGHIỆM</span>
+                  <span>🎬 PRODUCTION PIPELINE // AUTOMATION</span>
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
                   <Eye className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-                  <span>TERMINAL LOGS REALTIME</span>
+                  <span>LIVE FFMPEG LOGS</span>
                 </span>
               </div>
               <span className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
-                M2 Pro • Multi-Agent
+                Whisper • Gemini • M2 Pro
               </span>
             </div>
 
-            {/* Local Notice Warning Callout */}
+            {/* Pipeline Notice Callout */}
             <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-purple-500/10 dark:bg-purple-950/30 border border-purple-500/30 text-purple-800 dark:text-purple-300 text-xs font-medium">
               <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
-              <span>Hệ thống phân tầng Multi-Agent đang mô phỏng luồng log trực tiếp trên Apple Silicon M2 Pro</span>
+              <span>Quy trình sản xuất tự động: Tách giọng STT, sinh kịch bản viral và render đa khung hình 16:9 & 9:16</span>
             </div>
 
             {/* Title & Description */}
             <div>
               <h3 className="text-xl sm:text-2xl font-black tracking-tight text-neutral-900 dark:text-white">
-                Autonomous AI Company OS
+                Lio Studio AI Pipeline (Tự Động Hóa Kịch Bản & Video AI)
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                Hệ điều hành doanh nghiệp AI tự động hóa hoàn toàn với cấu trúc đa Agent phân tầng từ Founder ➜ CEO ➜ PM ➜ Studios, tối ưu hóa phần cứng Apple Silicon M2 Pro.
+                Hệ thống kịch bản và dựng video tự động khép kín: Sử dụng Whisper STT bóc tách thoại, Gemini AI tinh chỉnh Hook 5s và Apple Silicon VideoToolbox tăng tốc render 4K 60fps.
               </p>
             </div>
 
-            {/* Rich Interactive UI Mockup: Hierarchical Org Tree + Simulated Terminal */}
+            {/* Rich Interactive UI Mockup: Pipeline Flow + Simulated Terminal */}
             <div className="p-3.5 rounded-2xl bg-neutral-950/90 border border-neutral-800 shadow-inner space-y-3">
-              {/* Hierarchical Org Tree */}
+              {/* Pipeline Flow Architecture */}
               <div className="space-y-1.5 text-xs font-mono">
-                {/* Founder Node */}
+                {/* Stage 1: Whisper STT Ingestion */}
                 <div className="flex items-center justify-center">
                   <div className="px-3 py-1 rounded-lg bg-amber-500/10 border border-amber-500/40 text-amber-300 flex items-center gap-1.5 shadow-[0_0_12px_rgba(245,158,11,0.15)]">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
-                    <span className="font-bold text-[11px]">Founder (Human Directive)</span>
+                    <span className="font-bold text-[11px]">🎙️ Stage 1: Whisper STT (Audio & Timecodes)</span>
                   </div>
                 </div>
 
@@ -850,11 +850,11 @@ export default function ProjectsShowcase({ showToast }) {
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-400 absolute top-1/2 -left-[2px] -translate-y-1/2 animate-pulse" />
                 </div>
 
-                {/* CEO Node */}
+                {/* Stage 2: Gemini AI Script Engine */}
                 <div className="flex items-center justify-center">
                   <div className="px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/40 text-purple-300 flex items-center gap-1.5 shadow-[0_0_12px_rgba(168,85,247,0.15)]">
                     <Cpu className="w-3 h-3 text-purple-400" />
-                    <span className="font-bold text-[11px]">CEO Agent (Orchestration & Budget)</span>
+                    <span className="font-bold text-[11px]">🧠 Stage 2: Gemini AI Script & Hook Engine</span>
                   </div>
                 </div>
 
@@ -863,15 +863,15 @@ export default function ProjectsShowcase({ showToast }) {
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 absolute top-1/2 -left-[2px] -translate-y-1/2 animate-pulse" />
                 </div>
 
-                {/* PM Node */}
+                {/* Stage 3: Apple Silicon VideoToolbox Hardware Acceleration */}
                 <div className="flex items-center justify-center">
                   <div className="px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/40 text-cyan-300 flex items-center gap-1.5 shadow-[0_0_12px_rgba(6,182,212,0.15)]">
                     <Workflow className="w-3 h-3 text-cyan-400" />
-                    <span className="font-bold text-[11px]">PM Agent (Task Decomposition)</span>
+                    <span className="font-bold text-[11px]">⚡ Stage 3: Apple Silicon M2 Pro VideoToolbox</span>
                   </div>
                 </div>
 
-                {/* Fork Lines to Studios */}
+                {/* Fork Lines to Multi-Platform Outputs */}
                 <div className="relative h-3 max-w-[220px] mx-auto">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-1.5 bg-cyan-500/40" />
                   <div className="absolute top-1.5 left-5 right-5 h-px bg-cyan-500/40" />
@@ -879,25 +879,25 @@ export default function ProjectsShowcase({ showToast }) {
                   <div className="absolute top-1.5 right-5 w-px h-1.5 bg-cyan-500/40" />
                 </div>
 
-                {/* Studios Grid */}
+                {/* Output Targets Grid */}
                 <div className="grid grid-cols-2 gap-2 pt-0.5">
                   <div className="p-2 rounded-xl bg-neutral-900/90 border border-neutral-800 flex flex-col items-center text-center">
                     <div className="text-[11px] font-bold text-white flex items-center gap-1">
                       <Tv className="w-3 h-3 text-emerald-400" />
-                      <span>Video Studio</span>
+                      <span>YouTube 16:9 4K</span>
                     </div>
                     <div className="text-[9px] text-neutral-400 mt-0.5 font-mono">
-                      Apple Silicon M2 Pro • 60fps
+                      @lio_tsv • 60fps ProRes/H.265
                     </div>
                   </div>
 
                   <div className="p-2 rounded-xl bg-neutral-900/90 border border-neutral-800 flex flex-col items-center text-center">
                     <div className="text-[11px] font-bold text-white flex items-center gap-1">
-                      <Layers className="w-3 h-3 text-blue-400" />
-                      <span>Web Studio</span>
+                      <Layers className="w-3 h-3 text-rose-400" />
+                      <span>TikTok 9:16 Shorts</span>
                     </div>
                     <div className="text-[9px] text-neutral-400 mt-0.5 font-mono">
-                      Next.js 14 • shadcn/ui
+                      @nguyndang0802 • Kinetic Subs
                     </div>
                   </div>
                 </div>
@@ -910,19 +910,19 @@ export default function ProjectsShowcase({ showToast }) {
             {/* Tech Tags */}
             <div className="flex flex-wrap gap-2 pt-1">
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/60 dark:border-neutral-700/60">
-                Next.js 14
+                Python 3.11
               </span>
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/60 dark:border-neutral-700/60">
-                Python FastAPI
+                OpenAI Whisper
               </span>
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/60 dark:border-neutral-700/60">
-                shadcn/ui
+                Google Gemini AI
               </span>
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
                 Apple Silicon VideoToolbox
               </span>
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
-                Multi-Agent System
+                FFmpeg HW Accelerate
               </span>
             </div>
           </div>
@@ -936,7 +936,7 @@ export default function ProjectsShowcase({ showToast }) {
               className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-sm glow-btn group/link cursor-pointer"
             >
               <Eye className="w-4 h-4 text-purple-400 dark:text-purple-600" />
-              <span>Xem Chi Tiết & Giao Diện</span>
+              <span>Xem Chi Tiết Quy Trình & Demo</span>
             </motion.button>
 
             <motion.button
@@ -944,7 +944,7 @@ export default function ProjectsShowcase({ showToast }) {
               whileTap={{ scale: 0.95 }}
               onClick={() => handleCopyProjectInfo(LOCAL_PROJECTS.aiCompany, 'ai-company-card')}
               className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl glass-card border border-neutral-300/80 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs sm:text-sm font-semibold transition-all cursor-pointer"
-              title="Sao chép thông tin dự án Autonomous AI Company OS"
+              title="Sao chép thông tin dự án Lio Studio AI Pipeline"
             >
               {copiedKey === 'ai-company-card' ? (
                 <>

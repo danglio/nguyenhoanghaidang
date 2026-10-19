@@ -17,6 +17,9 @@ import {
   Check,
   Copy,
   ExternalLink,
+  Play,
+  ShieldCheck,
+  Film,
 } from 'lucide-react';
 import {
   FacebookIcon,
@@ -317,6 +320,69 @@ export default function AchievementsStats({ stats = [] }) {
               </motion.div>
             );
           })}
+        </motion.div>
+
+        {/* PROOF OF WORK SPOTLIGHT BANNER */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="glass-card rounded-2xl p-4 sm:p-5 border border-neutral-200/90 dark:border-neutral-800/90 shadow-sm relative overflow-hidden mt-3"
+        >
+          {/* Subtle Ambient Glow */}
+          <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-rose-500/10 via-indigo-500/10 to-transparent rounded-full blur-2xl pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 relative z-10">
+            {/* Left: Proof statement & Channels */}
+            <div className="space-y-2 max-w-xl">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
+                  <ShieldCheck className="w-3 h-3 text-rose-500" />
+                  <span>BẰNG CHỨNG THỰC TẾ // PROOF OF WORK</span>
+                </span>
+                <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  100% người xem thật & tương tác hữu cơ
+                </span>
+              </div>
+              <h3 className="text-sm sm:text-base font-black tracking-tight text-neutral-900 dark:text-white">
+                Khám phá video viral & tác phẩm 4K thực tế đã xuất bản
+              </h3>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                Các chỉ số trên được đối chiếu trực tiếp từ các kênh đang hoạt động: Kênh cá nhân TikTok <span className="font-semibold text-neutral-800 dark:text-neutral-200">@nguyndang0802</span> (45K+ views, 4.2K likes) và kênh YouTube dài tập <span className="font-semibold text-neutral-800 dark:text-neutral-200">@lio_tsv</span> (chuẩn 4K 60fps).
+              </p>
+            </div>
+
+            {/* Right: Quick Verification CTAs */}
+            <div className="flex flex-wrap items-center gap-2.5 w-full lg:w-auto shrink-0">
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                href="https://www.tiktok.com/@nguyndang0802"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-sm glow-btn group/btn cursor-pointer"
+              >
+                <TikTokIcon className="w-3.5 h-3.5" />
+                <span>Xem TikTok 45K+ Views</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+              </motion.a>
+
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                href="https://youtube.com/@lio_tsv?si=FBUf3BvbKV8h10jZ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold glass-card border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group/btn cursor-pointer"
+              >
+                <YouTubeIcon className="w-3.5 h-3.5 text-red-500" />
+                <span>Xem YouTube @lio_tsv</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+              </motion.a>
+            </div>
+          </div>
         </motion.div>
       </section>
 

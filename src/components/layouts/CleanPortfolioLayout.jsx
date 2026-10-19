@@ -77,7 +77,7 @@ export default function CleanPortfolioLayout({
                 {profile.personal?.bio}
               </p>
 
-              {/* Action Buttons: 1 Main CTA + 1 Secondary Scroll CTA + Live App Pill */}
+              {/* Action Buttons: 2 Core CTAs + 1 Verified Credentials Link */}
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-3">
                 {/* Primary Contact CTA */}
                 {onOpenContact && (
@@ -85,7 +85,7 @@ export default function CleanPortfolioLayout({
                     whileHover={{ scale: 1.04, y: -2 }}
                     whileTap={{ scale: 0.96 }}
                     onClick={onOpenContact}
-                    className="flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg shadow-indigo-500/25 cursor-pointer transition-all"
+                    className="flex items-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg shadow-indigo-500/25 cursor-pointer transition-all"
                   >
                     <Send className="w-4 h-4" />
                     <span>Gửi lời mời hợp tác</span>
@@ -100,43 +100,18 @@ export default function CleanPortfolioLayout({
                   className="flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold glass-card border border-neutral-300/80 dark:border-white/15 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all cursor-pointer"
                 >
                   <Code2 className="w-4 h-4 text-cyan-500" />
-                  <span>Xem các dự án</span>
+                  <span>Khám phá các dự án</span>
                 </motion.a>
 
-                {/* Secondary: Scroll to Certificates */}
+                {/* Quick Verified Certificate Pill */}
                 <motion.a
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.96 }}
                   href="#certificates"
-                  className="flex items-center gap-2 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold glass-card border border-amber-500/30 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 transition-all cursor-pointer"
+                  className="flex items-center gap-1.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-medium glass-card border border-amber-500/30 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 transition-all cursor-pointer"
                 >
                   <Award className="w-4 h-4 text-amber-500" />
                   <span>Chứng chỉ FPT & MCI</span>
-                </motion.a>
-
-                {/* Live App Quick Pill */}
-                <motion.a
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
-                  href="https://danglio.github.io/homnayuonggilio/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-all cursor-pointer"
-                >
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                  <span>Chơi thử: Hôm Nay Uống Gì</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </motion.a>
-
-                {/* Cenkin Radar Test Pill */}
-                <motion.a
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
-                  href="#projects"
-                  className="flex items-center gap-1.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-500/20 transition-all cursor-pointer"
-                >
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-                  <span>Test Cenkin Radar</span>
                 </motion.a>
               </div>
             </div>

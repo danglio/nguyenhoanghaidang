@@ -1,73 +1,112 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
-    <!-- Background Gradient -->
+    <!-- Dark Obsidian Canvas Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#0B0F19"/>
-      <stop offset="50%" stopColor="#111827"/>
-      <stop offset="100%" stopColor="#030712"/>
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="50%" stop-color="#05070E"/>
+      <stop offset="100%" stop-color="#020307"/>
     </linearGradient>
 
-    <!-- Neon Rim Border Gradient -->
+    <!-- Outer Rim Neon Gradient -->
     <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#22D3EE"/>
-      <stop offset="50%" stopColor="#6366F1"/>
-      <stop offset="100%" stopColor="#EC4899"/>
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.8"/>
+      <stop offset="45%" stop-color="#6366F1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#EC4899" stop-opacity="0.7"/>
     </linearGradient>
 
-    <!-- Text Neon Gradient for LIO -->
-    <linearGradient id="lioGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stopColor="#38BDF8"/>
-      <stop offset="50%" stopColor="#818CF8"/>
-      <stop offset="100%" stopColor="#F472B6"/>
+    <!-- Upright Vertical Stem Gradient (Cyber Cyan to Deep Blue) -->
+    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="25%" stop-color="#00F2FE"/>
+      <stop offset="70%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
     </linearGradient>
 
-    <!-- Ambient Center Radial Glow -->
-    <radialGradient id="centerGlow" cx="50%" cy="45%" r="55%">
-      <stop offset="0%" stopColor="#6366F1" stopOpacity="0.35"/>
-      <stop offset="60%" stopColor="#06B6D4" stopOpacity="0.15"/>
-      <stop offset="100%" stopColor="#000000" stopOpacity="0"/>
+    <!-- Horizontal Foot Gradient (Violet to Neon Fuchsia to Sunset Coral) -->
+    <linearGradient id="footGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="40%" stop-color="#A855F7"/>
+      <stop offset="75%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+
+    <!-- 3D Interlocking Prism Wedge (Refraction Facet) -->
+    <linearGradient id="prismWedge" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E1B4B"/>
+      <stop offset="50%" stop-color="#4338CA"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+
+    <!-- Specular Edge Highlighting -->
+    <linearGradient id="specularWhite" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Ambient Center Radial Glow Behind L -->
+    <radialGradient id="ambientGlow" cx="45%" cy="55%" r="55%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="#00F2FE" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Drop Shadow Filter -->
-    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#6366F1" floodOpacity="0.5"/>
+    <!-- Drop Glow Filter for 3D Float Effect -->
+    <filter id="prismShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#4F46E5" flood-opacity="0.55"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#00F2FE" flood-opacity="0.35"/>
     </filter>
-    <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#000000" floodOpacity="0.8"/>
+
+    <!-- Diamond Sparkle Filter -->
+    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#38BDF8" flood-opacity="0.9"/>
     </filter>
   </defs>
 
-  <!-- Squircle Base with Glow -->
-  <rect x="24" y="24" width="464" height="464" rx="112" fill="url(#bgGrad)" stroke="url(#rimGrad)" stroke-width="8" filter="url(#neonGlow)"/>
-  
-  <!-- Subtle Internal Glow Mesh -->
-  <rect x="24" y="24" width="464" height="464" rx="112" fill="url(#centerGlow)"/>
+  <!-- Base Squircle Container (Apple / VisionOS 112px radius) -->
+  <rect x="28" y="28" width="456" height="456" rx="112" fill="url(#bgGrad)" stroke="url(#rimGrad)" stroke-width="5"/>
 
-  <!-- Specular Top Rim Reflection -->
-  <path d="M 60 40 Q 256 20 452 40" stroke="white" stroke-opacity="0.25" stroke-width="3" fill="none"/>
+  <!-- Ambient Light Core -->
+  <rect x="28" y="28" width="456" height="456" rx="112" fill="url(#ambientGlow)"/>
 
-  <!-- Central Emblem: "Đăng LIO" Typography -->
-  <g filter="url(#textShadow)" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', Roboto, sans-serif">
-    <!-- "Đ" Main Glyph -->
-    <text x="256" y="275" font-size="210" font-weight="900" fill="#FFFFFF" letter-spacing="-2">
-      Đ
-    </text>
+  <!-- Top Glass Sheen (Specular Rim Arc) -->
+  <path d="M 64 48 Q 256 30 448 48" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="2.5" fill="none" stroke-linecap="round"/>
 
-    <!-- Neon Accent Crossbar for "Đ" -->
-    <rect x="156" y="172" width="92" height="18" rx="9" fill="#22D3EE" filter="drop-shadow(0 0 8px #06B6D4)"/>
+  <!-- Main Monogram "L" 3D Prism Structure -->
+  <g filter="url(#prismShadow)">
+    <!-- 1. The Interlocking 3D Prism Facet / Shadow Wedge -->
+    <path d="M 148 316 L 244 260 L 244 380 L 148 400 Z" fill="url(#prismWedge)" opacity="0.9"/>
 
-    <!-- Sparkle on the corner of Đ -->
-    <circle cx="360" cy="120" r="6" fill="#F472B6" filter="drop-shadow(0 0 6px #F472B6)"/>
-    <path d="M 360 102 L 360 138 M 342 120 L 378 120" stroke="#F472B6" stroke-width="3" stroke-linecap="round"/>
+    <!-- 2. The Horizontal Foot (Expands to the right with aerodynamic speed) -->
+    <path d="M 216 308 L 364 308 C 381.67 308 396 322.33 396 340 C 396 357.67 381.67 372 364 372 L 180 372 C 162.33 372 148 357.67 148 340 L 148 316 L 216 308 Z" 
+          fill="url(#footGrad)"/>
 
-    <!-- "LIO" Futuristic Sub-Typography -->
-    <text x="256" y="380" font-size="78" font-weight="900" fill="url(#lioGrad)" letter-spacing="14" filter="drop-shadow(0 0 12px rgba(129,140,248,0.6))">
-      LIO
-    </text>
+    <!-- 3. Specular Ridge on Horizontal Foot -->
+    <path d="M 224 316 L 360 316 C 373.25 316 384 326.75 384 340" 
+          stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55"/>
 
-    <!-- Tiny Sub-kicker badge: "CREATIVE" -->
-    <text x="256" y="425" font-size="22" font-weight="700" fill="#94A3B8" letter-spacing="8" opacity="0.85">
-      CREATIVE
-    </text>
+    <!-- 4. The Upright Vertical Pillar (Cyber Cyan Prism Beam) -->
+    <path d="M 148 148 C 148 130.33 162.33 116 180 116 L 212 116 C 229.67 116 244 130.33 244 148 L 244 324 L 148 368 L 148 148 Z" 
+          fill="url(#stemGrad)"/>
+
+    <!-- 5. Crisp Specular Edge along Left Stem -->
+    <path d="M 154 152 C 154 137 165 124 180 122 L 210 122" 
+          stroke="url(#specularWhite)" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <line x1="154" y1="152" x2="154" y2="350" 
+          stroke="url(#specularWhite)" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- 6. Razor-Sharp Diagonal Prism Crease / Light Blade -->
+    <line x1="148" y1="368" x2="244" y2="324" 
+          stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
   </g>
+
+  <!-- 7. Cosmic Star Flare at the Prism Nexus (4-Point Diamond Flare) -->
+  <g filter="url(#starGlow)" transform="translate(244, 116)">
+    <circle cx="0" cy="0" r="4.5" fill="#FFFFFF"/>
+    <path d="M 0 -22 L 3 -6 L 19 0 L 3 6 L 0 22 L -3 6 L -19 0 L -3 -6 Z" fill="#00F2FE" opacity="0.95"/>
+    <circle cx="0" cy="0" r="1.5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- 8. Subtle Sub-accent Spark at Foot Tip -->
+  <circle cx="364" cy="340" r="3.5" fill="#FFFFFF" opacity="0.85" filter="drop-shadow(0 0 6px #EC4899)"/>
 </svg>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
@@ -6,8 +6,6 @@ import {
   Cpu,
   Layers,
   Workflow,
-  Check,
-  Copy,
   Lock,
   Server,
   CheckCircle2,
@@ -97,21 +95,9 @@ export function buildProjectSummary(project) {
  * - Architecture flow pipeline visualization
  * - Core features grid
  * - Categorized or pill-styled tech stack badges
- * - Copy project summary & keyboard Escape listener
+ * - Keyboard Escape listener
  */
-export default function LocalProjectModal({ project, isOpen, onClose, onCopyInfo }) {
-  const [isCopied, setIsCopied] = useState(false);
-  const copyTimeoutRef = useRef(null);
-
-  // Clean up copy timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (copyTimeoutRef.current) {
-        clearTimeout(copyTimeoutRef.current);
-      }
-    };
-  }, []);
-
+export default function LocalProjectModal({ project, isOpen, onClose }) {
   // Close modal on Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -135,39 +121,6 @@ export default function LocalProjectModal({ project, isOpen, onClose, onCopyInfo
       };
     }
   }, [isOpen]);
-
-  // Copy project summary handler
-  const handleCopy = useCallback(async () => {
-    if (!project) return;
-    const summary = buildProjectSummary(project);
-
-    try {
-      if (navigator?.clipboard?.writeText) {
-        await navigator.clipboard.writeText(summary);
-      } else {
-        const textArea = document.createElement('textarea');
-        textArea.value = summary;
-        textArea.style.position = 'fixed';
-        textArea.style.opacity = '0';
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-      }
-
-      if (copyTimeoutRef.current) {
-        clearTimeout(copyTimeoutRef.current);
-      }
-      setIsCopied(true);
-      copyTimeoutRef.current = setTimeout(() => setIsCopied(false), 2200);
-
-      // Invoke parent callback if provided
-      onCopyInfo?.(summary);
-    } catch (err) {
-      console.warn('Failed to copy project summary:', err);
-      onCopyInfo?.(summary);
-    }
-  }, [project, onCopyInfo]);
 
   // Normalize tech stack
   const isTechStackCategorized =
@@ -483,33 +436,11 @@ export default function LocalProjectModal({ project, isOpen, onClose, onCopyInfo
               </div>
 
               <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-                {/* Copy Summary Button */}
-                <button
-                  type="button"
-                  onClick={handleCopy}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-200/70 dark:bg-neutral-800 hover:bg-neutral-300/80 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 border border-neutral-300/80 dark:border-neutral-700 text-xs sm:text-sm font-semibold transition-all active:scale-[0.98] cursor-pointer"
-                  title="Sao chép toàn bộ thông tin kiến trúc & tính năng dự án"
-                >
-                  {isCopied ? (
-                    <>
-                      <Check className="w-4 h-4 text-emerald-500" />
-                      <span className="text-emerald-600 dark:text-emerald-400 font-bold">
-                        Đã sao chép!
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
-                      <span>Sao chép thông tin dự án</span>
-                    </>
-                  )}
-                </button>
-
                 {/* Close Button */}
                 <button
                   type="button"
                   onClick={onClose}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 text-xs sm:text-sm font-bold shadow-md hover:opacity-90 transition-all active:scale-[0.98] cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 text-xs sm:text-sm font-bold shadow-md hover:opacity-90 transition-all active:scale-[0.98] cursor-pointer"
                 >
                   Đóng
                 </button>

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   ExternalLink,
-  Copy,
-  Check,
   ArrowUpRight,
   Dices,
   Flame,
@@ -24,7 +22,7 @@ import {
   Server,
 } from 'lucide-react';
 import { FacebookIcon } from './SocialIcons';
-import LocalProjectModal, { buildProjectSummary } from './LocalProjectModal';
+import LocalProjectModal from './LocalProjectModal';
 import CenkinTestModal from './CenkinTestModal';
 
 export const LOCAL_PROJECTS = {
@@ -205,82 +203,8 @@ function TerminalLogViewer() {
 }
 
 export default function ProjectsShowcase({ showToast }) {
-  const [copiedKey, setCopiedKey] = useState(null);
   const [activeLocalProject, setActiveLocalProject] = useState(null);
   const [isCenkinTestOpen, setIsCenkinTestOpen] = useState(false);
-
-  const handleCopyLink = async (url, title, key) => {
-    try {
-      if (navigator?.clipboard?.writeText) {
-        await navigator.clipboard.writeText(url);
-      } else {
-        const textArea = document.createElement('textarea');
-        textArea.value = url;
-        textArea.style.position = 'fixed';
-        textArea.style.opacity = '0';
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-      }
-
-      setCopiedKey(key);
-      setTimeout(() => {
-        setCopiedKey(null);
-      }, 2000);
-
-      if (showToast) {
-        showToast({
-          message: `Đã sao chép liên kết "${title}" vào clipboard!`,
-          type: 'success',
-        });
-      }
-    } catch {
-      if (showToast) {
-        showToast({
-          message: 'Không thể sao chép liên kết, vui lòng thử lại!',
-          type: 'error',
-        });
-      }
-    }
-  };
-
-  const handleCopyProjectInfo = async (project, key) => {
-    try {
-      const summary = buildProjectSummary(project);
-      if (navigator?.clipboard?.writeText) {
-        await navigator.clipboard.writeText(summary);
-      } else {
-        const textArea = document.createElement('textarea');
-        textArea.value = summary;
-        textArea.style.position = 'fixed';
-        textArea.style.opacity = '0';
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-      }
-
-      setCopiedKey(key);
-      setTimeout(() => {
-        setCopiedKey(null);
-      }, 2000);
-
-      if (showToast) {
-        showToast({
-          message: `Đã sao chép thông tin dự án "${project.title}"!`,
-          type: 'success',
-        });
-      }
-    } catch {
-      if (showToast) {
-        showToast({
-          message: 'Không thể sao chép thông tin dự án, vui lòng thử lại!',
-          type: 'error',
-        });
-      }
-    }
-  };
 
   return (
     <section id="projects" className="space-y-8 scroll-mt-20">
@@ -406,32 +330,6 @@ export default function ProjectsShowcase({ showToast }) {
                   <span>Trải nghiệm ngay</span>
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 text-cyan-400 dark:text-indigo-600" />
                 </motion.a>
-
-                <motion.button
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() =>
-                    handleCopyLink(
-                      'https://danglio.github.io/homnayuonggilio/',
-                      'Hôm Nay Uống Gì Lio',
-                      'hero-app'
-                    )
-                  }
-                  className="flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-semibold glass-card border border-neutral-300/80 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all"
-                  title="Sao chép liên kết Hôm Nay Uống Gì Lio"
-                >
-                  {copiedKey === 'hero-app' ? (
-                    <>
-                      <Check className="w-4 h-4 text-emerald-500" />
-                      <span className="text-emerald-500 font-bold">Đã chép link!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
-                      <span>Sao chép liên kết</span>
-                    </>
-                  )}
-                </motion.button>
 
                 <motion.a
                   whileHover={{ scale: 1.03, y: -2 }}
@@ -763,26 +661,6 @@ export default function ProjectsShowcase({ showToast }) {
               <Eye className="w-4 h-4 text-cyan-500" />
               <span>Kiến trúc</span>
             </motion.button>
-
-            {/* Copy Project Info */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleCopyProjectInfo(LOCAL_PROJECTS.cenkin, 'cenkin-card')}
-              className="flex items-center gap-1.5 px-3 py-3 rounded-2xl glass-card border border-neutral-300/80 dark:border-white/15 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs sm:text-sm font-semibold transition-all cursor-pointer"
-              title="Sao chép thông tin dự án Cenkin"
-            >
-              {copiedKey === 'cenkin-card' ? (
-                <>
-                  <Check className="w-4 h-4 text-emerald-500" />
-                  <span className="text-emerald-500 font-bold text-xs">Đã chép!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
-                </>
-              )}
-            </motion.button>
           </div>
         </motion.div>
 
@@ -937,26 +815,6 @@ export default function ProjectsShowcase({ showToast }) {
               <Eye className="w-4 h-4 text-purple-400 dark:text-purple-600" />
               <span>Xem Chi Tiết Quy Trình & Demo</span>
             </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleCopyProjectInfo(LOCAL_PROJECTS.aiCompany, 'ai-company-card')}
-              className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl glass-card border border-neutral-300/80 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs sm:text-sm font-semibold transition-all cursor-pointer"
-              title="Sao chép thông tin dự án Lio Studio AI Pipeline"
-            >
-              {copiedKey === 'ai-company-card' ? (
-                <>
-                  <Check className="w-4 h-4 text-emerald-500" />
-                  <span className="text-emerald-500 font-bold text-xs">Đã chép!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
-                  <span className="text-xs">Sao chép thông tin</span>
-                </>
-              )}
-            </motion.button>
           </div>
         </motion.div>
       </div>
@@ -966,14 +824,6 @@ export default function ProjectsShowcase({ showToast }) {
         project={activeLocalProject}
         isOpen={Boolean(activeLocalProject)}
         onClose={() => setActiveLocalProject(null)}
-        onCopyInfo={() => {
-          if (showToast) {
-            showToast({
-              message: 'Đã sao chép thông tin dự án!',
-              type: 'success',
-            });
-          }
-        }}
       />
 
       {/* Cenkin Live Interactive Test Modal */}

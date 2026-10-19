@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ProfilePhotoFrame from '../ProfilePhotoFrame';
 import ProjectsShowcase from '../ProjectsShowcase';
+import FeaturedVideoSpotlight from '../FeaturedVideoSpotlight';
 import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
 import SocialLinks from '../SocialLinks';
@@ -13,14 +14,15 @@ export default function SplitLayout({ profile, onOpenContact, showToast, onShare
 
   const navItems = [
     { id: 'split-projects', label: '01 // DỰ ÁN TIÊU BIỂU' },
-    { id: 'split-stats', label: '02 // THÀNH TÍCH & STATS' },
-    { id: 'split-socials', label: '03 // KÊNH MẠNG XÃ HỘI' },
-    { id: 'split-skills', label: '04 // KỸ NĂNG & LIÊN HỆ' },
+    { id: 'split-videos', label: '02 // VIDEO SPOTLIGHT' },
+    { id: 'split-stats', label: '03 // THÀNH TÍCH & STATS' },
+    { id: 'split-socials', label: '04 // KÊNH MẠNG XÃ HỘI' },
+    { id: 'split-skills', label: '05 // KỸ NĂNG & LIÊN HỆ' },
   ];
 
   // Automatic scroll-spy: tracks current section as user scrolls
   useEffect(() => {
-    const sectionIds = ['split-projects', 'split-stats', 'split-socials', 'split-skills'];
+    const sectionIds = ['split-projects', 'split-videos', 'split-stats', 'split-socials', 'split-skills'];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 240;
@@ -198,10 +200,15 @@ export default function SplitLayout({ profile, onOpenContact, showToast, onShare
           <ProjectsShowcase showToast={showToast} />
         </section>
 
-        {/* Section 2: Stats & Achievements */}
+        {/* Section 2: Featured Video Spotlight (Interactive Player) */}
+        <section id="split-videos" className="scroll-mt-24 space-y-4">
+          <FeaturedVideoSpotlight showToast={showToast} />
+        </section>
+
+        {/* Section 3: Stats & Achievements */}
         <section id="split-stats" className="scroll-mt-24 space-y-4">
           <div className="flex items-center gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3">
-            <span className="font-mono text-xs font-bold text-indigo-500">02.</span>
+            <span className="font-mono text-xs font-bold text-indigo-500">03.</span>
             <h2 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white">
               Thành Tích & Chỉ Số Phát Triển
             </h2>
@@ -209,10 +216,10 @@ export default function SplitLayout({ profile, onOpenContact, showToast, onShare
           <AchievementsStats stats={profile.stats} />
         </section>
 
-        {/* Section 3: Social Hubs */}
+        {/* Section 4: Social Hubs */}
         <section id="split-socials" className="scroll-mt-24 space-y-4">
           <div className="flex items-center gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3">
-            <span className="font-mono text-xs font-bold text-pink-500">03.</span>
+            <span className="font-mono text-xs font-bold text-pink-500">04.</span>
             <h2 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white">
               Kênh Mạng Xã Hội Chính Thức
             </h2>
@@ -220,10 +227,10 @@ export default function SplitLayout({ profile, onOpenContact, showToast, onShare
           <SocialLinks links={profile.links} />
         </section>
 
-        {/* Section 4: Skills & Music */}
+        {/* Section 5: Skills & Music */}
         <section id="split-skills" className="scroll-mt-24 space-y-6">
           <div className="flex items-center gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3">
-            <span className="font-mono text-xs font-bold text-emerald-500">04.</span>
+            <span className="font-mono text-xs font-bold text-emerald-500">05.</span>
             <h2 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white">
               Kỹ Năng & Giai Điệu Cảm Hứng
             </h2>

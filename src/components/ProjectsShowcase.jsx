@@ -24,8 +24,8 @@ import {
   Camera,
   Server,
 } from 'lucide-react';
-import { FacebookIcon } from './SocialIcons';
 import LocalProjectModal, { buildProjectSummary } from './LocalProjectModal';
+import CenkinTestModal from './CenkinTestModal';
 
 export const LOCAL_PROJECTS = {
   cenkin: {
@@ -207,6 +207,7 @@ function TerminalLogViewer() {
 export default function ProjectsShowcase({ showToast }) {
   const [copiedKey, setCopiedKey] = useState(null);
   const [activeLocalProject, setActiveLocalProject] = useState(null);
+  const [isCenkinTestOpen, setIsCenkinTestOpen] = useState(false);
 
   const handleCopyLink = async (url, title, key) => {
     try {
@@ -571,13 +572,13 @@ export default function ProjectsShowcase({ showToast }) {
             {/* Badges Header */}
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30">
-                  <Sparkles className="w-3 h-3 text-cyan-500" />
-                  <span>🧪 R&D LAB // MÔ HÌNH THỰC NGHIỆM</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/35 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                  <span>🟢 MỞ BẢN TEST TRỰC TIẾP // LIVE LAB</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
-                  <Eye className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-                  <span>RADAR 360° LIVE SIMULATION</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/25">
+                  <Radio className="w-3 h-3 text-cyan-500" />
+                  <span>RADAR 360° • LOCKET WIDGET</span>
                 </span>
               </div>
               <span className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
@@ -585,10 +586,19 @@ export default function ProjectsShowcase({ showToast }) {
               </span>
             </div>
 
-            {/* Local Notice Warning Callout */}
-            <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-950/30 border border-cyan-500/30 text-cyan-800 dark:text-cyan-300 text-xs font-medium">
-              <Sparkles className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
-              <span>Giao diện Radar 360° và Locket Streak đang mô phỏng quét trực tiếp bên dưới</span>
+            {/* Test Lab Callout */}
+            <div className="flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-xs font-medium">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                <span className="truncate">Đã mở phòng thử nghiệm tương tác: Quét bạn bè, gửi Locket & Bump!</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsCenkinTestOpen(true)}
+                className="shrink-0 font-bold text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer text-xs"
+              >
+                Mở Test →
+              </button>
             </div>
 
             {/* Title & Description */}
@@ -730,22 +740,36 @@ export default function ProjectsShowcase({ showToast }) {
           </div>
 
           {/* Action Row */}
-          <div className="flex items-center gap-3 pt-6 relative z-10">
+          <div className="flex flex-wrap items-center gap-2.5 pt-6 relative z-10">
+            {/* Primary Action Button: Open Cenkin Live Test Lab */}
             <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setActiveLocalProject(LOCAL_PROJECTS.cenkin)}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-sm glow-btn group/link cursor-pointer"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => setIsCenkinTestOpen(true)}
+              className="flex-1 min-w-[200px] flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white shadow-lg shadow-emerald-500/25 cursor-pointer transition-all"
             >
-              <Eye className="w-4 h-4 text-emerald-400 dark:text-emerald-600" />
-              <span>Xem Chi Tiết & Giao Diện</span>
+              <Radio className="w-4 h-4 animate-pulse" />
+              <span>Mở Trình Test Cenkin Trực Tiếp</span>
             </motion.button>
 
+            {/* Secondary Action: Xem Kiến Trúc */}
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => setActiveLocalProject(LOCAL_PROJECTS.cenkin)}
+              className="flex items-center gap-1.5 px-4 py-3 rounded-2xl glass-card border border-neutral-300/80 dark:border-white/15 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+              title="Xem chi tiết kiến trúc kỹ thuật"
+            >
+              <Eye className="w-4 h-4 text-cyan-500" />
+              <span>Kiến trúc</span>
+            </motion.button>
+
+            {/* Copy Project Info */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleCopyProjectInfo(LOCAL_PROJECTS.cenkin, 'cenkin-card')}
-              className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl glass-card border border-neutral-300/80 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-3 rounded-2xl glass-card border border-neutral-300/80 dark:border-white/15 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs sm:text-sm font-semibold transition-all cursor-pointer"
               title="Sao chép thông tin dự án Cenkin"
             >
               {copiedKey === 'cenkin-card' ? (
@@ -756,7 +780,6 @@ export default function ProjectsShowcase({ showToast }) {
               ) : (
                 <>
                   <Copy className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
-                  <span className="text-xs">Sao chép thông tin</span>
                 </>
               )}
             </motion.button>
@@ -951,6 +974,13 @@ export default function ProjectsShowcase({ showToast }) {
             });
           }
         }}
+      />
+
+      {/* Cenkin Live Interactive Test Modal */}
+      <CenkinTestModal
+        isOpen={isCenkinTestOpen}
+        onClose={() => setIsCenkinTestOpen(false)}
+        showToast={showToast}
       />
     </section>
   );

@@ -127,6 +127,17 @@ export default function CleanPortfolioLayout({
                   <span>Chơi thử: Hôm Nay Uống Gì</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </motion.a>
+
+                {/* Cenkin Radar Test Pill */}
+                <motion.a
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
+                  href="#projects"
+                  className="flex items-center gap-1.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-500/20 transition-all cursor-pointer"
+                >
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+                  <span>Test Cenkin Radar</span>
+                </motion.a>
               </div>
             </div>
           </div>

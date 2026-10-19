@@ -11,13 +11,13 @@ import { Heart } from 'lucide-react';
 export default function App() {
   const { profile } = useProfileData();
 
-  // Dark Mode is active by default
+  // Light Mode is active by default
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('personal_theme_v2');
+      const savedTheme = localStorage.getItem('personal_theme_v3');
       if (savedTheme) return savedTheme;
     }
-    return 'dark';
+    return 'light';
   });
 
   // Contact Modal & Toast state
@@ -34,7 +34,7 @@ export default function App() {
       root.classList.remove('dark');
       document.body.classList.remove('dark');
     }
-    localStorage.setItem('personal_theme_v2', theme);
+    localStorage.setItem('personal_theme_v3', theme);
   }, [theme]);
 
   const toggleTheme = () => {

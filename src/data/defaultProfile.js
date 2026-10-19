@@ -49,11 +49,11 @@ export const DEFAULT_PROFILE = {
   links: [
     {
       id: "link-showcase",
-      platform: "apple",
-      title: " Apple Pro Project Showcase",
-      url: "http://localhost:3000",
-      stats: "Bento Grid • Case Studies • Quick Look 3D",
-      description: "Phòng trưng bày dự án số của Lio chuẩn triết lý Apple Keynote, trải nghiệm Quick Look chi tiết và bộ chỉ số uy tín",
+      platform: "website",
+      title: "Dự Án: Hôm Nay Uống Gì Lio (Live Web App)",
+      url: "https://danglio.github.io/homnayuonggilio/",
+      stats: "Mini Web App • Gacha CS2 & FIFA • Chơi Ngay",
+      description: "Ứng dụng web mở hòm CS2 & thẻ cầu thủ FIFA Online giải cứu cơn phân vân chọn đồ uống, âm thanh sống động!",
     },
     {
       id: "link-1",

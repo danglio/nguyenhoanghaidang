@@ -300,14 +300,14 @@ export default function ProjectsShowcase({ showToast }) {
             Những sản phẩm web tương tác, series video kể chuyện và nội dung số được Lio dày công phát triển.
           </p>
           <a
-            href="http://localhost:3000"
+            href="https://danglio.github.io/homnayuonggilio/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:scale-105 active:scale-95 transition-all shadow-sm w-fit"
-            title="Mở Apple Pro Project Showcase"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white hover:scale-105 active:scale-95 transition-all shadow-md shadow-indigo-500/20 w-fit cursor-pointer"
+            title="Chơi Thử: Hôm Nay Uống Gì Lio (Live Web App)"
           >
-            <span></span>
-            <span>Khám Phá Apple Pro Showcase</span>
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Chơi Thử: Hôm Nay Uống Gì (Live Demo)</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>
@@ -332,12 +332,12 @@ export default function ProjectsShowcase({ showToast }) {
             <div className="lg:col-span-7 space-y-5">
               {/* Badges */}
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-                  <span>ONLINE DEMO</span>
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                  <span>🟢 ĐANG HOẠT ĐỘNG // LIVE DEMO</span>
                 </span>
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                  <Dices className="w-3 h-3" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                  <Dices className="w-3.5 h-3.5 text-cyan-500" />
                   <span>CS2 & FIFA Interactive Gacha</span>
                 </span>
               </div>
@@ -572,13 +572,13 @@ export default function ProjectsShowcase({ showToast }) {
             {/* Badges Header */}
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">
-                  <Lock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
-                  <span>🔒 BẢN LOCAL // NỘI BỘ</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30">
+                  <Sparkles className="w-3 h-3 text-cyan-500" />
+                  <span>🧪 R&D LAB // MÔ HÌNH THỰC NGHIỆM</span>
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
                   <Eye className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-                  <span>👀 CHỈ XEM PREVIEW</span>
+                  <span>RADAR 360° LIVE SIMULATION</span>
                 </span>
               </div>
               <span className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
@@ -587,9 +587,9 @@ export default function ProjectsShowcase({ showToast }) {
             </div>
 
             {/* Local Notice Warning Callout */}
-            <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-amber-500/10 dark:bg-amber-950/30 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-medium">
-              <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-              <span>Bản local chưa cho phép test • Chỉ xem giao diện</span>
+            <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-cyan-500/10 dark:bg-cyan-950/30 border border-cyan-500/30 text-cyan-800 dark:text-cyan-300 text-xs font-medium">
+              <Sparkles className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
+              <span>Giao diện Radar 360° và Locket Streak đang mô phỏng quét trực tiếp bên dưới</span>
             </div>
 
             {/* Title & Description */}
@@ -780,13 +780,13 @@ export default function ProjectsShowcase({ showToast }) {
             {/* Badges Header */}
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">
-                  <Lock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
-                  <span>🔒 BẢN LOCAL // NỘI BỘ</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30">
+                  <Sparkles className="w-3 h-3 text-purple-500" />
+                  <span>🧪 AI ARCHITECTURE // MÔ HÌNH THỰC NGHIỆM</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/25">
-                  <Eye className="w-3 h-3 text-purple-600 dark:text-purple-400" />
-                  <span>👀 CHỈ XEM PREVIEW</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
+                  <Eye className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                  <span>TERMINAL LOGS REALTIME</span>
                 </span>
               </div>
               <span className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
@@ -795,9 +795,9 @@ export default function ProjectsShowcase({ showToast }) {
             </div>
 
             {/* Local Notice Warning Callout */}
-            <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-amber-500/10 dark:bg-amber-950/30 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-medium">
-              <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-              <span>Hệ thống chạy trên Apple Silicon M2 Pro & GPU nội bộ, bảo mật máy chủ</span>
+            <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-purple-500/10 dark:bg-purple-950/30 border border-purple-500/30 text-purple-800 dark:text-purple-300 text-xs font-medium">
+              <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
+              <span>Hệ thống phân tầng Multi-Agent đang mô phỏng luồng log trực tiếp trên Apple Silicon M2 Pro</span>
             </div>
 
             {/* Title & Description */}

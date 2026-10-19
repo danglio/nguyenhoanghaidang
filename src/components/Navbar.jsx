@@ -52,31 +52,31 @@ export default function Navbar({
             Kỹ năng
           </a>
           <a
-            href="http://localhost:3000"
+            href="https://danglio.github.io/homnayuonggilio/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 py-1.5 rounded-full text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-white/80 dark:hover:bg-white/10 transition-all flex items-center gap-1 font-bold"
-            title="Mở Apple Pro Project Showcase"
+            className="px-3 py-1.5 rounded-full text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 hover:bg-white/80 dark:hover:bg-white/10 transition-all flex items-center gap-1.5 font-bold"
+            title="Trải nghiệm Hôm Nay Uống Gì Lio (Live Web App)"
           >
-            <span></span>
-            <span>Showcase</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+            <span>Live App</span>
           </a>
         </nav>
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-1.5 sm:space-x-2">
-          {/* Showcase Pro Quick Button */}
+          {/* Live App Quick Button */}
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="http://localhost:3000"
+            href="https://danglio.github.io/homnayuonggilio/"
             target="_blank"
             rel="noopener noreferrer"
-            title="Khám phá Apple Pro Project Showcase"
-            className="hidden sm:flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-sm hover:opacity-90 transition-all"
+            title="Chơi thử Hôm Nay Uống Gì Lio (Live Web App)"
+            className="hidden sm:flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-sm transition-all"
           >
-            <span></span>
-            <span>Showcase</span>
+            <span>🎮</span>
+            <span>Chơi Thử Web App</span>
           </motion.a>
           {/* Hợp tác Button */}
           {onOpenContact && (

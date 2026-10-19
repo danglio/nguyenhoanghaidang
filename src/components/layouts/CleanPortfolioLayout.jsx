@@ -17,6 +17,8 @@ import {
   CheckCircle2,
   Award,
   ShieldCheck,
+  GraduationCap,
+  MapPin,
 } from 'lucide-react';
 
 export default function CleanPortfolioLayout({
@@ -30,59 +32,111 @@ export default function CleanPortfolioLayout({
       {/* ========================================================
           HERO SECTION: CON NGƯỜI LIO & TUYÊN NGÔN SÁNG TẠO
       ======================================================== */}
-      <section id="home" className="relative pt-4 sm:pt-8 scroll-mt-24">
-        <div className="glass-card rounded-[32px] sm:rounded-[36px] p-6 sm:p-10 lg:p-12 border border-neutral-200/80 dark:border-white/10 shadow-xl relative overflow-hidden">
-          {/* Subtle Accent Glow */}
-          <div className="absolute -top-32 -right-32 w-80 h-80 bg-gradient-to-br from-cyan-500/15 via-indigo-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-tr from-purple-500/15 via-pink-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <section id="home" className="relative pt-2 sm:pt-6 scroll-mt-24">
+        <div className="relative rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 lg:p-12 bg-white/75 dark:bg-neutral-900/70 backdrop-blur-2xl border border-neutral-200/80 dark:border-white/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.65)] overflow-hidden">
+          {/* Subtle Monochromatic Ambient Backlight (Titanium / Slate tone) */}
+          <div className="absolute -top-32 -right-32 w-96 h-96 bg-neutral-200/50 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-neutral-300/40 dark:bg-neutral-800/30 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left: Profile Portrait Photo */}
-            <div className="lg:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left">
+            {/* Left: Elevated Portrait Squircle & Identity Card */}
+            <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left space-y-4">
               <ProfilePhotoFrame
                 personal={profile.personal}
-                className="mb-4"
+                className="mx-auto lg:mx-0"
               />
 
-              <div className="space-y-1 mt-2">
-                <div className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400 flex items-center justify-center sm:justify-start gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span>ONLINE // HUIT TP.HCM</span>
+              {/* Informational Identity Pill Card */}
+              <div className="w-full max-w-xs sm:max-w-sm space-y-2 px-4 py-3 rounded-2xl bg-neutral-100/80 dark:bg-neutral-800/50 border border-neutral-200/70 dark:border-white/10 backdrop-blur-md">
+                <div className="flex items-center justify-center lg:justify-start gap-2 text-xs font-mono font-bold text-neutral-800 dark:text-neutral-200">
+                  <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                  <span>XÁC THỰC DANH TÍNH CHÍNH THỨC</span>
                 </div>
-                <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                  Sinh năm 2008 • ĐH Công Thương TP.HCM
+                <div className="text-[12px] text-neutral-600 dark:text-neutral-400 space-y-1">
+                  <div className="flex items-center justify-center lg:justify-start gap-1.5">
+                    <GraduationCap className="w-3.5 h-3.5 text-neutral-400 shrink-0" />
+                    <span>ĐH Công Thương TP.HCM (HUIT) • Khóa 2026</span>
+                  </div>
+                  <div className="flex items-center justify-center lg:justify-start gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-neutral-400 shrink-0" />
+                    <span>TP. Hồ Chí Minh, Việt Nam</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right: Headlines, Bio & Primary CTAs */}
-            <div className="lg:col-span-8 space-y-5 text-center sm:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-neutral-900/5 dark:bg-white/10 text-neutral-800 dark:text-neutral-200 border border-neutral-300/80 dark:border-white/15 backdrop-blur-md shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
+            {/* Right: Editorial Typography, Bio Narrative, Bento Metrics & CTAs */}
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              {/* Top Tagline Pill */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-100 dark:bg-white/5 text-neutral-800 dark:text-neutral-200 border border-neutral-300/80 dark:border-white/15 backdrop-blur-md shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
                 <span>OFFICIAL PORTFOLIO // 2026</span>
+                <span className="text-neutral-400 dark:text-neutral-600">•</span>
+                <span className="font-serif tracking-widest font-black text-neutral-900 dark:text-white">ĐĂNG LIO</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 dark:text-white tracking-tight leading-tight">
-                {profile.personal?.fullName || 'Nguyễn Hoàng Hải Đăng (Lio)'}
-              </h1>
-
-              <div className="text-base sm:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-indigo-500 to-pink-500">
-                {profile.personal?.title || 'Creative Technologist & Digital Storyteller'}
+              {/* Main Headline & Identity */}
+              <div className="space-y-2">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 dark:text-white tracking-tight leading-[1.15]">
+                  {profile.personal?.fullName || 'Nguyễn Hoàng Hải Đăng'}
+                </h1>
+                <div className="text-sm sm:text-base lg:text-lg font-medium text-neutral-600 dark:text-neutral-400 flex items-center justify-center lg:justify-start gap-2 flex-wrap">
+                  <span className="font-semibold text-neutral-900 dark:text-neutral-200">Creative Technologist</span>
+                  <span className="text-neutral-400 dark:text-neutral-600">•</span>
+                  <span>Digital Storyteller</span>
+                  <span className="text-neutral-400 dark:text-neutral-600">•</span>
+                  <span className="text-xs px-2 py-0.5 rounded-md bg-neutral-200/80 dark:bg-white/10 font-mono text-neutral-700 dark:text-neutral-300">Gen Z • 2008</span>
+                </div>
               </div>
 
+              {/* Refined Bio & Philosophy */}
               <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-2xl">
-                {profile.personal?.bio}
+                Chào bạn, mình là <strong className="text-neutral-900 dark:text-white font-semibold">Hải Đăng (Lio)</strong> — sinh viên <strong className="text-neutral-900 dark:text-white font-semibold">Đại học Công Thương TP.HCM (HUIT)</strong>. Mình đam mê kết hợp tư duy công nghệ phần mềm tương tác với nghệ thuật kể chuyện số (Storytelling) để kiến tạo những sản phẩm chạm đến cảm xúc và các giải pháp AI mang giá trị thực tiễn.
               </p>
 
-              {/* Action Buttons: 1 Main CTA + 1 Secondary Scroll CTA + Live App Pill */}
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-3">
+              {/* Micro-Bento Credibility Counters in Hero */}
+              <div className="grid grid-cols-3 gap-2.5 sm:gap-3 py-1">
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-neutral-100/90 dark:bg-neutral-800/40 border border-neutral-200/70 dark:border-white/10 text-center lg:text-left transition-all hover:border-neutral-400 dark:hover:border-white/25">
+                  <div className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white font-mono">
+                    150K+
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-medium">
+                    Lượt xem đa nền tảng
+                  </div>
+                </div>
+
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-neutral-100/90 dark:bg-neutral-800/40 border border-neutral-200/70 dark:border-white/10 text-center lg:text-left transition-all hover:border-neutral-400 dark:hover:border-white/25">
+                  <div className="text-xl sm:text-2xl font-black text-amber-500 font-mono">
+                    02
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-medium">
+                    Chứng chỉ FPT & MCI
+                  </div>
+                </div>
+
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-neutral-100/90 dark:bg-neutral-800/40 border border-neutral-200/70 dark:border-white/10 text-center lg:text-left transition-all hover:border-neutral-400 dark:hover:border-white/25">
+                  <div className="text-xl sm:text-2xl font-black text-emerald-500 font-mono">
+                    100%
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-medium">
+                    Thực chiến độc lập
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons: 1 Main CTA + Scroll CTAs + Live App Pill */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-2">
                 {/* Primary Contact CTA */}
                 {onOpenContact && (
                   <motion.button
-                    whileHover={{ scale: 1.04, y: -2 }}
-                    whileTap={{ scale: 0.96 }}
+                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={onOpenContact}
-                    className="flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg shadow-indigo-500/25 cursor-pointer transition-all"
+                    className="flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 shadow-lg shadow-neutral-950/20 dark:shadow-white/10 cursor-pointer transition-all"
                   >
                     <Send className="w-4 h-4" />
                     <span>Gửi lời mời hợp tác</span>
@@ -91,21 +145,21 @@ export default function CleanPortfolioLayout({
 
                 {/* Secondary: Scroll to Projects */}
                 <motion.a
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
                   href="#projects"
-                  className="flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold glass-card border border-neutral-300/80 dark:border-white/15 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all cursor-pointer"
+                  className="flex items-center gap-2 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-white/80 dark:bg-neutral-800/70 border border-neutral-300/80 dark:border-white/15 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700/70 transition-all cursor-pointer backdrop-blur-md shadow-sm"
                 >
-                  <Code2 className="w-4 h-4 text-cyan-500" />
-                  <span>Xem các dự án</span>
+                  <Code2 className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
+                  <span>Dự án phần mềm</span>
                 </motion.a>
 
                 {/* Secondary: Scroll to Certificates */}
                 <motion.a
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
                   href="#certificates"
-                  className="flex items-center gap-2 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold glass-card border border-amber-500/30 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 transition-all cursor-pointer"
+                  className="flex items-center gap-2 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-amber-500/10 hover:bg-amber-500/15 border border-amber-500/30 text-amber-700 dark:text-amber-400 transition-all cursor-pointer backdrop-blur-md shadow-sm"
                 >
                   <Award className="w-4 h-4 text-amber-500" />
                   <span>Chứng chỉ FPT & MCI</span>
@@ -113,12 +167,12 @@ export default function CleanPortfolioLayout({
 
                 {/* Live App Quick Pill */}
                 <motion.a
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
                   href="https://danglio.github.io/homnayuonggilio/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-all cursor-pointer"
+                  className="flex items-center gap-1.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 transition-all cursor-pointer backdrop-blur-md shadow-sm"
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                   <span>Chơi thử: Hôm Nay Uống Gì</span>

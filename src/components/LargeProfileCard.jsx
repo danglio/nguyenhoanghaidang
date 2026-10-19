@@ -117,7 +117,7 @@ export default function LargeProfileCard({
             <img
               src={avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800'}
               alt={fullName}
-              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+              className="w-full h-full object-cover object-[50%_18%] transition-transform duration-700 ease-out group-hover:scale-105"
               onError={(e) => {
                 e.target.src = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=800';
               }}

@@ -37,25 +37,14 @@ export default function CleanPortfolioLayout({
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left: Profile Portrait Photo */}
-            <div className="lg:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left">
+            <div className="lg:col-span-5 flex flex-col items-center justify-center">
               <ProfilePhotoFrame
                 personal={profile.personal}
-                className="mb-4"
               />
-
-              <div className="space-y-1 mt-2">
-                <div className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400 flex items-center justify-center sm:justify-start gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span>ONLINE // HUIT TP.HCM</span>
-                </div>
-                <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                  Creative Technologist • ĐH Công Thương TP.HCM
-                </div>
-              </div>
             </div>
 
             {/* Right: Headlines, Bio & Primary CTAs */}
-            <div className="lg:col-span-8 space-y-5 text-center sm:text-left">
+            <div className="lg:col-span-7 space-y-5 text-center sm:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-neutral-900/5 dark:bg-white/10 text-neutral-800 dark:text-neutral-200 border border-neutral-300/80 dark:border-white/15 backdrop-blur-md shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>OFFICIAL PORTFOLIO // 2026</span>

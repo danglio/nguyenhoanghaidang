@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Moon, Share2, Send, Command, Volume2, VolumeX, Search } from 'lucide-react';
+import { Sun, Moon, Share2, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import { DangLioFullLogo } from './DangLioLogo';
@@ -10,8 +10,6 @@ export default function Navbar({
   onShare,
   onOpenContact,
   fullName = '',
-  onOpenCommandPalette,
-  soundFX,
 }) {
   return (
     <header className="sticky top-0 z-40 w-full glass-nav border-b border-neutral-200/60 dark:border-neutral-800/60 transition-colors duration-300 backdrop-blur-xl">
@@ -33,7 +31,13 @@ export default function Navbar({
             href="#home"
             className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
           >
-            Trang chủ
+            Giới thiệu
+          </a>
+          <a
+            href="#videos"
+            className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
+          >
+            Thước phim
           </a>
           <a
             href="#projects"
@@ -42,99 +46,33 @@ export default function Navbar({
             Dự án
           </a>
           <a
-            href="#socials"
-            className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
-          >
-            Mạng xã hội
-          </a>
-          <a
             href="#skills"
             className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
           >
             Kỹ năng
           </a>
           <a
-            href="https://danglio.github.io/homnayuonggilio/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-3 py-1.5 rounded-full text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 hover:bg-white/80 dark:hover:bg-white/10 transition-all flex items-center gap-1.5 font-bold"
-            title="Trải nghiệm Hôm Nay Uống Gì Lio (Live Web App)"
+            href="#socials"
+            className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-            <span>Live App</span>
+            Mạng xã hội
           </a>
         </nav>
 
         {/* Action Buttons */}
-        <div className="flex items-center space-x-1.5 sm:space-x-2">
-          {/* Live App Quick Button */}
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="https://danglio.github.io/homnayuonggilio/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Chơi thử Hôm Nay Uống Gì Lio (Live Web App)"
-            className="hidden sm:flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-sm transition-all"
-          >
-            <span>🎮</span>
-            <span>Chơi Thử Web App</span>
-          </motion.a>
-          {/* Hợp tác Button */}
-          {onOpenContact && (
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={onOpenContact}
-              title="Gửi lời mời hợp tác & booking"
-              className="flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-md shadow-indigo-500/20 glow-btn transition-all"
-            >
-              <Send className="w-3.5 h-3.5" />
-              <span>Hợp tác</span>
-            </motion.button>
-          )}
-
-          {/* Command Palette Button (Cmd+K) */}
-          {onOpenCommandPalette && (
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={onOpenCommandPalette}
-              title="Tìm kiếm nhanh (Cmd + K / Ctrl + K)"
-              className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-xs font-mono text-neutral-600 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-neutral-100 dark:hover:bg-neutral-800/80 border border-neutral-200/80 dark:border-white/10 glow-btn transition-all cursor-pointer"
-            >
-              <Command className="w-3.5 h-3.5 text-cyan-500" />
-              <span className="hidden md:inline font-bold">⌘K</span>
-            </motion.button>
-          )}
-
-          {/* Micro-Sound FX Toggle Button */}
-          {soundFX && (
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={soundFX.toggleMute}
-              title={soundFX.isMuted ? 'Bật âm thanh tương tác (Unmute)' : 'Tắt âm thanh tương tác (Mute)'}
-              className="p-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 glow-btn transition-all cursor-pointer"
-            >
-              {soundFX.isMuted ? (
-                <VolumeX className="w-4 h-4 text-neutral-400" />
-              ) : (
-                <Volume2 className="w-4 h-4 text-cyan-500" />
-              )}
-            </motion.button>
-          )}
-
+        <div className="flex items-center space-x-2">
           {/* Share Button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onShare}
-            title="Sao chép liên kết trang"
-            className="p-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 glow-btn transition-all"
-          >
-            <Share2 className="w-4 h-4" />
-          </motion.button>
+          {onShare && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onShare}
+              title="Sao chép liên kết trang"
+              className="p-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all"
+            >
+              <Share2 className="w-4 h-4" />
+            </motion.button>
+          )}
 
           {/* Theme Toggle Button */}
           <motion.button
@@ -142,7 +80,7 @@ export default function Navbar({
             whileTap={{ scale: 0.95 }}
             onClick={onToggleTheme}
             title={theme === 'dark' ? 'Chuyển sang chế độ Sáng' : 'Chuyển sang chế độ Tối'}
-            className="p-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 glow-btn transition-all"
+            className="p-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all"
           >
             {theme === 'dark' ? (
               <Sun className="w-4 h-4 text-amber-400" />
@@ -150,6 +88,20 @@ export default function Navbar({
               <Moon className="w-4 h-4 text-neutral-700" />
             )}
           </motion.button>
+
+          {/* Primary CTA: Hợp tác */}
+          {onOpenContact && (
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              onClick={onOpenContact}
+              title="Gửi lời mời hợp tác & booking"
+              className="flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-md shadow-indigo-500/20 transition-all"
+            >
+              <Send className="w-3.5 h-3.5" />
+              <span>Hợp tác</span>
+            </motion.button>
+          )}
         </div>
       </div>
     </header>

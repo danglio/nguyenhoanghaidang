@@ -1,33 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { motion, AnimatePresence } from 'framer-motion';
 import AmbientBackground from './components/AmbientBackground';
-import SpatialBackgroundGlow from './components/SpatialBackgroundGlow';
 import Navbar from './components/Navbar';
 import ContactModal from './components/ContactModal';
-import CommandPaletteModal from './components/CommandPaletteModal';
-import SoundtrackPlayer from './components/SoundtrackPlayer';
 import Toast from './components/Toast';
+import CleanPortfolioLayout from './components/layouts/CleanPortfolioLayout';
 import { useProfileData } from './hooks/useProfileData';
-import useSoundFX from './hooks/useSoundFX';
 import { Heart } from 'lucide-react';
-
-// Layout Switcher and Layout Components
-import LayoutSwitcherBar, { LAYOUT_OPTIONS } from './components/layouts/LayoutSwitcherBar';
-import SpatialCinemaLayout from './components/layouts/SpatialCinemaLayout';
-import ClassicLayout from './components/layouts/ClassicLayout';
-import BentoLayout from './components/layouts/BentoLayout';
-import SplitLayout from './components/layouts/SplitLayout';
-import TabsLayout from './components/layouts/TabsLayout';
-import MinimalBioLayout from './components/layouts/MinimalBioLayout';
-import MacOSLayout from './components/layouts/MacOSLayout';
-import EditorialLayout from './components/layouts/EditorialLayout';
 
 export default function App() {
   const { profile } = useProfileData();
-  const soundFX = useSoundFX();
 
-  // Dark Mode is active by default automatically
+  // Dark Mode is active by default
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('personal_theme_v2');
@@ -36,33 +20,9 @@ export default function App() {
     return 'dark';
   });
 
-  // Active Layout Demo State (persisted to localStorage, defaults to 'spatial')
-  const [activeLayout, setActiveLayout] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedLayout = localStorage.getItem('lio_active_layout_preview');
-      if (savedLayout && LAYOUT_OPTIONS.some((l) => l.id === savedLayout)) {
-        return savedLayout;
-      }
-    }
-    return 'spatial'; // Default to Lio Spatial Cinema Exhibition Deck!
-  });
-
-  // Command Palette & Contact Modal & Toast state
-  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+  // Contact Modal & Toast state
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [toast, setToast] = useState(null);
-
-  // Global Keyboard Shortcut for Command Palette (Cmd + K / Ctrl + K)
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        setIsCommandPaletteOpen((prev) => !prev);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
 
   // Apply theme to document
   useEffect(() => {
@@ -81,26 +41,13 @@ export default function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  // Switch Layout Handler
-  const handleSelectLayout = (layoutId) => {
-    setActiveLayout(layoutId);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('lio_active_layout_preview', layoutId);
-    }
-    const layoutObj = LAYOUT_OPTIONS.find((l) => l.id === layoutId);
-    setToast({
-      message: `Đã chuyển sang: ${layoutObj?.name || layoutId}`,
-      type: 'success',
-    });
-  };
-
   // Trigger celebration confetti
   const triggerConfetti = () => {
     confetti({
-      particleCount: 75,
-      spread: 70,
-      origin: { y: 0.65 },
-      colors: ['#6366f1', '#06b6d4', '#ec4899', '#3b82f6', '#10b981'],
+      particleCount: 50,
+      spread: 60,
+      origin: { y: 0.7 },
+      colors: ['#06b6d4', '#6366f1', '#ec4899', '#3b82f6'],
     });
   };
 
@@ -124,132 +71,44 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col justify-between bg-[#f8fafc] dark:bg-[#0c0c0e] text-neutral-900 dark:text-neutral-100 selection:bg-cyan-500 selection:text-white dark:selection:bg-cyan-400 dark:selection:text-neutral-950 transition-colors duration-300 pb-24">
-      {/* Dynamic Ambient Mesh Glow Background */}
+    <div className="min-h-screen relative flex flex-col justify-between bg-[#f8fafc] dark:bg-[#0c0c0e] text-neutral-900 dark:text-neutral-100 selection:bg-cyan-500 selection:text-white dark:selection:bg-cyan-400 dark:selection:text-neutral-950 transition-colors duration-300">
+      {/* Subtle Ambient Mesh Glow Background */}
       <AmbientBackground />
 
-      {/* Dynamic Cursor Spotlight Follower & Spatial Dot Mesh */}
-      <SpatialBackgroundGlow />
-
-      {/* Top Sticky Navbar with Lio. brand and pill dock */}
+      {/* Top Sticky Clean Navbar */}
       <Navbar
         theme={theme}
         onToggleTheme={toggleTheme}
         onOpenContact={() => setIsContactOpen(true)}
         onShare={handleShare}
         fullName={profile.personal.fullName}
-        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
-        soundFX={soundFX}
       />
 
-      {/* Main Content Area: Renders Active Layout Demo */}
+      {/* Main Single Clean Portfolio Layout */}
       <main className="relative z-10 flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeLayout}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.22, ease: 'easeInOut' }}
-          >
-            {activeLayout === 'spatial' && (
-              <SpatialCinemaLayout
-                profile={profile}
-                onOpenContact={() => setIsContactOpen(true)}
-                showToast={setToast}
-                onShare={handleShare}
-                onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
-                soundFX={soundFX}
-              />
-            )}
-
-            {activeLayout === 'classic' && (
-              <ClassicLayout
-                profile={profile}
-                onOpenContact={() => setIsContactOpen(true)}
-                showToast={setToast}
-                onShare={handleShare}
-              />
-            )}
-
-            {activeLayout === 'bento' && (
-              <BentoLayout
-                profile={profile}
-                onOpenContact={() => setIsContactOpen(true)}
-                showToast={setToast}
-                onShare={handleShare}
-              />
-            )}
-
-            {activeLayout === 'split' && (
-              <SplitLayout
-                profile={profile}
-                onOpenContact={() => setIsContactOpen(true)}
-                showToast={setToast}
-                onShare={handleShare}
-              />
-            )}
-
-            {activeLayout === 'tabs' && (
-              <TabsLayout
-                profile={profile}
-                onOpenContact={() => setIsContactOpen(true)}
-                showToast={setToast}
-                onShare={handleShare}
-              />
-            )}
-
-            {activeLayout === 'minimal' && (
-              <MinimalBioLayout
-                profile={profile}
-                onOpenContact={() => setIsContactOpen(true)}
-                showToast={setToast}
-                onShare={handleShare}
-              />
-            )}
-
-            {activeLayout === 'macos' && (
-              <MacOSLayout
-                profile={profile}
-                onOpenContact={() => setIsContactOpen(true)}
-                showToast={setToast}
-                onShare={handleShare}
-              />
-            )}
-
-            {activeLayout === 'editorial' && (
-              <EditorialLayout
-                profile={profile}
-                onOpenContact={() => setIsContactOpen(true)}
-                showToast={setToast}
-                onShare={handleShare}
-              />
-            )}
-          </motion.div>
-        </AnimatePresence>
+        <CleanPortfolioLayout
+          profile={profile}
+          onOpenContact={() => setIsContactOpen(true)}
+          showToast={setToast}
+          onShare={handleShare}
+        />
       </main>
 
-      {/* Minimalist Footer */}
+      {/* Minimalist Professional Footer */}
       <footer className="relative z-10 py-8 text-center text-xs text-neutral-400 dark:text-neutral-500 border-t border-neutral-200/40 dark:border-neutral-800/40 mt-12">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="flex items-center space-x-1.5">
             <span>© {new Date().getFullYear()} {profile.personal.fullName || 'Nguyễn Hoàng Hải Đăng (Lio)'}.</span>
             <span className="hidden sm:inline">• Thiết kế với</span>
             <Heart className="w-3.5 h-3.5 text-rose-500 inline fill-rose-500" />
-            <span className="hidden sm:inline">Spatial Cinema Deck & Cyber Minimalist.</span>
+            <span className="hidden sm:inline">Creative Code & Digital Storytelling.</span>
           </p>
 
           <p className="text-[11px] text-neutral-400 dark:text-neutral-500">
-            Dữ liệu cá nhân được lưu trữ bảo mật trực tiếp trên trình duyệt
+            HUIT TP.HCM • Sẵn sàng nhận dự án & cơ hội hợp tác
           </p>
         </div>
       </footer>
-
-      {/* Floating Interactive Layout Switcher Dock */}
-      <LayoutSwitcherBar
-        activeLayout={activeLayout}
-        onSelectLayout={handleSelectLayout}
-      />
 
       {/* Contact & Collaboration Modal */}
       <ContactModal
@@ -257,21 +116,6 @@ export default function App() {
         onClose={() => setIsContactOpen(false)}
         showToast={setToast}
       />
-
-      {/* Command Palette Modal (Cmd+K / Ctrl+K) */}
-      <CommandPaletteModal
-        isOpen={isCommandPaletteOpen}
-        onClose={() => setIsCommandPaletteOpen(false)}
-        onOpenContact={() => setIsContactOpen(true)}
-        onShare={handleShare}
-        onToggleTheme={toggleTheme}
-        theme={theme}
-        soundFX={soundFX}
-        showToast={setToast}
-      />
-
-      {/* Interactive Web Audio Lo-Fi Soundtrack Player */}
-      <SoundtrackPlayer />
 
       {/* Global Toast Notification */}
       <Toast toast={toast} onClose={() => setToast(null)} />

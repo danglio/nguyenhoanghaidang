@@ -236,7 +236,7 @@ export default function SplitLayout({ profile, onOpenContact, showToast, onShare
             </h2>
           </div>
 
-          <SkillsSection skills={profile.skills} />
+          <SkillsSection skills={profile.skills} skillCategories={profile.skillCategories} />
 
           {profile.vibeMusic && (
             <div className="glass-card p-4 rounded-2xl border border-neutral-200/80 dark:border-neutral-800/80 flex items-center justify-between gap-4">

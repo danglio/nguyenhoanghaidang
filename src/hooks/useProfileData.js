@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { DEFAULT_PROFILE } from '../data/defaultProfile';
 
-const STORAGE_KEY = 'personal_bio_profile_v13';
+const STORAGE_KEY = 'personal_bio_profile_v14';
 
 export function calculateAge(birthDateString) {
   if (!birthDateString) return null;
@@ -30,13 +30,11 @@ export function useProfileData() {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed.personal?.bio && parsed.personal.bio.includes('08/02/2008')) {
-          parsed.personal.bio = parsed.personal.bio.replace(/Sinh ngày 08\/02\/2008/g, 'Sinh năm 2008').replace(/08\/02\/2008/g, '2008');
-        }
         return {
           personal: { ...DEFAULT_PROFILE.personal, ...(parsed.personal || {}) },
           accentColor: parsed.accentColor || DEFAULT_PROFILE.accentColor,
           vibeMusic: { ...DEFAULT_PROFILE.vibeMusic, ...(parsed.vibeMusic || {}) },
+          skillCategories: DEFAULT_PROFILE.skillCategories,
           skills: Array.isArray(parsed.skills) ? parsed.skills : DEFAULT_PROFILE.skills,
           stats: Array.isArray(parsed.stats) ? parsed.stats : DEFAULT_PROFILE.stats,
           links: Array.isArray(parsed.links) ? parsed.links : DEFAULT_PROFILE.links,

@@ -138,4 +138,22 @@
   scrollbar-color: rgba(150, 150, 150, 0.3) transparent;
 }
 
+/* Animated gradient text effect */
+@keyframes text-gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: text-gradient-flow 4s ease infinite;
+}
+
 

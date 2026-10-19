@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Quote, Terminal, ArrowRight } from 'lucide-react';
+import { Quote, Terminal, ArrowRight } from 'lucide-react';
 
 export default function ProfileOverview({ personal }) {
   const { fullName, title, roles, bio } = personal;
@@ -26,7 +26,7 @@ export default function ProfileOverview({ personal }) {
     >
       {/* Top Pill / Vibe Badge */}
       <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800/90 border border-neutral-200/80 dark:border-neutral-700/80 text-xs font-semibold text-neutral-800 dark:text-neutral-200 shadow-sm">
-        <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
         <span>Hồ sơ cá nhân & không gian sáng tạo</span>
       </div>
 

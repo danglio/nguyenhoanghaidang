@@ -6,7 +6,6 @@ import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
 import SocialLinks from '../SocialLinks';
 import {
-  Sparkles,
   Music,
   Folder,
   User,

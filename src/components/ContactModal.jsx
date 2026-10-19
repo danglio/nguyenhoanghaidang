@@ -4,7 +4,6 @@ import {
   X,
   Mail,
   Send,
-  Sparkles,
   Copy,
   Check,
   Building,
@@ -214,10 +213,9 @@ ${trimmedMessage}
                 </div>
                 <h2
                   id="contact-modal-title"
-                  className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white tracking-tight flex items-center gap-2"
+                  className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white tracking-tight"
                 >
-                  <span>Liên Hệ Hợp Tác</span>
-                  <Sparkles className="w-5 h-5 text-amber-500 shrink-0" />
+                  Liên Hệ Hợp Tác
                 </h2>
                 <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1 leading-relaxed">
                   Gửi ý tưởng dự án, booking tài trợ, hoặc lời mời sáng tạo trực tiếp đến Lio.

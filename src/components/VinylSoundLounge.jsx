@@ -9,7 +9,6 @@ import {
   VolumeX,
   Disc3,
   Music,
-  Sparkles,
   Radio,
 } from 'lucide-react';
 

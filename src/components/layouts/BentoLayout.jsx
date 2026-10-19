@@ -5,7 +5,7 @@ import ProjectsShowcase from '../ProjectsShowcase';
 import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
 import SocialLinks from '../SocialLinks';
-import { Sparkles, Music, ExternalLink, Send, Share2, Eye, Flame, Users, ArrowUpRight } from 'lucide-react';
+import { Music, ExternalLink, Send, Share2, Eye, Flame, Users, ArrowUpRight, Award, Radio, Layers } from 'lucide-react';
 import { YouTubeIcon } from '../SocialIcons';
 
 export default function BentoLayout({ profile, onOpenContact, showToast, onShare }) {
@@ -118,7 +118,7 @@ export default function BentoLayout({ profile, onOpenContact, showToast, onShare
         <div className="col-span-1 md:col-span-2 lg:col-span-2 glass-card rounded-3xl p-5 border border-neutral-200/80 dark:border-neutral-800/80 shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-1.5 text-xs font-bold text-neutral-800 dark:text-neutral-200">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
+              <Award className="w-3.5 h-3.5 text-cyan-500" />
               <span>Kỹ Năng & Lĩnh Vực Chuyên Môn</span>
             </div>
             <span className="text-[10px] font-mono text-neutral-400">8 Công cụ</span>
@@ -131,7 +131,7 @@ export default function BentoLayout({ profile, onOpenContact, showToast, onShare
       <section className="space-y-4">
         <div className="flex items-center justify-between border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-indigo-500" />
+            <Radio className="w-4 h-4 text-indigo-500" />
             <h3 className="text-lg sm:text-xl font-black text-neutral-900 dark:text-white">
               Kênh Sáng Tạo & Mạng Xã Hội
             </h3>
@@ -145,7 +145,7 @@ export default function BentoLayout({ profile, onOpenContact, showToast, onShare
       <section className="space-y-4">
         <div className="flex items-center justify-between border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-cyan-500" />
+            <Layers className="w-4 h-4 text-cyan-500" />
             <h3 className="text-lg sm:text-xl font-black text-neutral-900 dark:text-white">
               Dự Án Tiêu Biểu & Ứng Dụng
             </h3>

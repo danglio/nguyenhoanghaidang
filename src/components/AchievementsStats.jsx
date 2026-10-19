@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
   Users,
-  Sparkles,
   Flame,
   Heart,
   Trophy,
@@ -30,7 +29,7 @@ import {
 
 const iconMap = {
   Users,
-  Sparkles,
+  Film,
   Flame,
   Heart,
   Trophy,
@@ -40,6 +39,7 @@ const iconMap = {
   Award,
   Zap,
   Eye,
+  TrendingUp,
 };
 
 /**
@@ -262,7 +262,7 @@ export default function AchievementsStats({ stats = [] }) {
           className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
         >
           {stats.map((stat, index) => {
-            const IconComponent = iconMap[stat.icon] || Sparkles;
+            const IconComponent = iconMap[stat.icon] || TrendingUp;
 
             return (
               <motion.div

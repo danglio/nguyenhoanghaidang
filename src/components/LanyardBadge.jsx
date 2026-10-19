@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Sparkles, RotateCw, ShieldCheck, Cpu } from 'lucide-react';
+import { Radio, RotateCw, ShieldCheck, Cpu } from 'lucide-react';
 
 /**
  * 3D Interactive Lanyard ID Badge Component
@@ -263,7 +263,7 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                 {/* Header: Logo, Online Status & Flip Button */}
                 <div className="flex items-center justify-between px-1 relative z-20">
                   <div className="flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                    <Radio className="w-3.5 h-3.5 text-cyan-400" />
                     <span className="text-[10px] font-black tracking-[0.2em] text-neutral-200 uppercase">
                       LIO CREATIVE HUB
                     </span>

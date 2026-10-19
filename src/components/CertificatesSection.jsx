@@ -10,7 +10,6 @@ import {
   Calendar,
   Building2,
   FileText,
-  Sparkles,
   ShieldCheck,
 } from 'lucide-react';
 

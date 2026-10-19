@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
   X,
-  Sparkles,
+  Radio,
   Command,
   ArrowRight,
   ExternalLink,
@@ -53,7 +53,7 @@ export default function CommandPaletteModal({
       category: 'Dự Án & Live Apps',
       title: 'Cenkin Radar & Locket Check-in',
       desc: 'Định vị radar 360 độ và va chạm Bump vật lý kết nối bạn bè',
-      icon: Sparkles,
+      icon: Radio,
       badge: 'R&D LAB',
       badgeColor: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
       action: () => {

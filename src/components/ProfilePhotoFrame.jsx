@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 
 export default function ProfilePhotoFrame({ personal, className = '' }) {
   const avatarUrl = personal?.avatarUrl || `${import.meta.env.BASE_URL}avatar.jpg`;
@@ -36,11 +35,6 @@ export default function ProfilePhotoFrame({ personal, className = '' }) {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span>HUIT • TP.HCM</span>
           </div>
-        </div>
-
-        {/* Decorative corner accent badge */}
-        <div className="absolute top-3.5 right-3.5 p-1 rounded-full bg-white/90 dark:bg-neutral-800/90 text-cyan-500 shadow-sm border border-neutral-200/60 dark:border-white/10">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
         </div>
       </motion.div>
     </div>

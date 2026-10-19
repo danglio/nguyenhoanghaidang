@@ -10,7 +10,7 @@ import {
   BookOpen,
   ChevronDown,
   ChevronUp,
-  Sparkles,
+  Film,
 } from 'lucide-react';
 
 export const LAYOUT_OPTIONS = [
@@ -18,7 +18,7 @@ export const LAYOUT_OPTIONS = [
     id: 'spatial',
     name: 'Spatial Cinema',
     tag: 'VisionOS ★',
-    icon: Sparkles,
+    icon: Film,
     desc: 'Triển lãm điện ảnh & VisionOS Deck',
   },
   {
@@ -101,7 +101,7 @@ export default function LayoutSwitcherBar({ activeLayout, onSelectLayout }) {
             onClick={() => handleSetCollapsed(false)}
             className="mx-auto flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-neutral-900/90 dark:bg-white/95 text-white dark:text-neutral-900 shadow-2xl backdrop-blur-xl border border-white/20 dark:border-neutral-800 text-xs sm:text-sm font-bold glow-hover cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-cyan-400 dark:text-cyan-600 animate-pulse" />
+            <Layers className="w-4 h-4 text-cyan-400 dark:text-cyan-600" />
             <span>Đang xem: <strong>{LAYOUT_OPTIONS.find((l) => l.id === activeLayout)?.name}</strong></span>
             <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 dark:text-cyan-800 font-mono">
               7 DEMO

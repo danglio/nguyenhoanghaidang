@@ -5,7 +5,7 @@ import ProjectsShowcase from '../ProjectsShowcase';
 import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
 import SocialLinks from '../SocialLinks';
-import { Sparkles, Music, BookOpen, Quote, Send, ArrowRight, Share2, Compass, Feather } from 'lucide-react';
+import { Music, BookOpen, Quote, Send, ArrowRight, Share2, Compass, Feather } from 'lucide-react';
 import { YouTubeIcon } from '../SocialIcons';
 
 export default function EditorialLayout({ profile, onOpenContact, showToast, onShare }) {

@@ -5,7 +5,7 @@ import ProjectsShowcase from '../ProjectsShowcase';
 import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
 import SocialLinks from '../SocialLinks';
-import { Sparkles, Music, ExternalLink, Send, Share2 } from 'lucide-react';
+import { Music, ExternalLink, Send, Share2, Radio, Award } from 'lucide-react';
 import { YouTubeIcon } from '../SocialIcons';
 
 export default function ClassicLayout({ profile, onOpenContact, showToast, onShare }) {
@@ -30,7 +30,7 @@ export default function ClassicLayout({ profile, onOpenContact, showToast, onSha
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-4">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-1">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
+              <Radio className="w-3.5 h-3.5 text-cyan-500" />
               <span>Connect & Follow</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-neutral-900 dark:text-white">
@@ -51,7 +51,7 @@ export default function ClassicLayout({ profile, onOpenContact, showToast, onSha
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/60 dark:border-neutral-800/60 pb-4">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-1">
-              <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
+              <Award className="w-3.5 h-3.5 text-indigo-500" />
               <span>Expertise & Milestones</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-neutral-900 dark:text-white">
@@ -120,7 +120,7 @@ export default function ClassicLayout({ profile, onOpenContact, showToast, onSha
         <div className="glass-card rounded-2xl p-6 sm:p-8 border border-neutral-200/80 dark:border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-6 glow-hover text-center sm:text-left">
           <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
             <div className="p-3.5 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shrink-0 border border-indigo-500/20">
-              <Sparkles className="w-6 h-6" />
+              <Send className="w-6 h-6" />
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white">

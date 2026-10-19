@@ -6,7 +6,6 @@ import {
   Cpu,
   Layers,
   Workflow,
-  Sparkles,
   Check,
   Copy,
   Lock,
@@ -55,7 +54,7 @@ export function buildProjectSummary(project) {
   }
 
   if (project.features && project.features.length > 0) {
-    lines.push(`✨ TÍNH NĂNG CỐT LÕI:`);
+    lines.push(`TÍNH NĂNG CỐT LÕI:`);
     project.features.forEach((feat) => {
       if (typeof feat === 'string') {
         lines.push(`• ${feat}`);
@@ -292,7 +291,7 @@ export default function LocalProjectModal({ project, isOpen, onClose, onCopyInfo
                       key={idx}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-100/80 dark:bg-neutral-800/60 border border-neutral-200/70 dark:border-neutral-700/60 text-xs font-semibold text-neutral-800 dark:text-neutral-200"
                     >
-                      <Sparkles className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}

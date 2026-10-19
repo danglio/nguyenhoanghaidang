@@ -5,7 +5,6 @@ import {
   Radio,
   Camera,
   Zap,
-  Sparkles,
   MapPin,
   Battery,
   BatteryCharging,

@@ -9,7 +9,6 @@ import {
   Copy,
   Check,
   CheckCircle2,
-  Sparkles,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { calculateAge, formatBirthDate } from '../hooks/useProfileData';

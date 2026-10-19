@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Code, Film, Sparkles, Layers, CheckCircle2 } from 'lucide-react';
+import { Cpu, Code, Film, Layers, CheckCircle2 } from 'lucide-react';
 
 const DEFAULT_CATEGORIES = [
   {

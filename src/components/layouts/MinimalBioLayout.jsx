@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import HeroLanyard from '../HeroLanyard';
-import { Sparkles, Music, ExternalLink, Send, ArrowUpRight, Copy, Check, MapPin, GraduationCap } from 'lucide-react';
+import { Music, ExternalLink, Send, ArrowUpRight, Copy, Check, MapPin, GraduationCap } from 'lucide-react';
 import { YouTubeIcon, TikTokIcon, FacebookIcon, InstagramIcon, ZaloIcon } from '../SocialIcons';
 
 export default function MinimalBioLayout({ profile, onOpenContact, showToast, onShare }) {

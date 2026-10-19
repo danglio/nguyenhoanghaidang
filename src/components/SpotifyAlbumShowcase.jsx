@@ -13,7 +13,6 @@ import {
   Clock,
   Music,
   ExternalLink,
-  Sparkles,
 } from 'lucide-react';
 
 // Authentic Spotify Logo SVG Component

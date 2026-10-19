@@ -6,7 +6,7 @@ import FeaturedVideoSpotlight from '../FeaturedVideoSpotlight';
 import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
 import SocialLinks from '../SocialLinks';
-import { Sparkles, Music, ExternalLink, Send, ArrowRight, Share2, MapPin, GraduationCap } from 'lucide-react';
+import { Music, ExternalLink, Send, ArrowRight, Share2, MapPin, GraduationCap } from 'lucide-react';
 import { YouTubeIcon, TikTokIcon, FacebookIcon, InstagramIcon, ZaloIcon } from '../SocialIcons';
 
 export default function SplitLayout({ profile, onOpenContact, showToast, onShare }) {

@@ -7,7 +7,6 @@ import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
 import SocialLinks from '../SocialLinks';
 import {
-  Sparkles,
   Send,
   Share2,
   Code2,
@@ -16,6 +15,7 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Award,
+  Radio,
 } from 'lucide-react';
 
 export default function CleanPortfolioLayout({
@@ -57,7 +57,7 @@ export default function CleanPortfolioLayout({
             {/* Right: Headlines, Bio & Primary CTAs */}
             <div className="lg:col-span-8 space-y-5 text-center sm:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-neutral-900/5 dark:bg-white/10 text-neutral-800 dark:text-neutral-200 border border-neutral-300/80 dark:border-white/15 backdrop-blur-md shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>OFFICIAL PORTFOLIO // 2026</span>
               </div>
 
@@ -178,7 +178,7 @@ export default function CleanPortfolioLayout({
         <div className="flex items-center justify-between border-b border-neutral-200/60 dark:border-white/5 pb-3">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-cyan-500 uppercase mb-1">
-              <Sparkles className="w-3.5 h-3.5" />
+              <Radio className="w-3.5 h-3.5" />
               <span>OFFICIAL CHANNELS</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white">

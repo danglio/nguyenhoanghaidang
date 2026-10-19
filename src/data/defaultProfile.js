@@ -85,7 +85,7 @@ export const DEFAULT_PROFILE = {
     { id: "stat-views", value: "55K+", rawNumber: 55000, label: "Tổng lượt xem (Views)", icon: "Eye", trend: "Đa nền tảng", desc: "TikTok (48K+) • FB (2K+) • IG (1K+) • YT (738+)" },
     { id: "stat-followers", value: "800+", rawNumber: 800, label: "Tổng người theo dõi (6 kênh)", icon: "Users", trend: "Đang tăng trưởng", desc: "FB 419 • TikTok 242 • IG 131 • YT 4" },
     { id: "stat-likes", value: "4.5K+", rawNumber: 4537, label: "Lượt thích TikTok", icon: "Flame", trend: "Tương tác thực", desc: "4,214 tim cá nhân + 323 tim kể chuyện" },
-    { id: "stat-videos", value: "50+", rawNumber: 50, label: "Video & Nội dung số", icon: "Sparkles", trend: "Sản xuất đều đặn", desc: "15 video dài 4K + 35+ video ngắn" },
+    { id: "stat-videos", value: "50+", rawNumber: 50, label: "Video & Nội dung số", icon: "Film", trend: "Sản xuất đều đặn", desc: "15 video dài 4K + 35+ video ngắn" },
   ],
   links: [
     {

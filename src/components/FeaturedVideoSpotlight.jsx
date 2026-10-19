@@ -6,7 +6,6 @@ import {
   ExternalLink,
   Flame,
   Eye,
-  Sparkles,
   Tv,
   CheckCircle2,
   Film,

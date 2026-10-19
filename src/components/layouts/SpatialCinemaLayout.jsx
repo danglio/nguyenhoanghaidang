@@ -8,7 +8,6 @@ import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
 import SocialLinks from '../SocialLinks';
 import {
-  Sparkles,
   Command,
   Send,
   Share2,
@@ -66,7 +65,7 @@ export default function SpatialCinemaLayout({
             <div className="lg:col-span-8 space-y-6 text-center sm:text-left">
               {/* VisionOS Kicker Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-neutral-900/5 dark:bg-white/10 text-neutral-800 dark:text-white border border-neutral-300/80 dark:border-white/15 backdrop-blur-md shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-500 animate-pulse" />
+                <Film className="w-3.5 h-3.5 text-cyan-500" />
                 <span>SPATIAL CINEMA // DIGITAL EXHIBITION DECK</span>
               </div>
 

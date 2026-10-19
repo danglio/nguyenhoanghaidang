@@ -5,7 +5,7 @@ import ProjectsShowcase from '../ProjectsShowcase';
 import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
 import SocialLinks from '../SocialLinks';
-import { Sparkles, Layers, Box, Tv, BarChart3, Music, ExternalLink, Send } from 'lucide-react';
+import { Layers, Box, Tv, BarChart3, Music, ExternalLink, Send } from 'lucide-react';
 import { YouTubeIcon } from '../SocialIcons';
 
 export default function TabsLayout({ profile, onOpenContact, showToast, onShare }) {

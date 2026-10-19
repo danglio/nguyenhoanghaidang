@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, MapPin, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { calculateAge, formatBirthDate } from '../hooks/useProfileData';
 

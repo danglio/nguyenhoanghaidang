@@ -8,7 +8,6 @@ import {
   Disc3,
   Minimize2,
   Maximize2,
-  Sparkles,
   ExternalLink,
   Radio,
   Repeat,
@@ -329,7 +328,7 @@ export default function SoundtrackPlayer() {
               <div className="min-w-0 flex-1 pr-1">
                 <div className="flex items-center gap-1.5 mb-0.5">
                   <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                    <Sparkles className="w-2.5 h-2.5 text-cyan-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span>GIAI ĐIỆU CẢM HƯNG // AUTO-PLAY</span>
                   </span>
                 </div>

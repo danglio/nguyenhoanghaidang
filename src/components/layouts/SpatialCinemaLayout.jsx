@@ -56,7 +56,7 @@ export default function SpatialCinemaLayout({
                   <span>ONLINE // HUIT TP.HCM</span>
                 </div>
                 <div className="text-xs text-neutral-500 dark:text-neutral-400 font-mono">
-                  Sinh năm 2008 • ĐH Công Thương TP.HCM
+                  Creative Technologist • ĐH Công Thương TP.HCM
                 </div>
               </div>
             </div>

@@ -144,7 +144,7 @@ ${trimmedMessage}
 ---
 (Tin nhắn này đã được tự động lưu vào Clipboard để bạn tiện dán lại nếu cần)`;
 
-    const mailtoLink = `mailto:nguyenhoanghaidang.lio@gmail.com?cc=contact@danglio.com&subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+    const mailtoLink = `mailto:contact@danglio.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
 
     // Kích hoạt mở email client
     try {
@@ -325,39 +325,12 @@ ${trimmedMessage}
 
               {/* Quick direct email copy footer pill */}
               <div className="space-y-2 p-3 rounded-2xl bg-neutral-100/70 dark:bg-neutral-800/50 border border-neutral-200/60 dark:border-neutral-700/50 text-xs">
-                {/* Email 1: Gmail Cá Nhân */}
+                {/* Email Hợp tác & Booking */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-                  <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-300">
-                    <Mail className="w-4 h-4 text-rose-500 shrink-0" />
-                    <span>
-                      Gmail trực tiếp: <strong className="font-mono text-neutral-900 dark:text-white">nguyenhoanghaidang.lio@gmail.com</strong>
-                    </span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => handleCopyEmail('nguyenhoanghaidang.lio@gmail.com', 'gmail')}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-700/80 hover:bg-neutral-200 dark:hover:bg-neutral-600 text-neutral-700 dark:text-neutral-200 border border-neutral-300/80 dark:border-neutral-600 transition-colors font-medium text-[11px] shrink-0"
-                  >
-                    {copiedKey === 'gmail' ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-emerald-500" />
-                        <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Đã chép!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5" />
-                        <span>Sao chép</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-
-                {/* Email 2: Booking / Hợp tác */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-1 border-t border-neutral-200/50 dark:border-neutral-700/40">
                   <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-300">
                     <Mail className="w-4 h-4 text-indigo-500 shrink-0" />
                     <span>
-                      Booking & Hợp tác: <strong className="font-mono text-neutral-900 dark:text-white">contact@danglio.com</strong>
+                      Email Hợp Tác & Booking: <strong className="font-mono text-neutral-900 dark:text-white">contact@danglio.com</strong>
                     </span>
                   </div>
                   <button
@@ -373,7 +346,7 @@ ${trimmedMessage}
                     ) : (
                       <>
                         <Copy className="w-3.5 h-3.5" />
-                        <span>Sao chép</span>
+                        <span>Sao chép email</span>
                       </>
                     )}
                   </button>

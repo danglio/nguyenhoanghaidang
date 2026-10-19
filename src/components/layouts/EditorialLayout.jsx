@@ -26,7 +26,7 @@ export default function EditorialLayout({ profile, onOpenContact, showToast, onS
         <div className="max-w-2xl mx-auto flex items-center justify-center gap-2 text-neutral-500 italic text-sm sm:text-base">
           <Quote className="w-5 h-5 text-cyan-500 shrink-0 inline opacity-60" />
           <span>
-            "Tôi là Lio — Sinh năm 2008, sinh viên HUIT. Tôi tin rằng mỗi câu chuyện, nếu được kể bằng sự chân thành kết hợp với công nghệ web tương tác, đều có sức mạnh kết nối phi thường."
+            "Tôi là Lio — Sinh viên HUIT, một người kể chuyện số và thử nghiệm công nghệ web tại TP.HCM. Tôi tin rằng mỗi câu chuyện, nếu được kể bằng sự chân thành kết hợp với trải nghiệm số, đều có sức mạnh kết nối phi thường."
           </span>
         </div>
       </header>

@@ -88,11 +88,11 @@ export default function HeroLanyard({
 
   const instagramLink =
     linksData.find((l) => l.platform === 'instagram' || l.url?.includes('instagram.com'))?.url ||
-    'https://www.instagram.com/nguyenhoanghaidanglio?stkn=OTQ2b2Nmb3F2Zm95&utm_source=qr';
+    'https://www.instagram.com/nguyenhoanghaidanglio/';
 
   const facebookLink =
     linksData.find((l) => l.platform === 'facebook' || l.url?.includes('facebook.com'))?.url ||
-    'https://www.facebook.com/share/19JS9Xy3rN/?mibextid=wwXIfr';
+    'https://www.facebook.com/share/19JS9Xy3rN/';
 
   // Handle Contact / Copy Email
   const [copiedKey, setCopiedKey] = useState(null);
@@ -185,12 +185,12 @@ export default function HeroLanyard({
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.13 }}
             className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs font-mono"
           >
-            {/* 1. Sinh năm 2008 */}
+            {/* 1. Professional Role */}
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 shadow-sm backdrop-blur-md">
-              <Calendar className="w-3.5 h-3.5 text-pink-500 shrink-0" />
-              <span className="font-semibold">Sinh năm 2008</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-pink-500/10 text-pink-600 dark:text-pink-400 font-bold font-sans">
-                18 tuổi
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="font-semibold">Creative Technologist</span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold font-sans">
+                Gen Z
               </span>
             </div>
 
@@ -317,25 +317,7 @@ export default function HeroLanyard({
               <span>Facebook</span>
             </motion.a>
 
-            {/* 7. Nút Gmail Cá Nhân */}
-            <motion.button
-              type="button"
-              onClick={() => handleCopySpecificEmail('nguyenhoanghaidang.lio@gmail.com', 'gmail')}
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ type: 'spring', stiffness: 450, damping: 20 }}
-              className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-white/5 hover:bg-rose-500/10 border border-neutral-200/90 dark:border-white/10 hover:border-rose-500/30 text-neutral-800 dark:text-neutral-200 hover:text-rose-600 dark:hover:text-rose-400 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all shadow-sm"
-              title="Sao chép Gmail nguyenhoanghaidang.lio@gmail.com"
-            >
-              {copiedKey === 'gmail' ? (
-                <Check className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0" />
-              ) : (
-                <GmailIcon className="w-4 h-4 shrink-0" />
-              )}
-              <span>{copiedKey === 'gmail' ? 'Đã sao chép Gmail!' : 'nguyenhoanghaidang.lio@gmail.com'}</span>
-            </motion.button>
-
-            {/* 8. Nút Hòm Thư Công Việc / Booking */}
+            {/* 7. Nút Hòm Thư Công Việc / Booking */}
             <motion.button
               type="button"
               onClick={() => handleCopySpecificEmail('contact@danglio.com', 'work')}

@@ -157,7 +157,7 @@ export default function SplitLayout({ profile, onOpenContact, showToast, onShare
               <YouTubeIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://www.facebook.com/share/19JS9Xy3rN/?mibextid=wwXIfr"
+              href="https://www.facebook.com/share/19JS9Xy3rN/"
               target="_blank"
               rel="noreferrer"
               className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-blue-500 transition-colors"

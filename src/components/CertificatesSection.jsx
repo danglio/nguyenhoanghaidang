@@ -20,7 +20,7 @@ export const CERTIFICATES = [
     issuer: 'Đại Học FPT (FPT University)',
     program: 'FPT Education Vì Cộng Đồng',
     recipient: 'Nguyễn Hoàng Hải Đăng',
-    school: 'Trường THPT Đức Trọng, Tỉnh Lâm Đồng',
+    school: 'Chương Trình Đào Tạo FPT Education',
     date: '06/12/2025',
     category: 'Trí Tuệ Nhân Tạo & Video AI',
     badgeColor: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20',

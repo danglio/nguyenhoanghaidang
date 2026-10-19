@@ -114,7 +114,7 @@ export default function CommandPaletteModal({
       id: 'soc-zalo',
       category: 'Kết Nối & Mạng Xã Hội',
       title: 'Nhắn Tin Zalo Trực Tiếp',
-      desc: 'Trao đổi công việc và kết nối nhanh chóng cùng Lio (0862231322)',
+      desc: 'Trao đổi công việc và kết nối trực tiếp cùng Lio qua Zalo',
       icon: ZaloIcon,
       badge: 'CHAT NHANH',
       badgeColor: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
@@ -128,7 +128,7 @@ export default function CommandPaletteModal({
       icon: FacebookIcon,
       badge: 'FACEBOOK',
       badgeColor: 'bg-blue-600/20 text-blue-400 border-blue-600/30',
-      action: () => window.open('https://www.facebook.com/share/19JS9Xy3rN/?mibextid=wwXIfr', '_blank'),
+      action: () => window.open('https://www.facebook.com/share/19JS9Xy3rN/', '_blank'),
     },
     {
       id: 'soc-ig',
@@ -138,7 +138,7 @@ export default function CommandPaletteModal({
       icon: InstagramIcon,
       badge: 'INSTAGRAM',
       badgeColor: 'bg-pink-600/20 text-pink-400 border-pink-600/30',
-      action: () => window.open('https://www.instagram.com/nguyenhoanghaidanglio', '_blank'),
+      action: () => window.open('https://www.instagram.com/nguyenhoanghaidanglio/', '_blank'),
     },
 
     // 4. Quick Actions
@@ -171,16 +171,16 @@ export default function CommandPaletteModal({
     {
       id: 'act-copy-email',
       category: 'Thao Tác Nhanh',
-      title: 'Sao Chép Email: nguyenhoanghaidang.lio@gmail.com',
-      desc: 'Copy hòm thư điện tử trực tiếp của Lio',
+      title: 'Sao Chép Email: contact@danglio.com',
+      desc: 'Copy hòm thư hợp tác & booking chính thức của Lio',
       icon: Copy,
       badge: 'EMAIL',
       badgeColor: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
       action: async () => {
         if (navigator.clipboard) {
-          await navigator.clipboard.writeText('nguyenhoanghaidang.lio@gmail.com');
+          await navigator.clipboard.writeText('contact@danglio.com');
           soundFX?.playSuccess();
-          showToast?.({ message: 'Đã sao chép email của Lio vào clipboard!', type: 'success' });
+          showToast?.({ message: 'Đã sao chép email contact@danglio.com vào clipboard!', type: 'success' });
         }
         onClose();
       },

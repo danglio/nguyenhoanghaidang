@@ -52,8 +52,17 @@ export function DangLioFullLogo() {
     <div className="flex items-center space-x-2.5 sm:space-x-3 group cursor-pointer">
       <DangLioEmblem className="w-8 h-8 sm:w-9 sm:h-9 text-neutral-900 dark:text-neutral-100 transition-all duration-300 group-hover:scale-105" />
       <div className="flex flex-col justify-center">
-        <span className="font-sans tracking-[0.16em] sm:tracking-[0.2em] text-sm sm:text-base font-black text-neutral-900 dark:text-white uppercase leading-none transition-colors">
-          ĐĂNG LIO
+        <span
+          className="font-serif tracking-[0.18em] sm:tracking-[0.22em] text-sm sm:text-base font-extrabold text-neutral-900 dark:text-white uppercase leading-none transition-colors select-none"
+          aria-label="ĐĂNG LIO"
+        >
+          <span className="relative inline-block" aria-hidden="true">
+            D
+            <span
+              className="absolute top-[48%] left-[-8%] w-[45%] h-[0.11em] bg-current -translate-y-1/2 pointer-events-none rounded-full"
+            />
+          </span>
+          ĂNG LIO
         </span>
       </div>
     </div>

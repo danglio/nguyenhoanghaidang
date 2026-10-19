@@ -18,6 +18,13 @@ export default {
           'Arial',
           'sans-serif'
         ],
+        serif: [
+          'Cinzel',
+          'Trajan Pro',
+          'Bodoni MT',
+          'Georgia',
+          'serif'
+        ],
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',

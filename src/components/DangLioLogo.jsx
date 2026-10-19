@@ -1,176 +1,59 @@
 import React from 'react';
 
 /**
- * Đăng LIO - 3D Isometric Prism "L" Brand Emblem & Wordmark
- * Inspired by modern Linear / Apple aesthetics.
+ * Đăng LIO - Authentic Luxury Monogram & Brand Typography
+ * Recreated with mathematical precision from the official DL emblem.
  */
 export function DangLioEmblem({ className = 'w-9 h-9' }) {
   return (
     <svg
       className={`${className} shrink-0`}
-      viewBox="0 0 100 100"
+      viewBox="0 0 512 512"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        {/* Dark Obsidian Canvas Gradient */}
-        <linearGradient id="emblemBg" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#0B0F19" />
-          <stop offset="50%" stopColor="#05070E" />
-          <stop offset="100%" stopColor="#020307" />
-        </linearGradient>
-
-        {/* Outer Rim Neon Gradient */}
-        <linearGradient id="emblemBorder" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#00F2FE" stopOpacity="0.85" />
-          <stop offset="50%" stopColor="#6366F1" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#EC4899" stopOpacity="0.75" />
-        </linearGradient>
-
-        {/* Vertical Stem Gradient (Cyber Cyan to Royal Indigo) */}
-        <linearGradient id="emblemStem" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#38BDF8" />
-          <stop offset="25%" stopColor="#00F2FE" />
-          <stop offset="70%" stopColor="#0284C7" />
-          <stop offset="100%" stopColor="#4F46E5" />
-        </linearGradient>
-
-        {/* Horizontal Foot Gradient (Violet to Neon Fuchsia) */}
-        <linearGradient id="emblemFoot" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#6366F1" />
-          <stop offset="40%" stopColor="#A855F7" />
-          <stop offset="75%" stopColor="#EC4899" />
-          <stop offset="100%" stopColor="#F43F5E" />
-        </linearGradient>
-
-        {/* 3D Interlocking Prism Wedge */}
-        <linearGradient id="prismWedge" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#1E1B4B" />
-          <stop offset="50%" stopColor="#4338CA" />
-          <stop offset="100%" stopColor="#818CF8" />
-        </linearGradient>
-
-        {/* Specular White Crest */}
-        <linearGradient id="specularWhite" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
-          <stop offset="60%" stopColor="#FFFFFF" stopOpacity="0.2" />
-          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-        </linearGradient>
+        {/* Mask to create natural openings where the ribbon and flourish cross the frame */}
+        <mask id="squircleNavbarMask">
+          <rect x="0" y="0" width="512" height="512" fill="white" />
+          {/* Gap on left where ribbon crosses */}
+          <rect x="25" y="155" width="65" height="135" fill="black" />
+          {/* Gap on right where L tail crosses */}
+          <rect x="435" y="305" width="65" height="125" fill="black" />
+        </mask>
       </defs>
 
-      {/* Base Squircle Container (Apple / VisionOS radius) */}
+      {/* Precision Squircle Frame */}
       <rect
-        x="5"
-        y="5"
-        width="90"
-        height="90"
-        rx="22"
-        fill="url(#emblemBg)"
-        stroke="url(#emblemBorder)"
-        strokeWidth="1.8"
-      />
-
-      {/* Ambient Radial Core Light */}
-      <circle cx="45" cy="55" r="26" fill="#6366F1" fillOpacity="0.28" filter="blur(6px)" />
-
-      {/* Top Glass Reflection */}
-      <path
-        d="M 12 10 Q 50 6 88 10"
-        stroke="#FFFFFF"
-        strokeOpacity="0.2"
-        strokeWidth="0.8"
+        x="46"
+        y="46"
+        width="420"
+        height="420"
+        rx="84"
         fill="none"
+        stroke="currentColor"
+        strokeWidth="16"
         strokeLinecap="round"
+        mask="url(#squircleNavbarMask)"
       />
 
-      {/* 3D Prism Structure */}
-      <g>
-        {/* 1. Interlocking Prism Wedge */}
-        <path d="M 29 62 L 48 51 L 48 74 L 29 78 Z" fill="url(#prismWedge)" opacity="0.9" />
-
-        {/* 2. Horizontal Foot (Forward dynamic speed) */}
-        <path
-          d="M 42 60 L 71 60 C 74.5 60 77.5 63 77.5 66.5 C 77.5 70 74.5 73 71 73 L 35 73 C 31.5 73 29 70 29 66.5 L 29 62 L 42 60 Z"
-          fill="url(#emblemFoot)"
-        />
-
-        {/* 3. Specular Ridge on Foot */}
-        <path
-          d="M 44 61.5 L 70 61.5 C 72.5 61.5 75 63.5 75 66.5"
-          stroke="#FFFFFF"
-          strokeWidth="0.7"
-          strokeLinecap="round"
-          fill="none"
-          opacity="0.6"
-        />
-
-        {/* 4. Vertical Pillar (Cyan Prism Beam) */}
-        <path
-          d="M 29 29 C 29 25.5 31.8 23 35.3 23 L 41.7 23 C 45.2 23 48 25.5 48 29 L 48 63.5 L 29 72 L 29 29 Z"
-          fill="url(#emblemStem)"
-        />
-
-        {/* 5. Specular Edge on Stem */}
-        <path
-          d="M 30.2 29.5 C 30.2 26.5 32.5 24.2 35.5 24.2 L 41 24.2"
-          stroke="url(#specularWhite)"
-          strokeWidth="0.9"
-          strokeLinecap="round"
-          fill="none"
-        />
-        <line
-          x1="30.2"
-          y1="29.5"
-          x2="30.2"
-          y2="68"
-          stroke="url(#specularWhite)"
-          strokeWidth="0.7"
-          strokeLinecap="round"
-          opacity="0.6"
-        />
-
-        {/* 6. Sharp Diagonal Prism Blade */}
-        <line
-          x1="29"
-          y1="72"
-          x2="48"
-          y2="63.5"
-          stroke="#FFFFFF"
-          strokeWidth="0.9"
-          strokeLinecap="round"
-          opacity="0.85"
-        />
-      </g>
-
-      {/* 7. Diamond Star Flare at Stem Apex */}
-      <g transform="translate(48, 23)">
-        <path
-          d="M 0 -4.5 L 0.7 -1.2 L 4 0 L 0.7 1.2 L 0 4.5 L -0.7 1.2 L -4 0 L -0.7 -1.2 Z"
-          fill="#00F2FE"
-          opacity="0.95"
-        />
-        <circle cx="0" cy="0" r="0.9" fill="#FFFFFF" />
-      </g>
+      {/* The Authentic Intertwined DL Monogram */}
+      <path
+        d="M260 310 L258 309 L254 310 L240 308 L231 304 L227 305 L223 321 L217 337 L208 354 L200 365 L187 378 L178 385 L165 392 L149 396 L121 396 L117 395 L114 392 L114 317 L113 315 L108 314 L100 316 L98 318 L86 320 L85 323 L86 409 L100 410 L122 414 L156 414 L169 412 L180 408 L184 408 L197 402 L216 389 L233 372 L239 364 L248 349 L249 344 L254 335 L260 318 Z M183 417 L184 426 L215 416 L243 416 L259 419 L287 429 L328 450 L349 458 L376 464 L402 464 L432 455 L443 447 L460 428 L471 402 L473 391 L473 369 L468 351 L460 335 L449 324 L441 319 L431 316 L420 316 L409 322 L410 330 L429 329 L436 332 L450 346 L456 361 L455 381 L449 395 L439 408 L422 422 L399 429 L373 428 L359 425 L297 403 L274 398 L264 398 L261 396 L270 388 L284 368 L296 339 L302 309 L301 302 L295 302 L266 311 L256 353 L247 371 L239 382 L219 400 L192 411 Z M111 150 L106 150 L97 153 L88 154 L87 155 L85 155 L84 157 L85 234 L84 269 L85 270 L85 272 L91 272 L97 269 L100 269 L109 265 L113 264 L114 253 L113 221 L114 214 L113 206 L114 205 L113 198 L113 151 Z M384 134 L373 121 L359 113 L336 113 L310 125 L290 148 L272 197 L270 271 L292 264 L303 256 L310 190 L317 168 L331 144 L352 132 L361 137 L367 153 L363 186 L344 224 L315 256 L295 271 L268 281 L250 282 L186 260 L159 259 L84 282 L57 284 L39 276 L26 260 L21 239 L26 204 L38 182 L57 162 L84 146 L109 140 L143 142 L166 151 L181 162 L200 182 L214 206 L225 241 L228 267 L242 272 L264 272 L263 245 L251 201 L233 171 L207 146 L172 128 L142 121 L104 121 L66 131 L28 156 L10 178 L10 290 L24 303 L57 315 L97 310 L168 284 L194 284 L245 301 L277 300 L306 291 L337 272 L365 241 L378 220 L390 175 Z"
+        fill="currentColor"
+        fillRule="evenodd"
+      />
     </svg>
   );
 }
 
 export function DangLioFullLogo() {
   return (
-    <div className="flex items-center space-x-2.5 group">
-      <DangLioEmblem className="w-9 h-9 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-1 shadow-md shadow-indigo-500/20" />
-      <div className="flex items-center">
-        <div className="flex items-baseline space-x-1">
-          <span className="font-black text-lg tracking-tight text-neutral-900 dark:text-white">
-            Đăng
-          </span>
-          <span className="font-black text-lg tracking-wider bg-gradient-to-r from-cyan-400 via-indigo-500 to-pink-500 bg-clip-text text-transparent drop-shadow-sm">
-            LIO
-          </span>
-          <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee] ml-0.5 animate-pulse" />
-        </div>
-        <span className="hidden sm:inline-flex items-center ml-2.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-          Official
+    <div className="flex items-center space-x-2.5 sm:space-x-3 group cursor-pointer">
+      <DangLioEmblem className="w-8 h-8 sm:w-9 sm:h-9 text-neutral-900 dark:text-neutral-100 transition-all duration-300 group-hover:scale-105" />
+      <div className="flex flex-col justify-center">
+        <span className="font-serif tracking-[0.18em] sm:tracking-[0.22em] text-sm sm:text-base font-extrabold text-neutral-900 dark:text-white uppercase leading-none transition-colors">
+          ĐĂNG LIO
         </span>
       </div>
     </div>

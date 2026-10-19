@@ -1,112 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
-    <!-- Dark Obsidian Canvas Gradient -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0B0F19"/>
-      <stop offset="50%" stop-color="#05070E"/>
-      <stop offset="100%" stop-color="#020307"/>
+    <!-- Luxury Obsidian / Titanium Background -->
+    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181B22"/>
+      <stop offset="50%" stop-color="#0E1117"/>
+      <stop offset="100%" stop-color="#07090D"/>
     </linearGradient>
 
-    <!-- Outer Rim Neon Gradient -->
-    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.8"/>
-      <stop offset="45%" stop-color="#6366F1" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#EC4899" stop-opacity="0.7"/>
+    <!-- Subtle Brushed Silver Rim -->
+    <linearGradient id="favRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94A3B8" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#475569" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.6"/>
     </linearGradient>
 
-    <!-- Upright Vertical Stem Gradient (Cyber Cyan to Deep Blue) -->
-    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="25%" stop-color="#00F2FE"/>
-      <stop offset="70%" stop-color="#0284C7"/>
-      <stop offset="100%" stop-color="#4F46E5"/>
+    <!-- Platinum Metallic Emblem Gradient -->
+    <linearGradient id="platinumGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
     </linearGradient>
 
-    <!-- Horizontal Foot Gradient (Violet to Neon Fuchsia to Sunset Coral) -->
-    <linearGradient id="footGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#6366F1"/>
-      <stop offset="40%" stop-color="#A855F7"/>
-      <stop offset="75%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#F43F5E"/>
-    </linearGradient>
-
-    <!-- 3D Interlocking Prism Wedge (Refraction Facet) -->
-    <linearGradient id="prismWedge" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1E1B4B"/>
-      <stop offset="50%" stop-color="#4338CA"/>
-      <stop offset="100%" stop-color="#818CF8"/>
-    </linearGradient>
-
-    <!-- Specular Edge Highlighting -->
-    <linearGradient id="specularWhite" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
-      <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-
-    <!-- Ambient Center Radial Glow Behind L -->
-    <radialGradient id="ambientGlow" cx="45%" cy="55%" r="55%">
-      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.45"/>
-      <stop offset="50%" stop-color="#00F2FE" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-    </radialGradient>
-
-    <!-- Drop Glow Filter for 3D Float Effect -->
-    <filter id="prismShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#4F46E5" flood-opacity="0.55"/>
-      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#00F2FE" flood-opacity="0.35"/>
-    </filter>
-
-    <!-- Diamond Sparkle Filter -->
-    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#38BDF8" flood-opacity="0.9"/>
-    </filter>
+    <!-- Mask for Squircle Openings -->
+    <mask id="squircleMask">
+      <rect x="0" y="0" width="512" height="512" fill="white"/>
+      <!-- Gap on left where ribbon crosses -->
+      <rect x="25" y="155" width="65" height="135" fill="black"/>
+      <!-- Gap on right where L tail crosses -->
+      <rect x="435" y="305" width="65" height="125" fill="black"/>
+    </mask>
   </defs>
 
-  <!-- Base Squircle Container (Apple / VisionOS 112px radius) -->
-  <rect x="28" y="28" width="456" height="456" rx="112" fill="url(#bgGrad)" stroke="url(#rimGrad)" stroke-width="5"/>
+  <!-- Squircle Base Tile -->
+  <rect x="24" y="24" width="464" height="464" rx="104" fill="url(#favBg)" stroke="url(#favRim)" stroke-width="4"/>
 
-  <!-- Ambient Light Core -->
-  <rect x="28" y="28" width="456" height="456" rx="112" fill="url(#ambientGlow)"/>
+  <!-- Inner Subtle Ambient Inset Shadow -->
+  <rect x="24" y="24" width="464" height="464" rx="104" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.12"/>
 
-  <!-- Top Glass Sheen (Specular Rim Arc) -->
-  <path d="M 64 48 Q 256 30 448 48" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Scaled & Centered DL Emblem Group -->
+  <g transform="translate(25.6, 25.6) scale(0.9)">
+    <!-- Precision Squircle Frame with Left/Right Gaps -->
+    <rect x="46" y="46" width="420" height="420" rx="84" 
+          fill="none" stroke="url(#platinumGrad)" stroke-width="16" stroke-linecap="round"
+          mask="url(#squircleMask)"/>
 
-  <!-- Main Monogram "L" 3D Prism Structure -->
-  <g filter="url(#prismShadow)">
-    <!-- 1. The Interlocking 3D Prism Facet / Shadow Wedge -->
-    <path d="M 148 316 L 244 260 L 244 380 L 148 400 Z" fill="url(#prismWedge)" opacity="0.9"/>
-
-    <!-- 2. The Horizontal Foot (Expands to the right with aerodynamic speed) -->
-    <path d="M 216 308 L 364 308 C 381.67 308 396 322.33 396 340 C 396 357.67 381.67 372 364 372 L 180 372 C 162.33 372 148 357.67 148 340 L 148 316 L 216 308 Z" 
-          fill="url(#footGrad)"/>
-
-    <!-- 3. Specular Ridge on Horizontal Foot -->
-    <path d="M 224 316 L 360 316 C 373.25 316 384 326.75 384 340" 
-          stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55"/>
-
-    <!-- 4. The Upright Vertical Pillar (Cyber Cyan Prism Beam) -->
-    <path d="M 148 148 C 148 130.33 162.33 116 180 116 L 212 116 C 229.67 116 244 130.33 244 148 L 244 324 L 148 368 L 148 148 Z" 
-          fill="url(#stemGrad)"/>
-
-    <!-- 5. Crisp Specular Edge along Left Stem -->
-    <path d="M 154 152 C 154 137 165 124 180 122 L 210 122" 
-          stroke="url(#specularWhite)" stroke-width="4" stroke-linecap="round" fill="none"/>
-    <line x1="154" y1="152" x2="154" y2="350" 
-          stroke="url(#specularWhite)" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
-
-    <!-- 6. Razor-Sharp Diagonal Prism Crease / Light Blade -->
-    <line x1="148" y1="368" x2="244" y2="324" 
-          stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+    <!-- The Authentic Intertwined DL Monogram -->
+    <path d="M260 310 L258 309 L254 310 L240 308 L231 304 L227 305 L223 321 L217 337 L208 354 L200 365 L187 378 L178 385 L165 392 L149 396 L121 396 L117 395 L114 392 L114 317 L113 315 L108 314 L100 316 L98 318 L86 320 L85 323 L86 409 L100 410 L122 414 L156 414 L169 412 L180 408 L184 408 L197 402 L216 389 L233 372 L239 364 L248 349 L249 344 L254 335 L260 318 Z M183 417 L184 426 L215 416 L243 416 L259 419 L287 429 L328 450 L349 458 L376 464 L402 464 L432 455 L443 447 L460 428 L471 402 L473 391 L473 369 L468 351 L460 335 L449 324 L441 319 L431 316 L420 316 L409 322 L410 330 L429 329 L436 332 L450 346 L456 361 L455 381 L449 395 L439 408 L422 422 L399 429 L373 428 L359 425 L297 403 L274 398 L264 398 L261 396 L270 388 L284 368 L296 339 L302 309 L301 302 L295 302 L266 311 L256 353 L247 371 L239 382 L219 400 L192 411 Z M111 150 L106 150 L97 153 L88 154 L87 155 L85 155 L84 157 L85 234 L84 269 L85 270 L85 272 L91 272 L97 269 L100 269 L109 265 L113 264 L114 253 L113 221 L114 214 L113 206 L114 205 L113 198 L113 151 Z M384 134 L373 121 L359 113 L336 113 L310 125 L290 148 L272 197 L270 271 L292 264 L303 256 L310 190 L317 168 L331 144 L352 132 L361 137 L367 153 L363 186 L344 224 L315 256 L295 271 L268 281 L250 282 L186 260 L159 259 L84 282 L57 284 L39 276 L26 260 L21 239 L26 204 L38 182 L57 162 L84 146 L109 140 L143 142 L166 151 L181 162 L200 182 L214 206 L225 241 L228 267 L242 272 L264 272 L263 245 L251 201 L233 171 L207 146 L172 128 L142 121 L104 121 L66 131 L28 156 L10 178 L10 290 L24 303 L57 315 L97 310 L168 284 L194 284 L245 301 L277 300 L306 291 L337 272 L365 241 L378 220 L390 175 Z\" 
+          fill=\"url(#platinumGrad)\" fill-rule=\"evenodd\"/>
   </g>
-
-  <!-- 7. Cosmic Star Flare at the Prism Nexus (4-Point Diamond Flare) -->
-  <g filter="url(#starGlow)" transform="translate(244, 116)">
-    <circle cx="0" cy="0" r="4.5" fill="#FFFFFF"/>
-    <path d="M 0 -22 L 3 -6 L 19 0 L 3 6 L 0 22 L -3 6 L -19 0 L -3 -6 Z" fill="#00F2FE" opacity="0.95"/>
-    <circle cx="0" cy="0" r="1.5" fill="#FFFFFF"/>
-  </g>
-
-  <!-- 8. Subtle Sub-accent Spark at Foot Tip -->
-  <circle cx="364" cy="340" r="3.5" fill="#FFFFFF" opacity="0.85" filter="drop-shadow(0 0 6px #EC4899)"/>
 </svg>

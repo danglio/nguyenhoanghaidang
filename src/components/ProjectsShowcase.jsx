@@ -24,6 +24,7 @@ import {
   Camera,
   Server,
 } from 'lucide-react';
+import { FacebookIcon } from './SocialIcons';
 import LocalProjectModal, { buildProjectSummary } from './LocalProjectModal';
 import CenkinTestModal from './CenkinTestModal';
 

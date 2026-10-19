@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { motion, AnimatePresence } from 'framer-motion';
 import AmbientBackground from './components/AmbientBackground';
+import SpatialBackgroundGlow from './components/SpatialBackgroundGlow';
 import Navbar from './components/Navbar';
 import ContactModal from './components/ContactModal';
+import CommandPaletteModal from './components/CommandPaletteModal';
 import SoundtrackPlayer from './components/SoundtrackPlayer';
 import Toast from './components/Toast';
 import { useProfileData } from './hooks/useProfileData';
+import useSoundFX from './hooks/useSoundFX';
 import { Heart } from 'lucide-react';
 
-// Layout Switcher and 7 Layout Components
+// Layout Switcher and Layout Components
 import LayoutSwitcherBar, { LAYOUT_OPTIONS } from './components/layouts/LayoutSwitcherBar';
+import SpatialCinemaLayout from './components/layouts/SpatialCinemaLayout';
 import ClassicLayout from './components/layouts/ClassicLayout';
 import BentoLayout from './components/layouts/BentoLayout';
 import SplitLayout from './components/layouts/SplitLayout';
@@ -21,6 +25,7 @@ import EditorialLayout from './components/layouts/EditorialLayout';
 
 export default function App() {
   const { profile } = useProfileData();
+  const soundFX = useSoundFX();
 
   // Dark Mode is active by default automatically
   const [theme, setTheme] = useState(() => {
@@ -31,7 +36,7 @@ export default function App() {
     return 'dark';
   });
 
-  // Active Layout Demo State (persisted to localStorage)
+  // Active Layout Demo State (persisted to localStorage, defaults to 'spatial')
   const [activeLayout, setActiveLayout] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedLayout = localStorage.getItem('lio_active_layout_preview');
@@ -39,12 +44,25 @@ export default function App() {
         return savedLayout;
       }
     }
-    return 'split'; // Default to user preferred Split-Screen 2-Column layout
+    return 'spatial'; // Default to Lio Spatial Cinema Exhibition Deck!
   });
 
-  // Contact Modal & Toast state
+  // Command Palette & Contact Modal & Toast state
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [toast, setToast] = useState(null);
+
+  // Global Keyboard Shortcut for Command Palette (Cmd + K / Ctrl + K)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsCommandPaletteOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Apply theme to document
   useEffect(() => {
@@ -110,6 +128,9 @@ export default function App() {
       {/* Dynamic Ambient Mesh Glow Background */}
       <AmbientBackground />
 
+      {/* Dynamic Cursor Spotlight Follower & Spatial Dot Mesh */}
+      <SpatialBackgroundGlow />
+
       {/* Top Sticky Navbar with Lio. brand and pill dock */}
       <Navbar
         theme={theme}
@@ -117,6 +138,8 @@ export default function App() {
         onOpenContact={() => setIsContactOpen(true)}
         onShare={handleShare}
         fullName={profile.personal.fullName}
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+        soundFX={soundFX}
       />
 
       {/* Main Content Area: Renders Active Layout Demo */}
@@ -129,6 +152,17 @@ export default function App() {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.22, ease: 'easeInOut' }}
           >
+            {activeLayout === 'spatial' && (
+              <SpatialCinemaLayout
+                profile={profile}
+                onOpenContact={() => setIsContactOpen(true)}
+                showToast={setToast}
+                onShare={handleShare}
+                onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+                soundFX={soundFX}
+              />
+            )}
+
             {activeLayout === 'classic' && (
               <ClassicLayout
                 profile={profile}
@@ -202,7 +236,7 @@ export default function App() {
             <span>© {new Date().getFullYear()} {profile.personal.fullName || 'Nguyễn Hoàng Hải Đăng (Lio)'}.</span>
             <span className="hidden sm:inline">• Thiết kế với</span>
             <Heart className="w-3.5 h-3.5 text-rose-500 inline fill-rose-500" />
-            <span className="hidden sm:inline">3D Lanyard & Cyber Minimalist.</span>
+            <span className="hidden sm:inline">Spatial Cinema Deck & Cyber Minimalist.</span>
           </p>
 
           <p className="text-[11px] text-neutral-400 dark:text-neutral-500">
@@ -221,6 +255,18 @@ export default function App() {
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
+        showToast={setToast}
+      />
+
+      {/* Command Palette Modal (Cmd+K / Ctrl+K) */}
+      <CommandPaletteModal
+        isOpen={isCommandPaletteOpen}
+        onClose={() => setIsCommandPaletteOpen(false)}
+        onOpenContact={() => setIsContactOpen(true)}
+        onShare={handleShare}
+        onToggleTheme={toggleTheme}
+        theme={theme}
+        soundFX={soundFX}
         showToast={setToast}
       />
 

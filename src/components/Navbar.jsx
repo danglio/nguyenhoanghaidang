@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Moon, Share2, Send } from 'lucide-react';
+import { Sun, Moon, Share2, Send, Command, Volume2, VolumeX, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import { DangLioFullLogo } from './DangLioLogo';
@@ -10,6 +10,8 @@ export default function Navbar({
   onShare,
   onOpenContact,
   fullName = '',
+  onOpenCommandPalette,
+  soundFX,
 }) {
   return (
     <header className="sticky top-0 z-40 w-full glass-nav border-b border-neutral-200/60 dark:border-neutral-800/60 transition-colors duration-300 backdrop-blur-xl">
@@ -89,6 +91,37 @@ export default function Navbar({
             >
               <Send className="w-3.5 h-3.5" />
               <span>Hợp tác</span>
+            </motion.button>
+          )}
+
+          {/* Command Palette Button (Cmd+K) */}
+          {onOpenCommandPalette && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onOpenCommandPalette}
+              title="Tìm kiếm nhanh (Cmd + K / Ctrl + K)"
+              className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-xs font-mono text-neutral-600 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-neutral-100 dark:hover:bg-neutral-800/80 border border-neutral-200/80 dark:border-white/10 glow-btn transition-all cursor-pointer"
+            >
+              <Command className="w-3.5 h-3.5 text-cyan-500" />
+              <span className="hidden md:inline font-bold">⌘K</span>
+            </motion.button>
+          )}
+
+          {/* Micro-Sound FX Toggle Button */}
+          {soundFX && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={soundFX.toggleMute}
+              title={soundFX.isMuted ? 'Bật âm thanh tương tác (Unmute)' : 'Tắt âm thanh tương tác (Mute)'}
+              className="p-2.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 glow-btn transition-all cursor-pointer"
+            >
+              {soundFX.isMuted ? (
+                <VolumeX className="w-4 h-4 text-neutral-400" />
+              ) : (
+                <Volume2 className="w-4 h-4 text-cyan-500" />
+              )}
             </motion.button>
           )}
 

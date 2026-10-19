@@ -15,11 +15,18 @@ import {
 
 export const LAYOUT_OPTIONS = [
   {
-    id: 'classic',
-    name: 'Gốc (Classic)',
-    tag: 'Cuộn dài',
-    icon: Layers,
-    desc: 'Bố cục nguyên bản hiện tại',
+    id: 'spatial',
+    name: 'Spatial Cinema',
+    tag: 'VisionOS ★',
+    icon: Sparkles,
+    desc: 'Triển lãm điện ảnh & VisionOS Deck',
+  },
+  {
+    id: 'split',
+    name: 'Split-Screen',
+    tag: '2 Cột',
+    icon: Columns,
+    desc: 'Cột trái cố định, cột phải cuộn',
   },
   {
     id: 'bento',
@@ -29,11 +36,11 @@ export const LAYOUT_OPTIONS = [
     desc: 'Lưới module kiểu Apple & Linear',
   },
   {
-    id: 'split',
-    name: 'Split-Screen',
-    tag: '2 Cột',
-    icon: Columns,
-    desc: 'Cột trái cố định, cột phải cuộn',
+    id: 'classic',
+    name: 'Gốc (Classic)',
+    tag: 'Cuộn dài',
+    icon: Layers,
+    desc: 'Bố cục nguyên bản hiện tại',
   },
   {
     id: 'tabs',

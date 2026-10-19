@@ -52,78 +52,13 @@ export default function SoundtrackPlayer() {
     }
   }, []);
 
-  // Attempt Autoplay on initial load + seamless fallback on 1st interaction
+  // Initialize audio properties and listeners (Opt-in sound, default paused to respect user)
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    audio.volume = 0.7;
-
-    // Events that modern browsers recognize as legitimate user gestures
-    const activationEvents = ['pointerdown', 'mousedown', 'touchstart', 'touchend', 'keydown', 'click'];
-    let cleanupListeners = null;
-
-    const tryAutoplay = () => {
-      // Stage 1: Attempt direct unmuted playback (works if user enabled sound or has MEI)
-      audio.muted = false;
-      const playPromise = audio.play();
-
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setIsPlaying(true);
-            setIsMuted(false);
-            setShowAutoplayHint(false);
-          })
-          .catch(() => {
-            // Stage 2: Browser Autoplay Policy blocked unmuted audio
-            // Start playing MUTED immediately so visualizer, vinyl, and track timeline start without delay
-            audio.muted = true;
-            setIsMuted(true);
-            setShowAutoplayHint(true);
-
-            audio
-              .play()
-              .then(() => {
-                setIsPlaying(true);
-              })
-              .catch(() => {
-                setIsPlaying(false);
-              });
-
-            // Stage 3: The very millisecond the user touches, clicks, or interacts anywhere on the page, unmute seamlessly
-            const unlockSound = () => {
-              if (audioRef.current) {
-                audioRef.current.muted = false;
-                audioRef.current.volume = 0.7;
-                audioRef.current
-                  .play()
-                  .then(() => {
-                    setIsPlaying(true);
-                    setIsMuted(false);
-                    setShowAutoplayHint(false);
-                    if (cleanupListeners) cleanupListeners();
-                  })
-                  .catch(() => {});
-              }
-            };
-
-            cleanupListeners = () => {
-              activationEvents.forEach((evt) => {
-                window.removeEventListener(evt, unlockSound, { capture: true });
-                document.removeEventListener(evt, unlockSound, { capture: true });
-              });
-            };
-
-            activationEvents.forEach((evt) => {
-              window.addEventListener(evt, unlockSound, { capture: true, passive: true });
-              document.addEventListener(evt, unlockSound, { capture: true, passive: true });
-            });
-          });
-      }
-    };
-
-    tryAutoplay();
+    audio.volume = 0.5;
+    audio.muted = false;
 
     // Time update & loop handlers
     const onTimeUpdate = () => {
@@ -147,7 +82,6 @@ export default function SoundtrackPlayer() {
       audio.removeEventListener('timeupdate', onTimeUpdate);
       audio.removeEventListener('loadedmetadata', onTimeUpdate);
       audio.removeEventListener('ended', onEndedListener);
-      if (cleanupListeners) cleanupListeners();
     };
   }, [handleAudioEnded]);
 

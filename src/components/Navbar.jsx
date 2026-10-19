@@ -34,16 +34,16 @@ export default function Navbar({
             Giới thiệu
           </a>
           <a
-            href="#videos"
-            className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
-          >
-            Thước phim
-          </a>
-          <a
             href="#projects"
             className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
           >
             Dự án
+          </a>
+          <a
+            href="#certificates"
+            className="px-4 py-1.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 transition-all"
+          >
+            Chứng nhận
           </a>
           <a
             href="#skills"

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ProfilePhotoFrame from '../ProfilePhotoFrame';
-import FeaturedVideoSpotlight from '../FeaturedVideoSpotlight';
+import CertificatesSection from '../CertificatesSection';
 import ProjectsShowcase from '../ProjectsShowcase';
 import AchievementsStats from '../AchievementsStats';
 import SkillsSection from '../SkillsSection';
@@ -10,12 +10,13 @@ import {
   Sparkles,
   Send,
   Share2,
-  Film,
   Code2,
   Layers,
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
+  Award,
+  ShieldCheck,
 } from 'lucide-react';
 
 export default function CleanPortfolioLayout({
@@ -99,6 +100,17 @@ export default function CleanPortfolioLayout({
                   <span>Xem các dự án</span>
                 </motion.a>
 
+                {/* Secondary: Scroll to Certificates */}
+                <motion.a
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
+                  href="#certificates"
+                  className="flex items-center gap-2 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold glass-card border border-amber-500/30 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 transition-all cursor-pointer"
+                >
+                  <Award className="w-4 h-4 text-amber-500" />
+                  <span>Chứng chỉ FPT & MCI</span>
+                </motion.a>
+
                 {/* Live App Quick Pill */}
                 <motion.a
                   whileHover={{ scale: 1.04, y: -2 }}
@@ -119,27 +131,7 @@ export default function CleanPortfolioLayout({
       </section>
 
       {/* ========================================================
-          SECTION 01: THƯỚC PHIM & SÁNG TẠO NỘI DUNG SỐ (#videos)
-      ======================================================== */}
-      <section id="videos" className="scroll-mt-24 space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/60 dark:border-white/5 pb-3">
-          <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-cyan-500 uppercase mb-1">
-              <Film className="w-3.5 h-3.5" />
-              <span>CONTENT CREATION // VIDEO SPOTLIGHT</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 dark:text-white tracking-tight">
-              Thước Phim & Series Video Nổi Bật
-            </h2>
-          </div>
-          <span className="text-xs text-neutral-400">YouTube 4K & TikTok 9:16 Shorts</span>
-        </div>
-
-        <FeaturedVideoSpotlight showToast={showToast} />
-      </section>
-
-      {/* ========================================================
-          SECTION 02: DỰ ÁN PHẦN MỀM & ỨNG DỤNG WEB (#projects)
+          SECTION 01: DỰ ÁN PHẦN MỀM & ỨNG DỤNG WEB (#projects)
       ======================================================== */}
       <section id="projects" className="scroll-mt-24 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200/60 dark:border-white/5 pb-3">
@@ -157,6 +149,11 @@ export default function CleanPortfolioLayout({
 
         <ProjectsShowcase showToast={showToast} />
       </section>
+
+      {/* ========================================================
+          SECTION 02: CHỨNG CHỈ & CHỨNG NHẬN CHUYÊN MÔN (#certificates)
+      ======================================================== */}
+      <CertificatesSection showToast={showToast} />
 
       {/* ========================================================
           SECTION 03: CHỈ SỐ PHÁT TRIỂN & 3 TRỤ CỘT KỸ NĂNG (#skills)

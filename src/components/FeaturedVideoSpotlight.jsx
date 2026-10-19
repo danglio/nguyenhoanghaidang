@@ -23,9 +23,9 @@ export const FEATURED_VIDEOS = [
     creator: 'LIO (@lio_tsv)',
     description: 'Video dài tập phân tích góc nhìn xã hội hiện đại, công nghệ AI và cách tư duy kể chuyện số định hình nội dung tương lai.',
     stats: {
-      views: '738+ Views',
+      views: '850+ Views',
       format: '4K Ultra HD',
-      status: '15 Video Dài Tập',
+      status: '47 Video 4K • 14 Subs',
     },
     youtubeId: 'heb1jkNWCyM', // Curated video stream
     url: 'https://youtube.com/@lio_tsv?si=FBUf3BvbKV8h10jZ',
@@ -40,9 +40,9 @@ export const FEATURED_VIDEOS = [
     creator: '@liotapkechuyen',
     description: 'Chuỗi video Podcast & Storytelling ngắn chia sẻ những trăn trở của người trẻ, mẹo vượt qua áp lực và cách tìm lại cảm hứng sống.',
     stats: {
-      views: '5,000+ Views',
+      views: '5,500+ Views',
       format: 'Vertical 9:16',
-      status: '323 Tim Thật',
+      status: '429 Tim Thật • 34 Video',
     },
     youtubeId: 'heb1jkNWCyM',
     url: 'https://www.tiktok.com/@liotapkechuyen',
@@ -52,14 +52,14 @@ export const FEATURED_VIDEOS = [
   {
     id: 'tiktok-viral',
     platform: 'tiktok',
-    badge: 'TIKTOK // KÊNH CÁ NHÂN 45K VIEWS',
+    badge: 'TIKTOK // KÊNH CÁ NHÂN 48K VIEWS',
     title: 'Khoảnh Khắc Đời Thường & Visual Xu Hướng',
     creator: '@nguyndang0802',
     description: 'Kênh cá nhân chia sẻ phong cách sống Gen Z, trải nghiệm học tập tại HUIT và hậu trường thực hiện các dự án sáng tạo.',
     stats: {
-      views: '45,000+ Views',
+      views: '48,000+ Views',
       format: 'Viral Trends',
-      status: '4,214 Lượt Thích',
+      status: '4,321 Lượt Thích',
     },
     youtubeId: 'heb1jkNWCyM',
     url: 'https://www.tiktok.com/@nguyndang0802',

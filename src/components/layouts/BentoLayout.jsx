@@ -93,23 +93,23 @@ export default function BentoLayout({ profile, onOpenContact, showToast, onShare
 
           <div className="my-2">
             <div className="text-2xl sm:text-3xl font-black text-neutral-900 dark:text-white tracking-tight">
-              55K+
+              60K+
             </div>
             <div className="text-xs font-semibold text-neutral-600 dark:text-neutral-300">
               Tổng lượt xem nội dung
             </div>
             <div className="text-[11px] text-neutral-400 dark:text-neutral-500 mt-1">
-              TikTok 48K+ • FB 2K+ • IG 1K+ • YT 738+
+              TikTok 52K+ • FB 3K+ • IG 1.5K+ • YT 850+
             </div>
           </div>
 
           <div className="flex items-center gap-3 pt-2 border-t border-neutral-200/40 dark:border-white/5 text-[11px] text-neutral-500">
             <span className="flex items-center gap-1 text-rose-500 font-semibold">
-              <Flame className="w-3.5 h-3.5 fill-rose-500/20" /> 4.5K+ Tim
+              <Flame className="w-3.5 h-3.5 fill-rose-500/20" /> 4.8K+ Tim
             </span>
             <span>•</span>
             <span className="flex items-center gap-1 text-cyan-500 font-semibold">
-              <Users className="w-3.5 h-3.5" /> 800+ Follows
+              <Users className="w-3.5 h-3.5" /> 820+ Follows
             </span>
           </div>
         </div>

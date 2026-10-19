@@ -15,7 +15,7 @@ export default function TabsLayout({ profile, onOpenContact, showToast, onShare 
     { id: 'all', label: 'Tất Cả', icon: Layers, badge: 'Overview' },
     { id: 'projects', label: 'Dự Án & App', icon: Box, badge: '3 Apps' },
     { id: 'socials', label: 'Kênh MXH & Video', icon: Tv, badge: '6 Kênh' },
-    { id: 'stats', label: 'Chỉ Số & Kỹ Năng', icon: BarChart3, badge: '55K+ Views' },
+    { id: 'stats', label: 'Chỉ Số & Kỹ Năng', icon: BarChart3, badge: '60K+ Views' },
   ];
 
   return (
@@ -168,7 +168,7 @@ export default function TabsLayout({ profile, onOpenContact, showToast, onShare 
                 <BarChart3 className="w-5 h-5 text-emerald-500" />
                 <span>Chỉ Số Tương Tác & Bộ Kỹ Năng</span>
               </h3>
-              <span className="text-xs text-emerald-500 font-bold">55K+ Views thực</span>
+              <span className="text-xs text-emerald-500 font-bold">60K+ Views thực</span>
             </div>
             <AchievementsStats stats={profile.stats} />
             <SkillsSection skills={profile.skills} />

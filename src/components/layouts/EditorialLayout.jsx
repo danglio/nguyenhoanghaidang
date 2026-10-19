@@ -92,7 +92,7 @@ export default function EditorialLayout({ profile, onOpenContact, showToast, onS
             CHƯƠNG 04
           </span>
           <h2 className="text-2xl font-black text-neutral-900 dark:text-white">
-            Những Con Số Đằng Sau Hành Trình (55K+ Views)
+            Những Con Số Đằng Sau Hành Trình (60K+ Views)
           </h2>
         </div>
         <AchievementsStats stats={profile.stats} />

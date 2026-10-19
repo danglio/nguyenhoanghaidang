@@ -82,10 +82,10 @@ export const DEFAULT_PROFILE = {
     "Whisper STT & Voice Synthesis",
   ],
   stats: [
-    { id: "stat-views", value: "55K+", rawNumber: 55000, label: "Tổng lượt xem (Views)", icon: "Eye", trend: "Đa nền tảng", desc: "TikTok (48K+) • FB (2K+) • IG (1K+) • YT (738+)" },
-    { id: "stat-followers", value: "800+", rawNumber: 800, label: "Tổng người theo dõi (6 kênh)", icon: "Users", trend: "Đang tăng trưởng", desc: "FB 419 • TikTok 242 • IG 131 • YT 4" },
-    { id: "stat-likes", value: "4.5K+", rawNumber: 4537, label: "Lượt thích TikTok", icon: "Flame", trend: "Tương tác thực", desc: "4,214 tim cá nhân + 323 tim kể chuyện" },
-    { id: "stat-videos", value: "50+", rawNumber: 50, label: "Video & Nội dung số", icon: "Film", trend: "Sản xuất đều đặn", desc: "15 video dài 4K + 35+ video ngắn" },
+    { id: "stat-views", value: "60K+", rawNumber: 60000, label: "Tổng lượt xem (Views)", icon: "Eye", trend: "Đa nền tảng", desc: "TikTok (52K+) • FB (3K+) • IG (1.5K+) • YT (850+)" },
+    { id: "stat-followers", value: "820+", rawNumber: 826, label: "Tổng người theo dõi (6 kênh)", icon: "Users", trend: "Đang tăng trưởng", desc: "FB 425 • TikTok 252 • IG 135 • YT 14" },
+    { id: "stat-likes", value: "4.8K+", rawNumber: 4750, label: "Lượt thích TikTok", icon: "Flame", trend: "Tương tác thực", desc: "4,321 tim cá nhân + 429 tim kể chuyện" },
+    { id: "stat-videos", value: "84+", rawNumber: 84, label: "Video & Nội dung số", icon: "Film", trend: "Sản xuất đều đặn", desc: "47 video YouTube + 37 video TikTok" },
   ],
   links: [
     {
@@ -101,7 +101,7 @@ export const DEFAULT_PROFILE = {
       platform: "tiktok",
       title: "TikTok Lio Tập Kể Chuyện",
       url: "https://www.tiktok.com/@liotapkechuyen",
-      stats: "5K+ Lượt xem • 27 Followers • 323 Lượt thích",
+      stats: "5.5K+ Lượt xem • 28 Followers • 429 Lượt thích",
       description: "Kênh Podcast & Storytelling chia sẻ góc nhìn sâu lắng, bài học & mẹo giải quyết vấn đề cuộc sống",
     },
     {
@@ -109,7 +109,7 @@ export const DEFAULT_PROFILE = {
       platform: "tiktok",
       title: "TikTok @nguyndang0802",
       url: "https://www.tiktok.com/@nguyndang0802",
-      stats: "45K+ Lượt xem • 215 Followers • 4,214 Lượt thích",
+      stats: "48K+ Lượt xem • 224 Followers • 4,321 Lượt thích",
       description: "Kênh cá nhân chia sẻ khoảnh khắc đời thường, video sáng tạo, phong cách sống & hậu trường",
     },
     {
@@ -117,7 +117,7 @@ export const DEFAULT_PROFILE = {
       platform: "youtube",
       title: "Kênh YouTube LIO (@lio_tsv)",
       url: "https://youtube.com/@lio_tsv?si=FBUf3BvbKV8h10jZ",
-      stats: "738 Lượt xem • 15 Video dài tập 4K • 4 Subs",
+      stats: "850+ Lượt xem • 47 Video phát hành • 14 Subs",
       description: "Kênh YouTube chính thức: Phân tích tư duy, kinh tế, công nghệ AI và góc nhìn xã hội hiện đại",
     },
     {
@@ -125,7 +125,7 @@ export const DEFAULT_PROFILE = {
       platform: "instagram",
       title: "Instagram @nguyenhoanghaidanglio",
       url: "https://www.instagram.com/nguyenhoanghaidanglio/",
-      stats: "1K+ Lượt xem Reels • 131 Followers • 44 Bài viết",
+      stats: "1.5K+ Lượt xem Reels • 135 Followers • 45 Bài viết",
       description: "Kho ảnh nghệ thuật Canon, Reels visual cuốn hút, phong cách sống & hậu trường sáng tạo",
     },
     {
@@ -133,7 +133,7 @@ export const DEFAULT_PROFILE = {
       platform: "facebook",
       title: "Facebook Cá Nhân (Đăng Lio)",
       url: "https://www.facebook.com/share/19JS9Xy3rN/",
-      stats: "2K+ Lượt xem bài viết • 416 Followers",
+      stats: "2.5K+ Lượt xem bài viết • 422 Followers",
       description: "Kết nối, giao lưu đời thực cùng bạn bè, đối tác và chia sẻ cập nhật các bài viết cuộc sống",
     },
     {
@@ -141,7 +141,7 @@ export const DEFAULT_PROFILE = {
       platform: "facebook",
       title: "Fanpage: Uống Gì Hôm Nay",
       url: "https://www.facebook.com/share/1AfnEdbkeu/",
-      stats: "Trang Fanpage Chính Thức • Video Reels & Demo",
+      stats: "Trang Fanpage Chính Thức • 3 Followers • Video Demo Test",
       description: "Kênh Fanpage chính thức của dự án Hôm Nay Uống Gì Lio, cập nhật bản thử nghiệm & video trải nghiệm",
     },
     {

@@ -161,7 +161,7 @@ export default function SpatialCinemaLayout({
               Chỉ Số Phát Triển & 3 Trụ Cột Năng Lực
             </h2>
           </div>
-          <span className="text-xs text-neutral-400">55K+ Views Thực • 3 Nhóm Kỹ Năng</span>
+          <span className="text-xs text-neutral-400">60K+ Views Thực • 3 Nhóm Kỹ Năng</span>
         </div>
 
         {/* Bento Stats Counters */}

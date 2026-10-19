@@ -44,21 +44,10 @@ export default function SpatialCinemaLayout({
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left: Spatial Portrait Frame with Ambient Light */}
-            <div className="lg:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left">
+            <div className="lg:col-span-5 flex flex-col items-center justify-center">
               <ProfilePhotoFrame
                 personal={profile.personal}
-                className="mb-4"
               />
-
-              <div className="space-y-1 mt-2">
-                <div className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400 flex items-center justify-center sm:justify-start gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span>ONLINE // HUIT TP.HCM</span>
-                </div>
-                <div className="text-xs text-neutral-500 dark:text-neutral-400 font-mono">
-                  Creative Technologist • ĐH Công Thương TP.HCM
-                </div>
-              </div>
             </div>
 
             {/* Right: Big Cinematic Headline & Core Declaration */}

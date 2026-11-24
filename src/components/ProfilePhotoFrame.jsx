@@ -64,7 +64,7 @@ export default function ProfilePhotoFrame({ personal, className = '' }) {
             <img
               src={avatarUrl}
               alt={fullName}
-              className="w-full h-full object-cover object-[50%_18%] scale-[1.02] group-hover:scale-106 transition-transform duration-700 ease-out"
+              className="w-full h-full object-cover object-[50%_48%] scale-[1.02] group-hover:scale-106 transition-transform duration-700 ease-out"
               onError={(e) => {
                 e.currentTarget.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800';
               }}

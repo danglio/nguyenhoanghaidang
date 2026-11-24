@@ -317,7 +317,7 @@ export default function LanyardBadge({ personal = {}, className = '' }) {
                     <img
                       src={avatarUrl}
                       alt={displayName}
-                      className="w-full h-full object-cover object-top scale-[1.08] -translate-y-2.5 rounded-2xl drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] filter transition-transform duration-500 group-hover:scale-[1.12] group-hover:-translate-y-3.5"
+                      className="w-full h-full object-cover object-[50%_48%] scale-[1.08] -translate-y-2.5 rounded-2xl drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] filter transition-transform duration-500 group-hover:scale-[1.12] group-hover:-translate-y-3.5"
                     />
                     {/* Soft lighting sheen & bottom vignette for depth */}
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-neutral-950/70 via-transparent to-white/15 pointer-events-none" />
